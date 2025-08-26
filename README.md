@@ -27,14 +27,14 @@ GitHub Repository: [Smart Travel](https://github.com/garnalam/Travel.git)
 ## Công nghệ sử dụng
 - **Backend:** Flask (Python)
 - **Frontend:** HTML/CSS/JS
-- **Database:** MySQL (cho CMS) + MongoDB (cho Recommendation System)
+- **Database:** MySQL
 - **Recommendation System:** Content-based Filtering, Hybrid Recommendation
 - **Triển khai:** XAMPP (local), sẵn sàng deploy cloud
 
 ## Cài đặt và chạy dự án
 
 ### Yêu cầu
-- Python 3.8+
+- Python 3.10
 - XAMPP (chạy MySQL + phpMyAdmin)
 - Git
 
@@ -76,7 +76,7 @@ Travel/
 
 ## Kiến trúc hệ thống
 - **CMS (MySQL + Flask):** Quản lý dữ liệu dịch vụ, người dùng, booking.
-- **Recommendation (MongoDB + Python):** Lưu trữ dữ liệu phi cấu trúc và chạy thuật toán gợi ý.
+- **Recommendation:** Chạy thuật toán gợi ý.
 - **Giao diện Web:** Người dùng tương tác, xem và đặt vé máy bay, khách sạn, nhà hàng, tour.
 
 ## Định hướng phát triển
