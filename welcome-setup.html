@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Setup - Vietnam Travel</title>
+    <script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Setup specific styles */
+        .setup-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .setup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        .setup-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .theme-option {
+            border: 3px solid transparent;
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .theme-option.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .theme-option.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .setup-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .setup-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .setup-btn:hover::before {
+            left: 100%;
+        }
+        
+        .setup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+        
+        .step.completed {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="setup-container">
+        <div class="setup-card p-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-plane text-white text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2" data-en="Welcome to Vietnam Travel!" data-vi="Chào mừng đến với Du Lịch Việt Nam!">Welcome to Vietnam Travel!</h1>
+                <p class="text-gray-600" data-en="Let's personalize your travel experience" data-vi="Hãy cá nhân hóa trải nghiệm du lịch của bạn">Let's personalize your travel experience</p>
+            </div>
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active" id="step1"></div>
+                <div class="step" id="step2"></div>
+            </div>
+            
+            <!-- Step 1: Theme Selection -->
+            <div id="themeStep" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-en="Choose Your Theme" data-vi="Chọn Giao Diện">Choose Your Theme</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Default Theme -->
+                    <div class="theme-option selected" data-theme="sunset">
+                        <div class="w-full h-24 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg mb-4 relative">
+                            <div class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">DEFAULT</div>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-en="🌅 Default Theme" data-vi="🌅 Giao diện Mặc định">🌅 Default Theme</h3>
+                        <p class="text-sm text-gray-600" data-en="Warm and energetic design" data-vi="Thiết kế ấm áp và năng động">Warm and energetic design</p>
+                    </div>
+                    
+                    <!-- Arctic Snow -->
+                    <div class="theme-option" data-theme="arctic">
+                        <div class="w-full h-24 bg-gradient-to-r from-sky-300 via-blue-400 to-blue-500 rounded-lg mb-4 relative">
+                            <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">PREMIUM</div>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-en="❄️ Arctic Snow" data-vi="❄️ Tuyết Bắc Cực">❄️ Arctic Snow</h3>
+                        <p class="text-sm text-gray-600" data-en="Modern glass design" data-vi="Thiết kế thủy tinh hiện đại">Modern glass design</p>
+                    </div>
+                    
+                    <!-- Cosmic Space -->
+                    <div class="theme-option" data-theme="cosmic">
+                        <div class="w-full h-24 bg-gradient-to-r from-purple-400 via-violet-500 to-purple-600 rounded-lg mb-4 relative">
+                            <div class="absolute top-2 left-2 bg-purple-500 text-white text-xs px-2 py-1 rounded-full">PREMIUM</div>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-en="🌌 Cosmic Space" data-vi="🌌 Không gian Vũ trụ">🌌 Cosmic Space</h3>
+                        <p class="text-sm text-gray-600" data-en="Futuristic space design" data-vi="Thiết kế không gian tương lai">Futuristic space design</p>
+                    </div>
+                </div>
+                
+                <button class="setup-btn" onclick="nextStep()">
+                    <span data-en="Continue" data-vi="Tiếp tục">Continue</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+            
+            <!-- Step 2: Language & Currency -->
+            <div id="languageStep" class="step-content hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-en="Language & Currency" data-vi="Ngôn ngữ & Tiền tệ">Language & Currency</h2>
+                
+                <div class="space-y-6 mb-8">
+                    <!-- Language Selection -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-4" data-en="Choose Language" data-vi="Chọn Ngôn ngữ">Choose Language</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="language-option p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition hover:border-blue-500 selected" data-lang="en">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🇺🇸</span>
+                                    <div>
+                                        <h4 class="font-semibold">English</h4>
+                                        <p class="text-sm text-gray-600">International language</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="language-option p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition hover:border-blue-500" data-lang="vi">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🇻🇳</span>
+                                    <div>
+                                        <h4 class="font-semibold">Tiếng Việt</h4>
+                                        <p class="text-sm text-gray-600">Ngôn ngữ địa phương</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Currency Selection -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-4" data-en="Choose Currency" data-vi="Chọn Tiền tệ">Choose Currency</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="currency-option p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition hover:border-green-500 selected" data-currency="USD">
+                                <div class="text-center">
+                                    <span class="text-2xl">💵</span>
+                                    <h4 class="font-semibold mt-2">USD</h4>
+                                    <p class="text-sm text-gray-600">US Dollar</p>
+                                </div>
+                            </div>
+                            <div class="currency-option p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition hover:border-green-500" data-currency="VND">
+                                <div class="text-center">
+                                    <span class="text-2xl">💰</span>
+                                    <h4 class="font-semibold mt-2">VND</h4>
+                                    <p class="text-sm text-gray-600">Vietnamese Dong</p>
+                                </div>
+                            </div>
+                            <div class="currency-option p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition hover:border-green-500" data-currency="EUR">
+                                <div class="text-center">
+                                    <span class="text-2xl">💶</span>
+                                    <h4 class="font-semibold mt-2">EUR</h4>
+                                    <p class="text-sm text-gray-600">Euro</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button class="setup-btn bg-gray-500 hover:bg-gray-600" onclick="prevStep()" style="background: #6b7280;">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span data-en="Back" data-vi="Quay lại">Back</span>
+                    </button>
+                    <button class="setup-btn" onclick="completeSetup()">
+                        <span data-en="Complete Setup" data-vi="Hoàn thành">Complete Setup</span>
+                        <i class="fas fa-check ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center hidden">
+                <div class="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-en="Setting up your experience..." data-vi="Đang thiết lập trải nghiệm của bạn...">Setting up your experience...</h3>
+                <p class="text-gray-600" data-en="Please wait while we prepare everything for you" data-vi="Vui lòng đợi trong khi chúng tôi chuẩn bị mọi thứ">Please wait while we prepare everything for you</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedTheme = 'sunset';
+        let selectedLanguage = 'en';
+        let selectedCurrency = 'USD';
+        let currentLanguage = 'en';
+        
+        // Language data
+        const translations = {
+            en: {
+                'Welcome to Vietnam Travel!': 'Welcome to Vietnam Travel!',
+                "Let's personalize your travel experience": "Let's personalize your travel experience",
+                'Choose Your Theme': 'Choose Your Theme',
+                '🌅 Default Theme': '🌅 Default Theme',
+                'Warm and energetic design': 'Warm and energetic design',
+                '❄️ Arctic Snow': '❄️ Arctic Snow',
+                'Modern glass design': 'Modern glass design',
+                '🌌 Cosmic Space': '🌌 Cosmic Space',
+                'Futuristic space design': 'Futuristic space design',
+                'Continue': 'Continue',
+                'Language & Currency': 'Language & Currency',
+                'Choose Language': 'Choose Language',
+                'Choose Currency': 'Choose Currency',
+                'Back': 'Back',
+                'Complete Setup': 'Complete Setup',
+                'Setting up your experience...': 'Setting up your experience...',
+                'Please wait while we prepare everything for you': 'Please wait while we prepare everything for you'
+            },
+            vi: {
+                'Welcome to Vietnam Travel!': 'Chào mừng đến với Du Lịch Việt Nam!',
+                "Let's personalize your travel experience": 'Hãy cá nhân hóa trải nghiệm du lịch của bạn',
+                'Choose Your Theme': 'Chọn Giao Diện',
+                '🌅 Default Theme': '🌅 Giao diện Mặc định',
+                'Warm and energetic design': 'Thiết kế ấm áp và năng động',
+                '❄️ Arctic Snow': '❄️ Tuyết Bắc Cực',
+                'Modern glass design': 'Thiết kế thủy tinh hiện đại',
+                '🌌 Cosmic Space': '🌌 Không gian Vũ trụ',
+                'Futuristic space design': 'Thiết kế không gian tương lai',
+                'Continue': 'Tiếp tục',
+                'Language & Currency': 'Ngôn ngữ & Tiền tệ',
+                'Choose Language': 'Chọn Ngôn ngữ',
+                'Choose Currency': 'Chọn Tiền tệ',
+                'Back': 'Quay lại',
+                'Complete Setup': 'Hoàn thành',
+                'Setting up your experience...': 'Đang thiết lập trải nghiệm của bạn...',
+                'Please wait while we prepare everything for you': 'Vui lòng đợi trong khi chúng tôi chuẩn bị mọi thứ'
+            }
+        };
+        
+        // Update language function
+        function updateLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelectorAll('[data-en]').forEach(element => {
+                const key = element.getAttribute('data-en');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+        
+        // Theme selection
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTheme = this.getAttribute('data-theme');
+                console.log('Selected theme:', selectedTheme);
+            });
+        });
+        
+        // Language selection
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.language-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                    opt.style.borderColor = '#e5e7eb';
+                });
+                this.classList.add('selected');
+                this.style.borderColor = '#3b82f6';
+                selectedLanguage = this.getAttribute('data-lang');
+                
+                // Update interface language immediately
+                updateLanguage(selectedLanguage);
+                console.log('Selected language:', selectedLanguage);
+            });
+        });
+        
+        // Currency selection
+        document.querySelectorAll('.currency-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.currency-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                    opt.style.borderColor = '#e5e7eb';
+                });
+                this.classList.add('selected');
+                this.style.borderColor = '#10b981';
+                selectedCurrency = this.getAttribute('data-currency');
+                console.log('Selected currency:', selectedCurrency);
+            });
+        });
+        
+        // Step navigation
+        function nextStep() {
+            if (currentStep === 1) {
+                currentStep = 2;
+                document.getElementById('themeStep').classList.add('hidden');
+                document.getElementById('languageStep').classList.remove('hidden');
+                document.getElementById('step1').classList.remove('active');
+                document.getElementById('step1').classList.add('completed');
+                document.getElementById('step2').classList.add('active');
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep === 2) {
+                currentStep = 1;
+                document.getElementById('languageStep').classList.add('hidden');
+                document.getElementById('themeStep').classList.remove('hidden');
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step1').classList.remove('completed');
+                document.getElementById('step1').classList.add('active');
+            }
+        }
+        
+        // Complete setup
+        async function completeSetup() {
+            // Show loading state
+            document.getElementById('languageStep').classList.add('hidden');
+            document.getElementById('loadingState').classList.remove('hidden');
+            
+            // Prepare configuration
+            const userConfig = {
+                theme: selectedTheme,
+                language: selectedLanguage,
+                currency: selectedCurrency,
+                setupCompleted: true,
+                setupDate: new Date().toISOString()
+            };
+            
+            console.log('🎨 Saving user configuration:', userConfig);
+            
+            try {
+                // Save to cookie for persistent storage
+                const cookieValue = JSON.stringify(userConfig);
+                const expiryDate = new Date();
+                expiryDate.setFullYear(expiryDate.getFullYear() + 1); // 1 year expiry
+                
+                document.cookie = `vietnam_travel_ui_config=${cookieValue}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict`;
+                
+                // Only use cookie storage - no localStorage
+                
+                console.log('✅ Configuration saved to cookie');
+                
+                // Simulate setup time
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Redirect to dashboard
+                console.log('🚀 Redirecting to dashboard...');
+                window.location.href = 'dashboard.html';
+                
+            } catch (error) {
+                console.error('❌ Error saving configuration:', error);
+                
+                // Fallback: redirect anyway with URL parameters
+                const params = new URLSearchParams({
+                    theme: selectedTheme,
+                    lang: selectedLanguage,
+                    currency: selectedCurrency,
+                    setup: 'completed'
+                });
+                
+                window.location.href = `dashboard.html?${params.toString()}`;
+            }
+        }
+        
+        // Check if user needs setup
+        function checkSetupRequired() {
+            try {
+                // Check cookie first
+                const cookies = document.cookie.split(';');
+                const configCookie = cookies.find(cookie => cookie.trim().startsWith('vietnam_travel_ui_config='));
+                
+                if (configCookie) {
+                    const configValue = decodeURIComponent(configCookie.split('=')[1]);
+                    const config = JSON.parse(configValue);
+                    
+                    if (config.setupCompleted) {
+                        console.log('✅ Setup already completed, redirecting to dashboard');
+                        window.location.href = 'dashboard.html';
+                        return;
+                    }
+                }
+                
+                // No localStorage fallback - cookie only
+                
+                console.log('🎯 First time setup required');
+            } catch (error) {
+                console.log('⚠️ Error checking setup status:', error);
+                // Continue with setup if there's an error
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Don't check setup on this page - always show setup
+            console.log('🎨 Welcome setup page loaded');
+        });
+    </script>
+</body>
+</html>

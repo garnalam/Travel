@@ -1,0 +1,28 @@
+{
+  "name": "vietnam-travel-website-admin",
+  "version": "3.4.0",
+  "description": "Smart Travel Vietnam Website with Admin Panel, Tour History & User Interface Config",
+  "main": "index.html",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python app.py",
+    "install": "pip install -r requirements.txt"
+  },
+  "dependencies": {
+    "flask": "^2.3.3",
+    "flask-cors": "^4.0.0",
+    "mysql-connector-python": "^8.1.0"
+  },
+  "keywords": [
+    "travel",
+    "vietnam",
+    "hotel-search",
+    "ajax",
+    "autocomplete",
+    "admin-panel",
+    "user-interface",
+    "welcome-setup"
+  ],
+  "author": "Vietnam Travel Team",
+  "license": "MIT"
+}
