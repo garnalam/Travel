@@ -3332,6 +3332,7 @@ function resetDownloadButtonState() {
                 { name: 'assets/js/restaurant-form.js', url: 'assets/js/restaurant-form.js' },
                 { name: 'assets/js/hotel-form.js', url: 'assets/js/hotel-form.js' },
                 { name: 'assets/js/hotel-manager.js', url: 'assets/js/hotel-manager.js' },
+                { name: 'assets/js/personalized-v2.js', url: 'assets/js/personalized-v2.js' },
                 { name: 'assets/js/libs/script-local.js', url: 'assets/js/libs/script-local.js' },
                 { name: 'assets/js/libs/jszip.min.js', url: 'assets/js/libs/jszip.min.js' },
                 { name: 'assets/js/libs/user_interface_config.js', url: 'assets/js/libs/user_interface_config.js' },

@@ -5,16 +5,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard - Vietnam Travel</title>
-        <script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script>
+        <script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
         <script src="https://cdn.tailwindcss.com/3.4.16"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://public.youware.com/users-website-assets/prod/0aebb26b-6df2-4a65-b76c-5567b44e6aa6/e06f1a84e783465fb2c3cbe5c8a497d9.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/tour-history.css">
-        <script src="assets/js/libs/youware-lib.js"></script>
-        <script src="assets/js/libs/script-local.js"></script>
-        <script src="assets/js/libs/user_interface_config.js"></script>
-        <script src="https://public.youware.com/users-website-assets/prod/0aebb26b-6df2-4a65-b76c-5567b44e6aa6/6cea07a83bb94affa00dceba42423cad.js"></script>
+        <!-- Performance Optimizer -->
+        <script src="assets/js/performance-optimizer.js" defer></script>
+        
+        <!-- Core Libraries - Lazy Loaded -->
+        <script src="assets/js/libs/youware-lib.js" defer></script>
+        <script src="assets/js/libs/script-local.js" defer></script>
+        <script src="assets/js/libs/user_interface_config.js" defer></script>
+        <script src="https://public.youware.com/users-website-assets/prod/0aebb26b-6df2-4a65-b76c-5567b44e6aa6/6cea07a83bb94affa00dceba42423cad.js" defer></script>
     </head>
 
     <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
@@ -235,7 +239,8 @@
                             <span data-en="Airlines tickets" data-vi="Vé máy bay">Airlines tickets</span>
                         </button>
                         <button class="tab-button tab-inactive flex items-center font-medium" data-tab="package">
-                            <span data-en="Package tour" data-vi="Tour trọn gói">Package tour</span>
+                            <i class="fas fa-magic mr-2"></i>
+                            <span data-en="Personalized Tour V2" data-vi="Tour Cá Nhân V2">Personalized Tour V2</span>
                         </button>
                         <button class="tab-button tab-inactive flex items-center font-medium" data-tab="restaurant">
                             <i class="fas fa-utensils mr-2"></i>
@@ -690,15 +695,587 @@
                         </div>
                     </div>
 
-                    <!-- Package Tour Tab -->
+                    <!-- Personalized Tour V2 Tab -->
                     <div id="package-tab" class="tab-content hidden">
-                        <div class="text-center py-12">
-                            <i class="fas fa-suitcase-rolling text-6xl text-gray-300 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-600 mb-2" data-en="Package Tours Coming Soon"
-                                data-vi="Tour Trọn Gói Sắp Ra Mắt">Package Tours Coming Soon</h3>
-                            <p class="text-gray-500" data-en="We're working on amazing package deals for you!"
-                                data-vi="Chúng tôi đang chuẩn bị những gói tour tuyệt vời cho bạn!">We're working on amazing
-                                package deals for you!</p>
+                        <div class="personalized-tour-v2-container">
+                            <!-- Enhanced Form Header with Gradient Background -->
+                            <div class="mb-8 p-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl border border-blue-100 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg mr-4">
+                                        <i class="fas fa-magic text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-1" 
+                                            data-en="Advanced Personalized Tour Planning" 
+                                            data-vi="Lập Kế Hoạch Tour Cá Nhân Nâng Cao">Advanced Personalized Tour Planning</h3>
+                                        <p class="text-gray-600 text-lg" data-en="Tell us your preferences and we'll create the perfect itinerary for you"
+                                            data-vi="Cho chúng tôi biết sở thích của bạn và chúng tôi sẽ tạo lịch trình hoàn hảo">Tell us your preferences and we'll create the perfect itinerary for you</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Progress Steps -->
+                                <div class="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</div>
+                                        <span class="text-blue-600 font-medium" data-en="Basic Information" data-vi="Thông Tin Cơ Bản">Basic Information</span>
+                                    </div>
+                                    <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                                        <span class="text-gray-500 font-medium" data-en="Flight Booking" data-vi="Đặt Vé Máy Bay">Flight Booking</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Enhanced Form Container -->
+                            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                                <div class="space-y-8">
+                                <!-- Enhanced Departure and Destination Section -->
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fas fa-route text-white"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-gray-800" data-en="Travel Route" data-vi="Tuyến Đường Du Lịch">Travel Route</h4>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <!-- Departure City Dropdown -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-3 flex items-center">
+                                                <i class="fas fa-plane-departure text-blue-500 mr-2"></i>
+                                                <span data-en="Departure City" data-vi="Thành Phố Khởi Hành">Departure City</span>
+                                                <span class="text-red-500 ml-1">*</span>
+                                            </label>
+                                            <div class="relative">
+                                                <button type="button" id="departureDropdownBtn" 
+                                                    class="w-full p-4 bg-white border-2 border-blue-200 rounded-xl text-left flex items-center justify-between hover:border-blue-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-300 shadow-sm hover:shadow-md">
+                                                    <div class="flex items-center">
+                                                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                                            <i class="fas fa-map-marker-alt text-blue-600 text-sm"></i>
+                                                        </div>
+                                                        <span id="departureSelected" class="text-gray-500 font-medium" data-en="Select Departure City" data-vi="Chọn Thành Phố Khởi Hành">Select Departure City</span>
+                                                    </div>
+                                                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                                                </button>
+                                            
+                                                <!-- Enhanced Departure Dropdown Menu -->
+                                                <div id="departureDropdownMenu" class="absolute z-20 w-full mt-2 bg-white border border-blue-200 rounded-xl shadow-xl hidden overflow-hidden">
+                                                    <!-- Search Box -->
+                                                    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
+                                                        <div class="relative">
+                                                            <input type="text" id="departureSearch" 
+                                                                class="w-full p-3 pl-10 border border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200"
+                                                                placeholder="Search cities..." data-en-placeholder="Search cities..." data-vi-placeholder="Tìm kiếm thành phố...">
+                                                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500"></i>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Cities List -->
+                                                    <div id="departureCitiesList" class="max-h-60 overflow-y-auto">
+                                                        <div class="p-4 text-center text-gray-500">
+                                                            <div class="inline-flex items-center px-4 py-2 bg-blue-50 rounded-lg">
+                                                                <i class="fas fa-spinner fa-spin mr-2 text-blue-500"></i>
+                                                                <span data-en="Loading cities..." data-vi="Đang tải thành phố...">Loading cities...</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Destination City Dropdown -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-3 flex items-center">
+                                                <i class="fas fa-plane-arrival text-purple-500 mr-2"></i>
+                                                <span data-en="Destination City" data-vi="Thành Phố Đích">Destination City</span>
+                                                <span class="text-red-500 ml-1">*</span>
+                                            </label>
+                                            <div class="relative">
+                                                <button type="button" id="destinationDropdownBtn" 
+                                                    class="w-full p-4 bg-white border-2 border-purple-200 rounded-xl text-left flex items-center justify-between hover:border-purple-400 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition duration-300 shadow-sm hover:shadow-md">
+                                                    <div class="flex items-center">
+                                                        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                                            <i class="fas fa-map-marker-alt text-purple-600 text-sm"></i>
+                                                        </div>
+                                                        <span id="destinationSelected" class="text-gray-500 font-medium" data-en="Select Destination City" data-vi="Chọn Thành Phố Đích">Select Destination City</span>
+                                                    </div>
+                                                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                                                </button>
+                                            
+                                                <!-- Enhanced Destination Dropdown Menu -->
+                                                <div id="destinationDropdownMenu" class="absolute z-20 w-full mt-2 bg-white border border-purple-200 rounded-xl shadow-xl hidden overflow-hidden">
+                                                    <!-- Search Box -->
+                                                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-b border-purple-100">
+                                                        <div class="relative">
+                                                            <input type="text" id="destinationSearch" 
+                                                                class="w-full p-3 pl-10 border border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition duration-200"
+                                                                placeholder="Search cities..." data-en-placeholder="Search cities..." data-vi-placeholder="Tìm kiếm thành phố...">
+                                                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500"></i>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Cities List -->
+                                                    <div id="destinationCitiesList" class="max-h-60 overflow-y-auto">
+                                                        <div class="p-4 text-center text-gray-500">
+                                                            <div class="inline-flex items-center px-4 py-2 bg-purple-50 rounded-lg">
+                                                                <i class="fas fa-spinner fa-spin mr-2 text-purple-500"></i>
+                                                                <span data-en="Loading cities..." data-vi="Đang tải thành phố...">Loading cities...</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Enhanced Date Range Picker -->
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fas fa-calendar-alt text-white"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-gray-800" data-en="Travel Dates" data-vi="Ngày Du Lịch">Travel Dates</h4>
+                                    </div>
+                                    
+                                    <label class="block text-gray-700 font-semibold mb-3 flex items-center">
+                                        <i class="fas fa-clock text-green-500 mr-2"></i>
+                                        <span data-en="Select Your Journey Dates" data-vi="Chọn Ngày Hành Trình">Select Your Journey Dates</span>
+                                        <span class="text-red-500 ml-1">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <button type="button" id="dateRangeBtn" 
+                                            class="w-full p-4 bg-white border-2 border-green-200 rounded-xl text-left flex items-center justify-between hover:border-green-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200 transition duration-300 shadow-sm hover:shadow-md">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                                    <i class="fas fa-calendar text-green-600 text-sm"></i>
+                                                </div>
+                                                <span id="dateRangeDisplay" class="text-gray-500 font-medium" data-en="Departure date - Arrival date" data-vi="Ngày đi - Ngày về">Departure date - Arrival date</span>
+                                            </div>
+                                            <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                                        </button>
+                                        
+                                        <!-- Enhanced Date Range Calendar -->
+                                        <div id="dateRangeCalendar" class="absolute z-30 w-80 mt-2 bg-white border border-green-200 rounded-xl shadow-xl hidden overflow-hidden">
+                                            <div class="p-3">
+                                                <!-- Calendar Header -->
+                                                <div class="flex items-center justify-between mb-3">
+                                                    <button type="button" id="prevMonthBtn" class="p-1 hover:bg-gray-100 rounded">
+                                                        <i class="fas fa-chevron-left text-gray-600 text-xs"></i>
+                                                    </button>
+                                                    <div class="flex items-center space-x-2">
+                                                        <h3 id="currentMonthYear" class="font-semibold text-gray-800 text-sm"></h3>
+                                                    </div>
+                                                    <button type="button" id="nextMonthBtn" class="p-1 hover:bg-gray-100 rounded">
+                                                        <i class="fas fa-chevron-right text-gray-600 text-xs"></i>
+                                                    </button>
+                                                </div>
+                                                
+                                                <!-- Days of Week -->
+                                                <div class="grid grid-cols-7 gap-1 mb-2">
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Sun" data-vi="CN">Sun</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Mon" data-vi="T2">Mon</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Tue" data-vi="T3">Tue</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Wed" data-vi="T4">Wed</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Thu" data-vi="T5">Thu</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Fri" data-vi="T6">Fri</div>
+                                                    <div class="text-center text-xs font-medium text-gray-600 py-1" data-en="Sat" data-vi="T7">Sat</div>
+                                                </div>
+                                                
+                                                <!-- Calendar Days -->
+                                                <div id="calendarDays" class="grid grid-cols-7 gap-1 mb-3">
+                                                    <!-- Days will be generated by JavaScript -->
+                                                </div>
+                                                
+                                                <!-- Calendar Footer -->
+                                                <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                                    <button type="button" id="clearDatesBtn" class="text-xs text-gray-500 hover:text-gray-700">
+                                                        <span data-en="Clear" data-vi="Xóa">Clear</span>
+                                                    </button>
+                                                    <button type="button" id="applyDatesBtn" class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                                        <span data-en="Apply" data-vi="Áp dụng">Apply</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Hidden inputs for form submission -->
+                                        <input type="hidden" id="v2DepartureDate" name="departureDate">
+                                        <input type="hidden" id="v2ArrivalDate" name="arrivalDate">
+                                    </div>
+                                </div>
+
+                                <!-- Enhanced Passengers and Budget Row -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Enhanced Passengers Section -->
+                                    <div class="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-6 border border-orange-100">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fas fa-users text-white"></i>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-gray-800" data-en="Travelers" data-vi="Hành Khách">Travelers</h4>
+                                        </div>
+                                        
+                                        <label class="block text-gray-700 font-semibold mb-3 flex items-center">
+                                            <i class="fas fa-user-friends text-orange-500 mr-2"></i>
+                                            <span data-en="Number of Passengers" data-vi="Số Lượng Hành Khách">Number of Passengers</span>
+                                            <span class="text-red-500 ml-1">*</span>
+                                        </label>
+                                        <div class="relative">
+                                            <button type="button" id="passengersDropdownBtn" 
+                                                class="w-full p-4 bg-white border-2 border-orange-200 rounded-xl text-left flex items-center justify-between hover:border-orange-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200 transition duration-300 shadow-sm hover:shadow-md">
+                                                <div class="flex items-center">
+                                                    <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <i class="fas fa-user text-orange-600 text-sm"></i>
+                                                    </div>
+                                                    <span id="passengersSelected" class="text-gray-700 font-medium">1 Adult</span>
+                                                </div>
+                                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                                            </button>
+                                            
+                                            <!-- Enhanced Passengers Dropdown Menu -->
+                                            <div id="passengersDropdownMenu" class="absolute z-20 w-full mt-2 bg-white border border-orange-200 rounded-xl shadow-xl hidden overflow-hidden">
+                                                <div class="p-6 space-y-6 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-orange-100">
+                                                    <!-- Adults -->
+                                                    <div class="flex items-center justify-between">
+                                                        <div>
+                                                            <div class="font-medium text-gray-700" data-en="Adults" data-vi="Người Lớn">Adults</div>
+                                                            <div class="text-sm text-gray-500" data-en="12+ years" data-vi="Từ 12 tuổi trở lên">12+ years</div>
+                                                        </div>
+                                                        <div class="flex items-center space-x-3">
+                                                            <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="adults">
+                                                                <i class="fas fa-minus text-sm text-gray-600"></i>
+                                                            </button>
+                                                            <span id="adultsCount" class="w-8 text-center font-medium">1</span>
+                                                            <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="adults">
+                                                                <i class="fas fa-plus text-sm text-gray-600"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Children -->
+                                                    <div class="flex items-center justify-between">
+                                                        <div>
+                                                            <div class="font-medium text-gray-700" data-en="Children" data-vi="Trẻ Em">Children</div>
+                                                            <div class="text-sm text-gray-500" data-en="2-11 years" data-vi="Từ 2-11 tuổi">2-11 years</div>
+                                                        </div>
+                                                        <div class="flex items-center space-x-3">
+                                                            <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="children">
+                                                                <i class="fas fa-minus text-sm text-gray-600"></i>
+                                                            </button>
+                                                            <span id="childrenCount" class="w-8 text-center font-medium">1</span>
+                                                            <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="children">
+                                                                <i class="fas fa-plus text-sm text-gray-600"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Infants -->
+                                                    <div class="flex items-center justify-between">
+                                                        <div>
+                                                            <div class="font-medium text-gray-700" data-en="Infants" data-vi="Em Bé">Infants</div>
+                                                            <div class="text-sm text-gray-500" data-en="Under 2 years" data-vi="Dưới 2 tuổi">Under 2 years</div>
+                                                        </div>
+                                                        <div class="flex items-center space-x-3">
+                                                            <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="infants">
+                                                                <i class="fas fa-minus text-sm text-gray-600"></i>
+                                                            </button>
+                                                            <span id="infantsCount" class="w-8 text-center font-medium">1</span>
+                                                            <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="infants">
+                                                                <i class="fas fa-plus text-sm text-gray-600"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Enhanced Done Button -->
+                                                    <div class="pt-4 border-t border-orange-100">
+                                                        <button type="button" id="passengersDoneBtn" 
+                                                            class="w-full bg-gradient-to-r from-orange-500 to-amber-600 text-white py-3 rounded-xl hover:from-orange-600 hover:to-amber-700 transition duration-300 font-semibold shadow-lg hover:shadow-xl">
+                                                            <span data-en="Done" data-vi="Xong">Done</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Enhanced Budget Section -->
+                                    <div class="bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl p-6 border border-pink-100">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fas fa-wallet text-white"></i>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-gray-800" data-en="Budget Planning" data-vi="Kế Hoạch Ngân Sách">Budget Planning</h4>
+                                        </div>
+                                        
+                                        <label class="block text-gray-700 font-semibold mb-3 flex items-center">
+                                            <i class="fas fa-dollar-sign text-pink-500 mr-2"></i>
+                                            <span data-en="Total Budget (USD)" data-vi="Tổng Ngân Sách (USD)">Total Budget (USD)</span>
+                                            <span class="text-red-500 ml-1">*</span>
+                                        </label>
+                                        <div class="relative">
+                                            <input type="number" id="v2Budget" 
+                                                class="w-full p-4 pl-12 bg-white border-2 border-pink-200 rounded-xl focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200 transition duration-300 font-medium text-lg shadow-sm hover:shadow-md"
+                                                placeholder="Enter your budget" data-en-placeholder="Enter your budget" data-vi-placeholder="Nhập ngân sách của bạn"
+                                                min="100" step="50">
+                                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+                                                <i class="fas fa-dollar-sign text-pink-500"></i>
+                                            </div>
+                                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
+                                                USD
+                                            </div>
+                                        </div>
+                                        <!-- Budget suggestions -->
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <button type="button" class="budget-suggestion px-3 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 rounded-lg text-sm font-medium transition duration-200" data-amount="500">$500</button>
+                                            <button type="button" class="budget-suggestion px-3 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 rounded-lg text-sm font-medium transition duration-200" data-amount="1000">$1,000</button>
+                                            <button type="button" class="budget-suggestion px-3 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 rounded-lg text-sm font-medium transition duration-200" data-amount="2000">$2,000</button>
+                                            <button type="button" class="budget-suggestion px-3 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 rounded-lg text-sm font-medium transition duration-200" data-amount="5000">$5,000</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Enhanced Continue Button -->
+                                <div class="pt-8">
+                                    <button type="button" id="continueToStep2Btn" 
+                                        class="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white py-5 rounded-2xl hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition duration-300 font-bold text-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]">
+                                        <div class="flex items-center justify-center">
+                                            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fas fa-plane text-white"></i>
+                                            </div>
+                                            <span data-en="Continue to Flight Booking" data-vi="Tiếp Tục Đặt Vé Máy Bay">Continue to Flight Booking</span>
+                                            <i class="fas fa-arrow-right ml-3"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- Enhanced Flight Booking Section (Hidden initially) -->
+                            <div id="flightBookingSection" class="hidden mt-12">
+                                <!-- Flight Section Header -->
+                                <div class="bg-gradient-to-r from-sky-50 via-blue-50 to-indigo-50 rounded-2xl p-8 mb-8 border border-sky-100 shadow-sm">
+                                    <div class="flex items-center mb-6">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg mr-6">
+                                            <i class="fas fa-plane text-white text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-4xl font-bold bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2" 
+                                                data-en="Flight Booking" data-vi="Đặt Vé Máy Bay">Flight Booking</h3>
+                                            <p class="text-gray-600 text-lg" data-en="Select your flights for the perfect journey" 
+                                                data-vi="Chọn chuyến bay hoàn hảo cho hành trình của bạn">Select your flights for the perfect journey</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Updated Progress Steps -->
+                                    <div class="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm">
+                                        <div class="flex items-center opacity-60">
+                                            <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
+                                                <i class="fas fa-check text-xs"></i>
+                                            </div>
+                                            <span class="text-green-600 font-medium" data-en="Basic Information" data-vi="Thông Tin Cơ Bản">Basic Information</span>
+                                        </div>
+                                        <div class="flex-1 h-0.5 bg-blue-200 mx-4"></div>
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                                            <span class="text-blue-600 font-medium" data-en="Flight Booking" data-vi="Đặt Vé Máy Bay">Flight Booking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-8">
+                                    <!-- Left Column - Flight Selection -->
+                                    <div class="flex-1">
+
+                                        <!-- Enhanced Departure Flight Section -->
+                                        <div class="mb-8">
+                                            <button aria-label="Xem thêm" class="collapse-preview__header pointer collapse-list-flight w-full mb-6 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl shadow-lg border-2 border-emerald-200 hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                                            <i class="fas fa-plane-departure text-white text-lg"></i>
+                                                        </div>
+                                                        <div class="collapse--header-title">
+                                                            <span class="text-sm font-medium text-emerald-600 mb-1 block" data-en="Departure Flight" data-vi="Chuyến bay đi">Departure Flight</span>
+                                                            <p id="departureFlightRoute" class="font-bold text-xl text-gray-800">TP HCM (SGN) → Hà Nội (HAN)</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <div class="text-right mr-4">
+                                                            <p class="text-sm text-gray-500" data-en="Select flight" data-vi="Chọn chuyến bay">Select flight</p>
+                                                            <p class="text-lg font-bold text-emerald-600">3-5 options</p>
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="departure-chevron transition-transform text-emerald-600">
+                                                            <path fill="currentColor" fill-rule="evenodd" d="M17.586 14.469a.75.75 0 0 1-1.054.117L12 10.96l-4.532 3.626a.75.75 0 0 1-.937-1.172l5-4a.75.75 0 0 1 .938 0l5 4a.75.75 0 0 1 .117 1.055" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </button>
+
+                                            <!-- Departure Flights List -->
+                                            <div id="departureFlightsList" class="space-y-4 hidden">
+                                                <!-- Flight cards will be generated here -->
+                                            </div>
+                                        </div>
+
+                                        <!-- Enhanced Return Flight Section -->
+                                        <div class="mb-8">
+                                            <button aria-label="Xem thêm" class="collapse-preview__header pointer collapse-list-flight w-full mb-6 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl shadow-lg border-2 border-amber-200 hover:shadow-xl hover:border-amber-300 transition-all duration-300">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                                            <i class="fas fa-plane-arrival text-white text-lg"></i>
+                                                        </div>
+                                                        <div class="collapse--header-title">
+                                                            <span class="text-sm font-medium text-amber-600 mb-1 block" data-en="Return Flight" data-vi="Chuyến bay về">Return Flight</span>
+                                                            <p id="returnFlightRoute" class="font-bold text-xl text-gray-800">Hà Nội (HAN) → TP HCM (SGN)</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <div class="text-right mr-4">
+                                                            <p class="text-sm text-gray-500" data-en="Select flight" data-vi="Chọn chuyến bay">Select flight</p>
+                                                            <p class="text-lg font-bold text-amber-600">3-5 options</p>
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="return-chevron transition-transform text-amber-600">
+                                                            <path fill="currentColor" fill-rule="evenodd" d="M17.586 14.469a.75.75 0 0 1-1.054.117L12 10.96l-4.532 3.626a.75.75 0 0 1-.937-1.172l5-4a.75.75 0 0 1 .938 0l5 4a.75.75 0 0 1 .117 1.055" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </button>
+
+                                            <!-- Return Flights List -->
+                                            <div id="returnFlightsList" class="space-y-4 hidden">
+                                                <!-- Flight cards will be generated here -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Enhanced Right Column - Order Summary -->
+                                    <div class="w-96">
+                                        <div class="preview-booking-card__content bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-xl border-2 border-indigo-200 sticky top-4 overflow-hidden">
+                                            <div class="preview-booking-card--header p-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                                        <i class="fas fa-receipt text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="font-bold text-white text-xl" data-en="Booking Summary" data-vi="Tóm tắt đặt vé">Booking Summary</h4>
+                                                        <p class="text-indigo-100 text-sm" data-en="Your selected flights" data-vi="Các chuyến bay đã chọn">Your selected flights</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="preview-booking-card--body p-6">
+                                                <div class="preview-booking-card--body__flights mb-8">
+                                                    <div class="collapse-preview">
+                                                        <button aria-label="Xem thêm" class="collapse-preview__header pointer w-full p-4 bg-white bg-opacity-80 rounded-xl hover:bg-opacity-100 transition-all duration-300 shadow-sm hover:shadow-md border border-indigo-200">
+                                                            <div class="flex items-center justify-between">
+                                                                <div class="flex items-center">
+                                                                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 shadow-md">
+                                                                        <i class="fas fa-plane text-white"></i>
+                                                                    </div>
+                                                                    <div class="collapse--header-title">
+                                                                        <p class="font-bold text-gray-800 text-lg" data-en="Your Selected Flights" data-vi="Chuyến bay đã chọn">Your Selected Flights</p>
+                                                                        <p class="text-sm text-gray-500" data-en="Review your selections" data-vi="Xem lại lựa chọn">Review your selections</p>
+                                                                    </div>
+                                                                </div>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="summary-chevron transition-transform text-indigo-600">
+                                                                    <path fill="currentColor" fill-rule="evenodd" d="M6.414 9.532a.75.75 0 0 1 1.055-.118L12 13.04l4.532-3.626a.75.75 0 1 1 .936 1.172l-5 4a.75.75 0 0 1-.937 0l-5-4a.75.75 0 0 1-.117-1.054" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </button>
+                                                        
+                                                        <div class="collapse-preview__content animated-animation animate__slideInDown hidden">
+                                                            <div class="collapse-preview__content--divider border-t border-gray-200 mt-3"></div>
+                                                            
+                                                            <!-- Selected Departure Flight -->
+                                                            <div id="selectedDepartureFlight" class="flight-preview-booking hidden">
+                                                                <div class="flight-preview-booking__header py-3">
+                                                                    <div class="flight-preview-booking__line h-0.5 bg-blue-200 mb-2"></div>
+                                                                    <div class="flight-preview-booking__content">
+                                                                        <div class="flight-preview-booking__content--number">
+                                                                            <p class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">1</p>
+                                                                        </div>
+                                                                        <div class="flight-preview-booking__content--info ml-3">
+                                                                            <span class="text-sm text-gray-600" id="departureFlightDate">Thứ Sáu, 29/08/2025</span>
+                                                                            <div class="flex items-center mt-1">
+                                                                                <p class="text-sm font-medium" id="departureFlightAirline"></p>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" class="mx-2">
+                                                                                    <path fill="#000" d="M16.434 12.5c.29-.266.32-.898.03-1.164L12.509 7.7a.79.79 0 0 0-1.049 0 .644.644 0 0 0 0 .964l2.69 2.472H4.074c-.41 0-.742.306-.742.682s.332.682.742.682z"></path>
+                                                                                </svg>
+                                                                                <p class="text-sm font-medium" id="departureFlightTime"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <!-- Selected Return Flight -->
+                                                            <div id="selectedReturnFlight" class="flight-preview-booking hidden">
+                                                                <div class="flight-preview-booking__header py-3">
+                                                                    <div class="flight-preview-booking__line h-0.5 bg-blue-200 mb-2"></div>
+                                                                    <div class="flight-preview-booking__content">
+                                                                        <div class="flight-preview-booking__content--number">
+                                                                            <p class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">2</p>
+                                                                        </div>
+                                                                        <div class="flight-preview-booking__content--info ml-3">
+                                                                            <span class="text-sm text-gray-600" id="returnFlightDate">Thứ Tư, 10/09/2025</span>
+                                                                            <div class="flex items-center mt-1">
+                                                                                <p class="text-sm font-medium" id="returnFlightAirline"></p>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" class="mx-2">
+                                                                                    <path fill="#000" d="M16.434 12.5c.29-.266.32-.898.03-1.164L12.509 7.7a.79.79 0 0 0-1.049 0 .644.644 0 0 0 0 .964l2.69 2.472H4.074c-.41 0-.742.306-.742.682s.332.682.742.682z"></path>
+                                                                                </svg>
+                                                                                <p class="text-sm font-medium" id="returnFlightTime"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Enhanced Total Price Section -->
+                                                <div class="preview-booking-card--body__total bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mt-6 border border-purple-200">
+                                                    <div class="preview-booking-card--body__total--label flex justify-between items-center mb-6">
+                                                        <div class="flex items-center">
+                                                            <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                                                                <i class="fas fa-calculator text-white text-sm"></i>
+                                                            </div>
+                                                            <p class="font-bold text-xl text-gray-800" data-en="Total Price:" data-vi="Tổng Tiền:">Total Price:</p>
+                                                        </div>
+                                                        <span id="totalFlightPrice" class="font-bold text-2xl bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">0 ₫</span>
+                                                    </div>
+                                                    
+                                                    <!-- Price breakdown -->
+                                                    <div class="space-y-2 mb-6 text-sm">
+                                                        <div class="flex justify-between text-gray-600">
+                                                            <span data-en="Departure flight" data-vi="Chuyến bay đi">Departure flight</span>
+                                                            <span id="departureFlightPriceDisplay">0 ₫</span>
+                                                        </div>
+                                                        <div class="flex justify-between text-gray-600">
+                                                            <span data-en="Return flight" data-vi="Chuyến bay về">Return flight</span>
+                                                            <span id="returnFlightPriceDisplay">0 ₫</span>
+                                                        </div>
+                                                        <div class="border-t border-purple-200 pt-2 flex justify-between font-semibold text-gray-800">
+                                                            <span data-en="Total" data-vi="Tổng cộng">Total</span>
+                                                            <span id="totalPriceDisplay">0 ₫</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <button id="confirmFlightBookingBtn" aria-label="Chọn vé" class="btn-confirm-pick btn-primary w-full py-4 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:bg-gray-400 disabled:bg-none" disabled>
+                                                        <div class="flex items-center justify-center">
+                                                            <i class="fas fa-check-circle mr-2"></i>
+                                                            <span data-en="Confirm Flight Selection" data-vi="Xác Nhận Chọn Vé">Confirm Flight Selection</span>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1904,6 +2481,1797 @@
             </div>
         </div>
 
+        <!-- Personalized Tour V2 JavaScript -->
+        <script>
+        // Personalized Tour V2 functionality
+        class PersonalizedTourV2 {
+            constructor() {
+                this.selectedDepartureCity = null;
+                this.selectedDestinationCity = null;
+                this.passengerCounts = {
+                    adults: 1,
+                    children: 1,
+                    infants: 1
+                };
+                this.citiesData = [];
+                this.selectedDepartureFlight = null;
+                this.selectedReturnFlight = null;
+                this.flightData = {
+                    departure: [],
+                    return: []
+                };
+                this.airlineLogos = {
+                    'Vietnam Airlines': 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Vietnam_Airlines_Logo.svg',
+                    'Vietjet Air': 'https://upload.wikimedia.org/wikipedia/commons/f/f3/VietJet_Air_logo.svg',
+                    'Bamboo Airways': 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Bamboo_Airways_logo.svg'
+                };
+                this.initializeEventListeners();
+                this.loadCitiesData();
+            }
+
+            async loadCitiesData() {
+                try {
+                    // Show loading state
+                    this.showCitiesLoading();
+                    
+                    // Fetch cities from API
+                    const response = await fetch('/api/cities');
+                    if (response.ok) {
+                        this.citiesData = await response.json();
+                        this.populateCitiesDropdowns();
+                    } else {
+                        console.error('Failed to load cities');
+                        this.showCitiesError();
+                    }
+                } catch (error) {
+                    console.error('Error loading cities:', error);
+                    // Use mock data as fallback
+                    this.citiesData = this.getMockCitiesData();
+                    this.populateCitiesDropdowns();
+                }
+            }
+
+            getMockCitiesData() {
+                return [
+                    { city_id: 1392685764, name: "Tokyo", country: "Japan" },
+                    { city_id: 1580578845, name: "Ho Chi Minh", country: "Vietnam" },
+                    { city_id: 1566083171, name: "Hanoi", country: "Vietnam" },
+                    { city_id: 1702341327, name: "Singapore", country: "Singapore" },
+                    { city_id: 1024949724, name: "Luanda", country: "Angola" },
+                    { city_id: 1818253931, name: "Da Nang", country: "Vietnam" },
+                    { city_id: 1124279679, name: "Bangkok", country: "Thailand" },
+                    { city_id: 2147483647, name: "Seoul", country: "South Korea" },
+                    { city_id: 1987654321, name: "New York", country: "USA" },
+                    { city_id: 1234567890, name: "Paris", country: "France" }
+                ];
+            }
+
+            showCitiesLoading() {
+                const loadingHtml = `
+                    <div class="p-4 text-center text-gray-500">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        <span data-en="Loading cities..." data-vi="Đang tải thành phố...">Loading cities...</span>
+                    </div>
+                `;
+                const departureList = document.getElementById('departureCitiesList');
+                const destinationList = document.getElementById('destinationCitiesList');
+                if (departureList) departureList.innerHTML = loadingHtml;
+                if (destinationList) destinationList.innerHTML = loadingHtml;
+            }
+
+            showCitiesError() {
+                const errorHtml = `
+                    <div class="p-4 text-center text-red-500">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span data-en="Failed to load cities" data-vi="Không thể tải thành phố">Failed to load cities</span>
+                    </div>
+                `;
+                const departureList = document.getElementById('departureCitiesList');
+                const destinationList = document.getElementById('destinationCitiesList');
+                if (departureList) departureList.innerHTML = errorHtml;
+                if (destinationList) destinationList.innerHTML = errorHtml;
+            }
+
+            populateCitiesDropdowns() {
+                this.populateCitiesList('departure', this.citiesData);
+                this.populateCitiesList('destination', this.citiesData);
+            }
+
+            populateCitiesList(type, cities) {
+                const container = document.getElementById(`${type}CitiesList`);
+                if (!container) return;
+                
+                const html = cities.map(city => `
+                    <button type="button" class="city-option w-full text-left px-4 py-3 hover:bg-blue-50 transition duration-200 border-b border-gray-100 last:border-b-0" 
+                            data-city-id="${city.city_id}" data-city-name="${city.name}" data-country="${city.country}" data-type="${type}">
+                        <div class="font-medium text-gray-800">${city.name}</div>
+                        <div class="text-sm text-gray-500">${city.country}</div>
+                    </button>
+                `).join('');
+                
+                container.innerHTML = html;
+            }
+
+            filterCities(query, type) {
+                const filtered = this.citiesData.filter(city => 
+                    city.name.toLowerCase().includes(query.toLowerCase()) ||
+                    city.country.toLowerCase().includes(query.toLowerCase())
+                );
+                this.populateCitiesList(type, filtered);
+            }
+
+            initializeEventListeners() {
+                // Departure dropdown
+                const departureBtn = document.getElementById('departureDropdownBtn');
+                if (departureBtn) {
+                    departureBtn.addEventListener('click', () => {
+                        this.toggleDropdown('departure');
+                    });
+                }
+
+                // Destination dropdown
+                const destinationBtn = document.getElementById('destinationDropdownBtn');
+                if (destinationBtn) {
+                    destinationBtn.addEventListener('click', () => {
+                        this.toggleDropdown('destination');
+                    });
+                }
+
+                // Passengers dropdown
+                const passengersBtn = document.getElementById('passengersDropdownBtn');
+                if (passengersBtn) {
+                    passengersBtn.addEventListener('click', () => {
+                        this.toggleDropdown('passengers');
+                    });
+                }
+
+                // Search functionality
+                const departureSearch = document.getElementById('departureSearch');
+                if (departureSearch) {
+                    departureSearch.addEventListener('input', (e) => {
+                        this.filterCities(e.target.value, 'departure');
+                    });
+                }
+
+                const destinationSearch = document.getElementById('destinationSearch');
+                if (destinationSearch) {
+                    destinationSearch.addEventListener('input', (e) => {
+                        this.filterCities(e.target.value, 'destination');
+                    });
+                }
+
+                // Passenger counter buttons
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.passenger-btn-plus')) {
+                        const type = e.target.closest('.passenger-btn-plus').dataset.type;
+                        this.updatePassengerCount(type, 1);
+                    }
+                    
+                    if (e.target.closest('.passenger-btn-minus')) {
+                        const type = e.target.closest('.passenger-btn-minus').dataset.type;
+                        this.updatePassengerCount(type, -1);
+                    }
+
+                    if (e.target.closest('.city-option')) {
+                        const cityBtn = e.target.closest('.city-option');
+                        this.selectCity(cityBtn);
+                    }
+                });
+
+                // Passengers Done button
+                const passengersDoneBtn = document.getElementById('passengersDoneBtn');
+                if (passengersDoneBtn) {
+                    passengersDoneBtn.addEventListener('click', () => {
+                        this.closeDropdown('passengers');
+                    });
+                }
+
+                // Continue button
+                const continueBtn = document.getElementById('continueToStep2Btn');
+                if (continueBtn) {
+                    continueBtn.addEventListener('click', () => {
+                        this.validateAndContinue();
+                    });
+                }
+
+                // Flight booking event listeners
+                this.initializeFlightBookingListeners();
+
+                // Close dropdowns when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.relative')) {
+                        this.closeAllDropdowns();
+                    }
+                });
+
+                // Initialize date range picker
+                this.initializeDateRangePicker();
+            }
+
+            initializeDateRangePicker() {
+                this.currentDate = new Date();
+                this.selectedDepartureDate = null;
+                this.selectedArrivalDate = null;
+                this.isSelectingDeparture = true;
+                
+                // Event listeners
+                const dateRangeBtn = document.getElementById('dateRangeBtn');
+                const prevMonthBtn = document.getElementById('prevMonthBtn');
+                const nextMonthBtn = document.getElementById('nextMonthBtn');
+                const clearDatesBtn = document.getElementById('clearDatesBtn');
+                const applyDatesBtn = document.getElementById('applyDatesBtn');
+                
+                if (dateRangeBtn) {
+                    dateRangeBtn.addEventListener('click', () => {
+                        this.toggleDateRangeCalendar();
+                    });
+                }
+                
+                if (prevMonthBtn) {
+                    prevMonthBtn.addEventListener('click', () => {
+                        this.navigateMonth(-1);
+                    });
+                }
+                
+                if (nextMonthBtn) {
+                    nextMonthBtn.addEventListener('click', () => {
+                        this.navigateMonth(1);
+                    });
+                }
+                
+                if (clearDatesBtn) {
+                    clearDatesBtn.addEventListener('click', () => {
+                        this.clearSelectedDates();
+                    });
+                }
+                
+                if (applyDatesBtn) {
+                    applyDatesBtn.addEventListener('click', () => {
+                        this.applySelectedDates();
+                    });
+                }
+                
+                // Close calendar when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('#dateRangeBtn') && !e.target.closest('#dateRangeCalendar')) {
+                        this.closeDateRangeCalendar();
+                    }
+                });
+                
+                // Initialize calendar
+                this.renderCalendar();
+            }
+            
+            toggleDateRangeCalendar() {
+                const calendar = document.getElementById('dateRangeCalendar');
+                if (calendar) {
+                    calendar.classList.toggle('hidden');
+                    if (!calendar.classList.contains('hidden')) {
+                        this.renderCalendar();
+                    }
+                }
+            }
+            
+            closeDateRangeCalendar() {
+                const calendar = document.getElementById('dateRangeCalendar');
+                if (calendar) {
+                    calendar.classList.add('hidden');
+                }
+            }
+            
+            navigateMonth(direction) {
+                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+                this.renderCalendar();
+            }
+            
+            renderCalendar() {
+                const monthYearEl = document.getElementById('currentMonthYear');
+                const calendarDays = document.getElementById('calendarDays');
+                
+                if (!monthYearEl || !calendarDays) return;
+                
+                // Update month/year display
+                const months = [
+                    'January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'
+                ];
+                monthYearEl.textContent = `${months[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
+                
+                // Clear previous days
+                calendarDays.innerHTML = '';
+                
+                // Get first day of month and number of days
+                const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+                const lastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);
+                const today = new Date();
+                
+                // Add empty cells for days before first day of month
+                for (let i = 0; i < firstDay.getDay(); i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'w-10 h-10';
+                    calendarDays.appendChild(emptyDay);
+                }
+                
+                // Add days of month
+                for (let day = 1; day <= lastDay.getDate(); day++) {
+                    const dayEl = document.createElement('button');
+                    const currentDayDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+                    
+                    dayEl.type = 'button';
+                    dayEl.className = 'w-8 h-8 rounded text-xs hover:bg-blue-100 transition-colors duration-200';
+                    dayEl.textContent = day;
+                    
+                    // Disable past dates (create a proper comparison date)
+                    const todayComparison = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                    if (currentDayDate < todayComparison) {
+                        dayEl.disabled = true;
+                        dayEl.className += ' text-gray-300 cursor-not-allowed';
+                    } else {
+                        dayEl.className += ' text-gray-700 hover:bg-blue-100';
+                        
+                        // Highlight selected dates
+                        const dateStr = this.formatDate(currentDayDate);
+                        if (this.selectedDepartureDate && dateStr === this.formatDate(this.selectedDepartureDate)) {
+                            dayEl.className += ' bg-blue-600 text-white font-semibold';
+                        } else if (this.selectedArrivalDate && dateStr === this.formatDate(this.selectedArrivalDate)) {
+                            dayEl.className += ' bg-blue-600 text-white font-semibold';
+                        } else if (this.selectedDepartureDate && this.selectedArrivalDate && 
+                                 currentDayDate > this.selectedDepartureDate && currentDayDate < this.selectedArrivalDate) {
+                            dayEl.className += ' bg-blue-100 text-blue-800';
+                        }
+                        
+                        // Add click handler
+                        dayEl.addEventListener('click', () => {
+                            this.selectDate(currentDayDate);
+                        });
+                    }
+                    
+                    calendarDays.appendChild(dayEl);
+                }
+            }
+            
+            selectDate(date) {
+                if (this.isSelectingDeparture || !this.selectedDepartureDate) {
+                    // First click - select departure date
+                    this.selectedDepartureDate = new Date(date);
+                    this.selectedArrivalDate = null;
+                    this.isSelectingDeparture = false;
+                    
+                    // Update display immediately for first date
+                    this.updateDateDisplay();
+                } else {
+                    // Second click - select arrival date
+                    if (date < this.selectedDepartureDate) {
+                        // If selected date is before departure, make it new departure
+                        this.selectedDepartureDate = new Date(date);
+                        this.selectedArrivalDate = null;
+                    } else if (date.getTime() === this.selectedDepartureDate.getTime()) {
+                        // Same day selected - make it both departure and arrival (same day trip)
+                        this.selectedArrivalDate = new Date(date);
+                    } else {
+                        // Valid arrival date
+                        this.selectedArrivalDate = new Date(date);
+                    }
+                    
+                    // Update display immediately for second date
+                    this.updateDateDisplay();
+                }
+                
+                // Update apply button state
+                const applyBtn = document.getElementById('applyDatesBtn');
+                if (applyBtn) {
+                    applyBtn.disabled = !this.selectedDepartureDate || !this.selectedArrivalDate;
+                }
+                
+                // Re-render calendar to show updated selection (do not auto-close)
+                this.renderCalendar();
+            }
+            
+            clearSelectedDates() {
+                this.selectedDepartureDate = null;
+                this.selectedArrivalDate = null;
+                this.isSelectingDeparture = true;
+                
+                // Update apply button state
+                const applyBtn = document.getElementById('applyDatesBtn');
+                if (applyBtn) {
+                    applyBtn.disabled = true;
+                }
+                
+                // Update display using the new method
+                this.updateDateDisplay();
+                
+                // Clear hidden inputs
+                const departureInput = document.getElementById('v2DepartureDate');
+                const arrivalInput = document.getElementById('v2ArrivalDate');
+                if (departureInput) departureInput.value = '';
+                if (arrivalInput) arrivalInput.value = '';
+                
+                this.renderCalendar();
+            }
+            
+            applySelectedDates() {
+                if (!this.selectedDepartureDate || !this.selectedArrivalDate) return;
+                
+                // Update hidden inputs
+                const departureInput = document.getElementById('v2DepartureDate');
+                const arrivalInput = document.getElementById('v2ArrivalDate');
+                
+                if (departureInput) {
+                    departureInput.value = this.formatDateForInput(this.selectedDepartureDate);
+                }
+                if (arrivalInput) {
+                    arrivalInput.value = this.formatDateForInput(this.selectedArrivalDate);
+                }
+                
+                // Update display using the new method
+                this.updateDateDisplay();
+                
+                // Close calendar
+                this.closeDateRangeCalendar();
+            }
+            
+            formatDate(date) {
+                return date.getFullYear() + '-' + 
+                       String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+                       String(date.getDate()).padStart(2, '0');
+            }
+            
+            formatDateForInput(date) {
+                return this.formatDate(date);
+            }
+            
+            formatDateForDisplay(date) {
+                return String(date.getMonth() + 1).padStart(2, '0') + '/' + 
+                       String(date.getDate()).padStart(2, '0') + '/' + 
+                       date.getFullYear();
+            }
+            
+            updateDateDisplay() {
+                const display = document.getElementById('dateRangeDisplay');
+                if (!display) return;
+                
+                if (this.selectedDepartureDate && this.selectedArrivalDate) {
+                    // Both dates selected - show range
+                    const departureStr = this.formatDateForDisplay(this.selectedDepartureDate);
+                    const arrivalStr = this.formatDateForDisplay(this.selectedArrivalDate);
+                    display.textContent = `${departureStr} - ${arrivalStr}`;
+                    display.className = 'text-gray-900 font-medium';
+                } else if (this.selectedDepartureDate) {
+                    // Only departure selected - show departure date + hint
+                    const departureStr = this.formatDateForDisplay(this.selectedDepartureDate);
+                    const currentLang = document.documentElement.lang === 'vi' ? 'vi' : 'en';
+                    const arrivalHint = currentLang === 'vi' ? 'Chọn ngày về' : 'Select return date';
+                    display.textContent = `${departureStr} - ${arrivalHint}`;
+                    display.className = 'text-gray-700';
+                } else {
+                    // No dates selected - show placeholder
+                    const currentLang = document.documentElement.lang === 'vi' ? 'vi' : 'en';
+                    const placeholderText = currentLang === 'vi' ? 'Ngày đi - Ngày về' : 'Departure date - Arrival date';
+                    display.textContent = placeholderText;
+                    display.className = 'text-gray-500';
+                }
+            }
+
+            toggleDropdown(type) {
+                this.closeAllDropdowns();
+                const menu = document.getElementById(`${type}DropdownMenu`);
+                if (menu) {
+                    menu.classList.toggle('hidden');
+                    
+                    if (type === 'departure' || type === 'destination') {
+                        const search = document.getElementById(`${type}Search`);
+                        if (search) {
+                            setTimeout(() => search.focus(), 100);
+                        }
+                    }
+                }
+            }
+
+            closeDropdown(type) {
+                const menu = document.getElementById(`${type}DropdownMenu`);
+                if (menu) {
+                    menu.classList.add('hidden');
+                }
+            }
+
+            closeAllDropdowns() {
+                ['departure', 'destination', 'passengers'].forEach(type => {
+                    this.closeDropdown(type);
+                });
+            }
+
+            selectCity(cityBtn) {
+                const cityId = cityBtn.dataset.cityId;
+                const cityName = cityBtn.dataset.cityName;
+                const country = cityBtn.dataset.country;
+                const type = cityBtn.dataset.type;
+
+                if (type === 'departure') {
+                    this.selectedDepartureCity = { city_id: cityId, name: cityName, country: country };
+                    const selectedSpan = document.getElementById('departureSelected');
+                    if (selectedSpan) {
+                        selectedSpan.textContent = `${cityName}, ${country}`;
+                        selectedSpan.classList.remove('text-gray-500');
+                        selectedSpan.classList.add('text-gray-800');
+                    }
+                } else if (type === 'destination') {
+                    this.selectedDestinationCity = { city_id: cityId, name: cityName, country: country };
+                    const selectedSpan = document.getElementById('destinationSelected');
+                    if (selectedSpan) {
+                        selectedSpan.textContent = `${cityName}, ${country}`;
+                        selectedSpan.classList.remove('text-gray-500');
+                        selectedSpan.classList.add('text-gray-800');
+                        // Store country for daily preferences
+                        selectedSpan.setAttribute('data-country', country);
+                    }
+                }
+
+                this.closeDropdown(type);
+            }
+
+            updatePassengerCount(type, delta) {
+                const currentCount = this.passengerCounts[type];
+                const newCount = Math.max(1, currentCount + delta);
+                
+                // Set maximum limits
+                const maxLimits = { adults: 9, children: 9, infants: 9 };
+                if (newCount <= maxLimits[type]) {
+                    this.passengerCounts[type] = newCount;
+                    const countSpan = document.getElementById(`${type}Count`);
+                    if (countSpan) {
+                        countSpan.textContent = newCount;
+                    }
+                    this.updatePassengersSummary();
+                }
+            }
+
+            updatePassengersSummary() {
+                const { adults, children, infants } = this.passengerCounts;
+                let summary = '';
+                
+                if (adults > 0) summary += `${adults} Adult${adults > 1 ? 's' : ''}`;
+                if (children > 0) summary += `${summary ? ', ' : ''}${children} Child${children > 1 ? 'ren' : ''}`;
+                if (infants > 0) summary += `${summary ? ', ' : ''}${infants} Infant${infants > 1 ? 's' : ''}`;
+                
+                const selectedSpan = document.getElementById('passengersSelected');
+                if (selectedSpan) {
+                    selectedSpan.textContent = summary;
+                }
+            }
+
+            validateAndContinue() {
+                const errors = [];
+
+                // Check required fields
+                if (!this.selectedDepartureCity) {
+                    errors.push('Please select a departure city');
+                }
+                
+                if (!this.selectedDestinationCity) {
+                    errors.push('Please select a destination city');
+                }
+                
+                // Check date range selection
+                if (!this.selectedDepartureDate || !this.selectedArrivalDate) {
+                    errors.push('Please select travel dates (departure and arrival)');
+                }
+                
+                const budget = document.getElementById('v2Budget');
+                if (!budget || !budget.value || budget.value < 100) {
+                    errors.push('Please enter a budget (minimum $100)');
+                }
+
+                if (errors.length > 0) {
+                    alert('Please fix the following errors:\\n' + errors.join('\\n'));
+                    return;
+                }
+
+                // Store form data globally for later use
+                window.tourFormData = {
+                    departure: this.selectedDepartureCity,
+                    destination: this.selectedDestinationCity,
+                    departureDate: this.selectedDepartureDate ? this.formatDateForInput(this.selectedDepartureDate) : null,
+                    arrivalDate: this.selectedArrivalDate ? this.formatDateForInput(this.selectedArrivalDate) : null,
+                    passengers: this.passengerCounts,
+                    budget: budget ? budget.value : null
+                };
+
+                // Also store in hidden inputs for backwards compatibility
+                const departureInput = document.getElementById('v2DepartureDate');
+                const arrivalInput = document.getElementById('v2ArrivalDate');
+                
+                if (departureInput && window.tourFormData.departureDate) {
+                    departureInput.value = window.tourFormData.departureDate;
+                }
+                if (arrivalInput && window.tourFormData.arrivalDate) {
+                    arrivalInput.value = window.tourFormData.arrivalDate;
+                }
+
+                // Show flight booking section
+                this.showFlightBookingSection();
+                console.log('Form Data stored:', window.tourFormData);
+            }
+
+            // Flight Booking Methods
+            initializeFlightBookingListeners() {
+                // Collapse buttons for departure and return flights
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.collapse-list-flight')) {
+                        const button = e.target.closest('.collapse-list-flight');
+                        const isDeparture = button.querySelector('.departure-chevron');
+                        const isReturn = button.querySelector('.return-chevron');
+                        
+                        if (isDeparture) {
+                            this.toggleFlightsList('departure');
+                        } else if (isReturn) {
+                            this.toggleFlightsList('return');
+                        }
+                    }
+                });
+
+                // Summary collapse button
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.collapse-preview__header')) {
+                        this.toggleSummaryCollapse();
+                    }
+                });
+            }
+
+            showFlightBookingSection() {
+                const flightSection = document.getElementById('flightBookingSection');
+                if (flightSection) {
+                    flightSection.classList.remove('hidden');
+                    
+                    // Update flight routes
+                    this.updateFlightRoutes();
+                    
+                    // Generate flight data
+                    this.generateFlightData();
+                    
+                    // Scroll to flight section
+                    flightSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            updateFlightRoutes() {
+                const departureRoute = document.getElementById('departureFlightRoute');
+                const returnRoute = document.getElementById('returnFlightRoute');
+                
+                if (departureRoute && this.selectedDepartureCity && this.selectedDestinationCity) {
+                    departureRoute.textContent = `${this.selectedDepartureCity.name} (${this.getAirportCode(this.selectedDepartureCity.name)}) > ${this.selectedDestinationCity.name} (${this.getAirportCode(this.selectedDestinationCity.name)})`;
+                }
+                
+                if (returnRoute && this.selectedDepartureCity && this.selectedDestinationCity) {
+                    returnRoute.textContent = `${this.selectedDestinationCity.name} (${this.getAirportCode(this.selectedDestinationCity.name)}) > ${this.selectedDepartureCity.name} (${this.getAirportCode(this.selectedDepartureCity.name)})`;
+                }
+            }
+
+            getAirportCode(cityName) {
+                const airportCodes = {
+                    'Ho Chi Minh': 'SGN',
+                    'Hanoi': 'HAN',
+                    'Da Nang': 'DAD',
+                    'Tokyo': 'NRT',
+                    'Singapore': 'SIN',
+                    'Bangkok': 'BKK',
+                    'Seoul': 'ICN',
+                    'New York': 'JFK',
+                    'Paris': 'CDG'
+                };
+                return airportCodes[cityName] || cityName.substring(0, 3).toUpperCase();
+            }
+
+            generateFlightData() {
+                const airlines = ['Vietnam Airlines', 'Vietjet Air', 'Bamboo Airways'];
+                
+                // Generate departure flights (3-5 flights)
+                const departureCount = Math.floor(Math.random() * 3) + 3;
+                this.flightData.departure = [];
+                for (let i = 0; i < departureCount; i++) {
+                    this.flightData.departure.push(this.generateRandomFlight('departure', airlines[i % airlines.length]));
+                }
+                
+                // Generate return flights (3-5 flights)
+                const returnCount = Math.floor(Math.random() * 3) + 3;
+                this.flightData.return = [];
+                for (let i = 0; i < returnCount; i++) {
+                    this.flightData.return.push(this.generateRandomFlight('return', airlines[i % airlines.length]));
+                }
+                
+                this.renderFlightCards();
+            }
+
+            generateRandomFlight(type, airline) {
+                // Generate random time between 6:00 and 18:00
+                const startHour = Math.floor(Math.random() * 12) + 6;
+                const startMinute = Math.floor(Math.random() * 4) * 15; // 0, 15, 30, 45
+                const departureTime = `${startHour.toString().padStart(2, '0')}:${startMinute.toString().padStart(2, '0')}`;
+                
+                // Add 2h15m for arrival time
+                const arrivalDate = new Date();
+                arrivalDate.setHours(startHour);
+                arrivalDate.setMinutes(startMinute + 135); // 2h15m
+                const arrivalTime = `${arrivalDate.getHours().toString().padStart(2, '0')}:${arrivalDate.getMinutes().toString().padStart(2, '0')}`;
+                
+                // Generate random price between $70-150
+                const priceUSD = Math.floor(Math.random() * 80) + 70;
+                const priceVND = priceUSD * 24500; // Approximate VND conversion
+                
+                return {
+                    id: `flight_${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                    airline: airline,
+                    logo: this.airlineLogos[airline] || '',
+                    departureTime: departureTime,
+                    arrivalTime: arrivalTime,
+                    duration: '2h15m',
+                    direct: true,
+                    priceUSD: priceUSD,
+                    priceVND: priceVND,
+                    type: type
+                };
+            }
+
+            renderFlightCards() {
+                this.renderFlightList('departure');
+                this.renderFlightList('return');
+            }
+
+            renderFlightList(type) {
+                const container = document.getElementById(`${type}FlightsList`);
+                if (!container) return;
+                
+                const flights = this.flightData[type];
+                container.innerHTML = '';
+                
+                flights.forEach(flight => {
+                    const flightCard = this.createFlightCard(flight);
+                    container.appendChild(flightCard);
+                });
+            }
+
+            createFlightCard(flight) {
+                const card = document.createElement('div');
+                card.className = 'flight-card--wrapper normal-flight bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-lg border border-blue-100/50 hover:shadow-xl hover:scale-[1.02] transition-all duration-300';
+                card.innerHTML = `
+                    <div class="flight-card__content p-4">
+                        <div class="flight-card__content--left flex-1">
+                            <div class="flight-card__content--left--flight-brand flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mr-3 shadow-md">
+                                    <img src="${flight.logo}" alt="${flight.airline}" class="w-10 h-10 object-contain rounded-lg airline-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                                    <span class="text-xs font-bold text-blue-600 hidden">${flight.airline.charAt(0)}</span>
+                                </div>
+                                <p class="font-semibold text-gray-800">${flight.airline}</p>
+                            </div>
+                            <div class="flight-card__content--left--content">
+                                <div class="flight-card__content--left--info">
+                                    <div class="flight-info flex items-center justify-between">
+                                        <div class="flight-info--col flight-info--col__left text-center">
+                                            <p class="col-time text-xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent">${flight.departureTime}</p>
+                                            <p class="col-airport text-sm text-blue-600 font-medium">${this.getAirportCode(this.selectedDepartureCity.name)}</p>
+                                        </div>
+                                        <div class="flight-info--mid mid-line-wrapper flex-1 mx-6">
+                                            <span class="col-place col-place--time text-sm text-blue-600 font-medium block text-center">${flight.duration}</span>
+                                            <div class="flight-info--row preview relative">
+                                                <div class="row--transport">
+                                                    <div class="h-1 bg-gradient-to-r from-blue-400 to-indigo-400 relative rounded-full">
+                                                        <div class="absolute left-0 w-3 h-3 bg-blue-500 rounded-full -top-1 shadow-md"></div>
+                                                        <div class="absolute right-0 w-3 h-3 bg-indigo-500 rounded-full -top-1 shadow-md"></div>
+                                                        <i class="fas fa-plane absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm bg-blue-500 rounded-full p-1 shadow-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="col-place col-place--stop text-sm text-blue-600 font-medium block text-center mt-1" data-en="Direct" data-vi="Bay thẳng">Direct</span>
+                                        </div>
+                                        <div class="flight-info--col flight-info--col__right text-center">
+                                            <p class="col-time text-xl font-bold bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">${flight.arrivalTime}</p>
+                                            <p class="col-airport text-sm text-indigo-600 font-medium">${this.getAirportCode(this.selectedDestinationCity.name)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flight-card__content--left--options flex space-x-2 mt-4">
+                                    <button class="details-btn bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm hover:bg-blue-100 transition-colors border border-blue-200" data-flight-id="${flight.id}">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        <span data-en="Details" data-vi="Chi tiết">Details</span>
+                                    </button>
+                                    <button class="fare-btn bg-green-50 text-green-700 px-4 py-2 rounded-lg text-sm hover:bg-green-100 transition-colors border border-green-200">
+                                        <i class="fas fa-dollar-sign mr-1"></i>
+                                        <span data-en="Fare" data-vi="Giá vé">Fare</span>
+                                    </button>
+                                    <button class="baggage-btn bg-orange-50 text-orange-700 px-4 py-2 rounded-lg text-sm hover:bg-orange-100 transition-colors border border-orange-200">
+                                        <i class="fas fa-suitcase-rolling mr-1"></i>
+                                        <span data-en="Baggage" data-vi="Hành lý">Baggage</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight-card--dot-line w-px bg-gradient-to-b from-blue-200 via-blue-300 to-blue-200 mx-4"></div>
+                        <div class="flight-card__content--right">
+                            <div class="flight-card__content--right--price text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
+                                <p class="mb-3">
+                                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">${flight.priceVND.toLocaleString()} ₫</span>
+                                    <span class="text-sm text-blue-600 block font-medium" data-en="/ Guest" data-vi="/ Khách">/ Guest</span>
+                                </p>
+                                <button class="select-flight-btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105" 
+                                        data-flight-id="${flight.id}" data-flight-type="${flight.type}">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    <span data-en="Select" data-vi="Chọn">Select</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Details Modal (Hidden initially) -->
+                    <div class="flight-details-modal hidden mt-4 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 border-t border-blue-200 rounded-b-xl">
+                        <h5 class="font-bold mb-3 text-blue-800 flex items-center" data-en="Flight Details" data-vi="Chi tiết chuyến bay">
+                            <i class="fas fa-plane mr-2 text-blue-600"></i>
+                            Flight Details
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b border-gray-300">
+                                        <th class="text-left py-2 font-semibold" data-en="Passenger Type" data-vi="Hành khách">Passenger Type</th>
+                                        <th class="text-left py-2 font-semibold" data-en="Base Price" data-vi="Giá cơ bản">Base Price</th>
+                                        <th class="text-left py-2 font-semibold" data-en="Surcharge" data-vi="Phụ thu">Surcharge</th>
+                                        <th class="text-left py-2 font-semibold" data-en="Total" data-vi="Thành tiền">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-2" data-en="Adult" data-vi="Người lớn">Adult</td>
+                                        <td class="py-2">${(flight.priceVND * 0.75).toLocaleString()} ₫</td>
+                                        <td class="py-2">${(flight.priceVND * 0.25).toLocaleString()} ₫</td>
+                                        <td class="py-2 font-semibold">${flight.priceVND.toLocaleString()} ₫</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-2" data-en="Child" data-vi="Trẻ em">Trẻ em</td>
+                                        <td class="py-2">${(flight.priceVND * 0.65).toLocaleString()} ₫</td>
+                                        <td class="py-2">${(flight.priceVND * 0.25).toLocaleString()} ₫</td>
+                                        <td class="py-2 font-semibold">${(flight.priceVND * 0.9).toLocaleString()} ₫</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2" data-en="Infant" data-vi="Em bé">Em bé</td>
+                                        <td class="py-2">0 ₫</td>
+                                        <td class="py-2">${(flight.priceVND * 0.1).toLocaleString()} ₫</td>
+                                        <td class="py-2 font-semibold">${(flight.priceVND * 0.1).toLocaleString()} ₫</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                // Add event listeners
+                this.addFlightCardListeners(card, flight);
+                
+                return card;
+            }
+
+            addFlightCardListeners(card, flight) {
+                // Details button
+                const detailsBtn = card.querySelector('.details-btn');
+                const detailsModal = card.querySelector('.flight-details-modal');
+                detailsBtn.addEventListener('click', () => {
+                    detailsModal.classList.toggle('hidden');
+                });
+                
+                // Select flight button
+                const selectBtn = card.querySelector('.select-flight-btn');
+                selectBtn.addEventListener('click', () => {
+                    this.selectFlight(flight);
+                });
+            }
+
+            selectFlight(flight) {
+                if (flight.type === 'departure') {
+                    this.selectedDepartureFlight = flight;
+                    this.updateSelectedFlightDisplay('departure', flight);
+                } else {
+                    this.selectedReturnFlight = flight;
+                    this.updateSelectedFlightDisplay('return', flight);
+                }
+                
+                this.updateOrderSummary();
+                this.updateConfirmButton();
+            }
+
+            updateSelectedFlightDisplay(type, flight) {
+                const container = document.getElementById(`selected${type.charAt(0).toUpperCase() + type.slice(1)}Flight`);
+                if (container) {
+                    container.classList.remove('hidden');
+                    
+                    const airlineElement = container.querySelector(`#${type}FlightAirline`);
+                    const timeElement = container.querySelector(`#${type}FlightTime`);
+                    
+                    if (airlineElement) airlineElement.textContent = flight.airline;
+                    if (timeElement) timeElement.textContent = `${flight.departureTime} - ${flight.arrivalTime}`;
+                }
+            }
+
+            updateOrderSummary() {
+                let totalPrice = 0;
+                
+                if (this.selectedDepartureFlight) {
+                    totalPrice += this.selectedDepartureFlight.priceVND;
+                }
+                
+                if (this.selectedReturnFlight) {
+                    totalPrice += this.selectedReturnFlight.priceVND;
+                }
+                
+                const totalElement = document.getElementById('totalFlightPrice');
+                if (totalElement) {
+                    totalElement.textContent = totalPrice > 0 ? `${totalPrice.toLocaleString()} ₫` : '0 ₫';
+                }
+            }
+
+            updateConfirmButton() {
+                const confirmBtn = document.getElementById('confirmFlightBookingBtn');
+                if (confirmBtn) {
+                    if (this.selectedDepartureFlight && this.selectedReturnFlight) {
+                        confirmBtn.disabled = false;
+                        confirmBtn.className = 'btn-confirm-pick btn-primary w-full py-3 bg-blue-600 text-white rounded-lg font-medium transition-colors hover:bg-blue-700 cursor-pointer';
+                        confirmBtn.innerHTML = '<span data-en="Confirm Booking" data-vi="Xác nhận đặt vé">Xác nhận đặt vé</span>';
+                        
+                        confirmBtn.addEventListener('click', () => {
+                            this.confirmBooking();
+                        });
+                    } else {
+                        confirmBtn.disabled = true;
+                        confirmBtn.className = 'btn-confirm-pick btn-primary w-full py-3 bg-gray-400 text-white rounded-lg font-medium transition-colors cursor-not-allowed';
+                        confirmBtn.innerHTML = '<span data-en="Select Flights" data-vi="Chọn vé">Chọn vé</span>';
+                    }
+                }
+            }
+
+            confirmBooking() {
+                if (this.selectedDepartureFlight && this.selectedReturnFlight) {
+                    // Log booking details
+                    console.log('Confirmed Booking:', {
+                        departure: this.selectedDepartureFlight,
+                        return: this.selectedReturnFlight,
+                        totalPrice: this.selectedDepartureFlight.priceVND + this.selectedReturnFlight.priceVND
+                    });
+                    
+                    // Initialize daily preferences forms
+                    this.initializeDailyPreferenceForms();
+                }
+            }
+
+            initializeDailyPreferenceForms() {
+                // First try to get dates from the stored form data (if available)
+                let departureDate, arrivalDate;
+                
+                // Check if we have the stored form data from previous steps
+                if (window.tourFormData && window.tourFormData.departureDate && window.tourFormData.arrivalDate) {
+                    departureDate = window.tourFormData.departureDate;
+                    arrivalDate = window.tourFormData.arrivalDate;
+                    console.log('Using dates from tourFormData:', { departureDate, arrivalDate });
+                } else {
+                    // Fallback to hidden input values
+                    const departureInput = document.getElementById('v2DepartureDate');
+                    const arrivalInput = document.getElementById('v2ArrivalDate');
+                    
+                    departureDate = departureInput ? departureInput.value : '';
+                    arrivalDate = arrivalInput ? arrivalInput.value : '';
+                    console.log('Using dates from hidden inputs:', { departureDate, arrivalDate });
+                }
+                
+                if (!departureDate || !arrivalDate) {
+                    console.error('Missing departure or arrival dates:', { departureDate, arrivalDate });
+                    alert('Please select departure and arrival dates first. Go back and fill in the date range.');
+                    return;
+                }
+                
+                // Calculate number of days
+                const startDate = new Date(departureDate);
+                const endDate = new Date(arrivalDate);
+                const timeDiff = endDate.getTime() - startDate.getTime();
+                const dayCount = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // +1 to include both dates
+                
+                // Get destination city for data loading
+                let destinationCountry;
+                
+                // First try to get from stored form data
+                if (window.tourFormData && window.tourFormData.destination && window.tourFormData.destination.country) {
+                    destinationCountry = window.tourFormData.destination.country;
+                    console.log('Using destination country from tourFormData:', destinationCountry);
+                } else {
+                    // Fallback to DOM element
+                    const destinationBtn = document.getElementById('destinationSelected');
+                    destinationCountry = destinationBtn ? destinationBtn.getAttribute('data-country') : null;
+                    console.log('Using destination country from DOM:', destinationCountry);
+                }
+                
+                if (!destinationCountry) {
+                    console.error('Missing destination country');
+                    alert('Please select a destination city first. Go back and choose your destination.');
+                    return;
+                }
+                
+                console.log('✅ Initializing daily forms for', dayCount, 'days in', destinationCountry);
+                
+                // Hide flight booking section and show daily preferences forms
+                const flightBookingSection = document.getElementById('flightBookingSection');
+                if (flightBookingSection) {
+                    flightBookingSection.style.display = 'none';
+                }
+                
+                // Create daily preferences section
+                this.createDailyPreferencesSection(dayCount, destinationCountry);
+            }
+
+            createDailyPreferencesSection(dayCount, destinationCountry) {
+                // Create the main daily preferences container
+                let dailyPreferencesSection = document.getElementById('dailyPreferencesSection');
+                if (!dailyPreferencesSection) {
+                    dailyPreferencesSection = document.createElement('div');
+                    dailyPreferencesSection.id = 'dailyPreferencesSection';
+                    dailyPreferencesSection.className = 'mt-12';
+                    
+                    // Find the package-tab container and append
+                    const packageTab = document.getElementById('package-tab');
+                    if (packageTab) {
+                        packageTab.appendChild(dailyPreferencesSection);
+                    }
+                }
+                
+                // Create header
+                const headerHTML = `
+                    <div class="bg-gradient-to-r from-purple-50 via-pink-50 to-indigo-50 rounded-2xl p-8 mb-8 border border-purple-100 shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg mr-6">
+                                <i class="fas fa-heart text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2" 
+                                    data-en="Daily Preferences" data-vi="Sở Thích Từng Ngày">Daily Preferences</h3>
+                                <p class="text-gray-600 text-lg" data-en="Tell us what you like for each day of your journey" 
+                                    data-vi="Cho chúng tôi biết sở thích của bạn cho từng ngày">Tell us what you like for each day of your journey</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Steps -->
+                        <div class="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm">
+                            <div class="flex items-center cursor-pointer hover:opacity-80 transition duration-200" id="backToBasicInfoStep">
+                                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-green-600 font-medium" data-en="Basic Information" data-vi="Thông Tin Cơ Bản">Basic Information</span>
+                            </div>
+                            <div class="flex-1 h-0.5 bg-purple-200 mx-4"></div>
+                            <div class="flex items-center cursor-pointer hover:opacity-80 transition duration-200" id="backToFlightBookingStep">
+                                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-green-600 font-medium" data-en="Flight Booking" data-vi="Đặt Vé Máy Bay">Flight Booking</span>
+                            </div>
+                            <div class="flex-1 h-0.5 bg-purple-200 mx-4"></div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</div>
+                                <span class="text-purple-600 font-medium" data-en="Daily Preferences" data-vi="Sở Thích Từng Ngày">Daily Preferences</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Initialize daily forms data
+                this.dailyFormsData = {
+                    currentDay: 1,
+                    totalDays: dayCount,
+                    destinationCountry: destinationCountry,
+                    preferences: {}
+                };
+                
+                dailyPreferencesSection.innerHTML = headerHTML + `
+                    <div id="dailyFormContainer" class="space-y-8">
+                        <!-- Daily forms will be generated here -->
+                    </div>
+                `;
+                
+                // Generate the first day form
+                this.generateDayForm(1, dayCount, destinationCountry);
+            }
+
+            generateDayForm(dayNumber, totalDays, destinationCountry) {
+                const formContainer = document.getElementById('dailyFormContainer');
+                if (!formContainer) return;
+                
+                const isLastDay = dayNumber === totalDays;
+                const currentDate = new Date(document.getElementById('v2DepartureDate').value);
+                currentDate.setDate(currentDate.getDate() + dayNumber - 1);
+                const dateString = currentDate.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                const formHTML = `
+                    <div id="dayForm${dayNumber}" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg mr-4">
+                                        <span class="text-white font-bold text-lg">${dayNumber}</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-2xl font-bold text-gray-800" data-en="Day ${dayNumber}" data-vi="Ngày ${dayNumber}">Day ${dayNumber}</h4>
+                                        <p class="text-gray-600" data-en="${dateString}" data-vi="${dateString}">${dateString}</p>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    <span data-en="${dayNumber} of ${totalDays} days" data-vi="${dayNumber} / ${totalDays} ngày">${dayNumber} of ${totalDays} days</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 4 Preference Boxes -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                            <!-- Restaurants Box -->
+                            <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border border-red-100">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-utensils text-white"></i>
+                                    </div>
+                                    <h5 class="text-xl font-bold text-gray-800" data-en="Restaurants" data-vi="Nhà Hàng">Restaurants</h5>
+                                </div>
+                                <div id="restaurantsDay${dayNumber}" class="space-y-3 min-h-32 max-h-64 overflow-y-auto">
+                                    <div class="text-center text-gray-500 py-8">
+                                        <i class="fas fa-spinner fa-spin text-xl mb-2"></i>
+                                        <p data-en="Loading restaurants..." data-vi="Đang tải nhà hàng...">Loading restaurants...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Hotels Box -->
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-bed text-white"></i>
+                                    </div>
+                                    <h5 class="text-xl font-bold text-gray-800" data-en="Hotels" data-vi="Khách Sạn">Hotels</h5>
+                                </div>
+                                <div id="hotelsDay${dayNumber}" class="space-y-3 min-h-32 max-h-64 overflow-y-auto">
+                                    <div class="text-center text-gray-500 py-8">
+                                        <i class="fas fa-spinner fa-spin text-xl mb-2"></i>
+                                        <p data-en="Loading hotels..." data-vi="Đang tải khách sạn...">Loading hotels...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recreation Places Box -->
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <h5 class="text-xl font-bold text-gray-800" data-en="Recreation Places" data-vi="Địa Điểm Giải Trí">Recreation Places</h5>
+                                </div>
+                                <div id="activitiesDay${dayNumber}" class="space-y-3 min-h-32 max-h-64 overflow-y-auto">
+                                    <div class="text-center text-gray-500 py-8">
+                                        <i class="fas fa-spinner fa-spin text-xl mb-2"></i>
+                                        <p data-en="Loading activities..." data-vi="Đang tải hoạt động...">Loading activities...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Local Transport Box -->
+                            <div class="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-6 border border-yellow-100">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-car text-white"></i>
+                                    </div>
+                                    <h5 class="text-xl font-bold text-gray-800" data-en="Local Transport" data-vi="Phương Tiện Địa Phương">Local Transport</h5>
+                                </div>
+                                <div id="transportsDay${dayNumber}" class="space-y-3 min-h-32 max-h-64 overflow-y-auto">
+                                    <div class="text-center text-gray-500 py-8">
+                                        <i class="fas fa-spinner fa-spin text-xl mb-2"></i>
+                                        <p data-en="Loading transport..." data-vi="Đang tải phương tiện...">Loading transport...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="flex justify-between items-center pt-6 border-t border-gray-100">
+                            <div class="flex space-x-3">
+                                <button type="button" id="backToFlightBtn${dayNumber}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition duration-300 font-medium" ${dayNumber > 1 ? 'style="display: none;"' : ''}>
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    <span data-en="Back to Flight Booking" data-vi="Quay lại Đặt vé">Back to Flight Booking</span>
+                                </button>
+                                <button type="button" id="previousDay${dayNumber}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition duration-300 font-medium" ${dayNumber === 1 ? 'style="display: none;"' : ''}>
+                                    <i class="fas fa-chevron-left mr-2"></i>
+                                    <span data-en="Previous Day" data-vi="Ngày trước">Previous Day</span>
+                                </button>
+                            </div>
+                            
+                            <div class="flex-1"></div>
+                            
+                            <button type="button" id="continueDay${dayNumber}" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition duration-300 font-bold shadow-lg">
+                                <span data-en="${isLastDay ? 'Generate Tour' : 'Continue'}" data-vi="${isLastDay ? 'Tạo Tour' : 'Tiếp tục'}">${isLastDay ? 'Generate Tour' : 'Continue'}</span>
+                                <i class="fas fa-${isLastDay ? 'magic' : 'arrow-right'} ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                formContainer.innerHTML = formHTML;
+                
+                // Load data for this day
+                this.loadDayPreferences(dayNumber, destinationCountry);
+                
+                // Setup navigation
+                this.setupDayNavigation(dayNumber, totalDays);
+            }
+
+            loadDayPreferences(dayNumber, destinationCountry) {
+                // Load restaurants, hotels, activities, and transports for the destination country
+                Promise.all([
+                    this.loadRestaurants(dayNumber, destinationCountry),
+                    this.loadHotels(dayNumber, destinationCountry),
+                    this.loadActivities(dayNumber, destinationCountry),
+                    this.loadTransports(dayNumber, destinationCountry)
+                ]).catch(error => {
+                    console.error('Error loading day preferences:', error);
+                });
+            }
+
+            async loadRestaurants(dayNumber, destinationCountry) {
+                try {
+                    const response = await fetch(`/api/restaurants?country=${encodeURIComponent(destinationCountry)}&limit=20`);
+                    const data = await response.json();
+                    
+                    const container = document.getElementById(`restaurantsDay${dayNumber}`);
+                    if (container && data.restaurants && data.restaurants.length > 0) {
+                        container.innerHTML = data.restaurants.map(restaurant => `
+                            <div class="restaurant-item p-3 bg-white rounded-lg border border-red-100 hover:border-red-300 transition duration-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1">
+                                        <h6 class="font-semibold text-gray-800 text-sm">${restaurant.name}</h6>
+                                        <p class="text-xs text-gray-600">${restaurant.cuisine_type || 'Restaurant'}</p>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-xs text-yellow-600">★ ${restaurant.rating || 'N/A'}</span>
+                                            <span class="text-xs text-gray-500 ml-2">$${restaurant.price_avg || 'N/A'}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 ml-3">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="like-checkbox hidden" data-type="restaurant" data-id="${restaurant.restaurant_id}" data-day="${dayNumber}">
+                                            <div class="like-btn w-8 h-8 rounded-full border-2 border-green-300 flex items-center justify-center hover:bg-green-50 transition duration-200">
+                                                <i class="fas fa-thumbs-up text-green-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="dislike-checkbox hidden" data-type="restaurant" data-id="${restaurant.restaurant_id}" data-day="${dayNumber}">
+                                            <div class="dislike-btn w-8 h-8 rounded-full border-2 border-red-300 flex items-center justify-center hover:bg-red-50 transition duration-200">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        this.setupLikeDislikeHandlers(container);
+                    } else {
+                        container.innerHTML = `<div class="text-center text-gray-500 py-4">
+                            <p data-en="No restaurants found" data-vi="Không tìm thấy nhà hàng">No restaurants found</p>
+                        </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error loading restaurants:', error);
+                    const container = document.getElementById(`restaurantsDay${dayNumber}`);
+                    if (container) {
+                        container.innerHTML = `<div class="text-center text-red-500 py-4">
+                            <p data-en="Error loading restaurants" data-vi="Lỗi tải nhà hàng">Error loading restaurants</p>
+                        </div>`;
+                    }
+                }
+            }
+
+            async loadHotels(dayNumber, destinationCountry) {
+                try {
+                    const response = await fetch(`/api/hotels?country=${encodeURIComponent(destinationCountry)}&limit=20`);
+                    const data = await response.json();
+                    
+                    const container = document.getElementById(`hotelsDay${dayNumber}`);
+                    if (container && data.hotels && data.hotels.length > 0) {
+                        container.innerHTML = data.hotels.map(hotel => `
+                            <div class="hotel-item p-3 bg-white rounded-lg border border-blue-100 hover:border-blue-300 transition duration-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1">
+                                        <h6 class="font-semibold text-gray-800 text-sm">${hotel.name}</h6>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-xs text-yellow-600">★ ${hotel.rating || 'N/A'}</span>
+                                            <span class="text-xs text-blue-600 ml-2">${hotel.stars || 0}⭐</span>
+                                            <span class="text-xs text-gray-500 ml-2">$${hotel.price_per_night || 'N/A'}/night</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 ml-3">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="like-checkbox hidden" data-type="hotel" data-id="${hotel.hotel_id}" data-day="${dayNumber}">
+                                            <div class="like-btn w-8 h-8 rounded-full border-2 border-green-300 flex items-center justify-center hover:bg-green-50 transition duration-200">
+                                                <i class="fas fa-thumbs-up text-green-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="dislike-checkbox hidden" data-type="hotel" data-id="${hotel.hotel_id}" data-day="${dayNumber}">
+                                            <div class="dislike-btn w-8 h-8 rounded-full border-2 border-red-300 flex items-center justify-center hover:bg-red-50 transition duration-200">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        this.setupLikeDislikeHandlers(container);
+                    } else {
+                        container.innerHTML = `<div class="text-center text-gray-500 py-4">
+                            <p data-en="No hotels found" data-vi="Không tìm thấy khách sạn">No hotels found</p>
+                        </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error loading hotels:', error);
+                    const container = document.getElementById(`hotelsDay${dayNumber}`);
+                    if (container) {
+                        container.innerHTML = `<div class="text-center text-red-500 py-4">
+                            <p data-en="Error loading hotels" data-vi="Lỗi tải khách sạn">Error loading hotels</p>
+                        </div>`;
+                    }
+                }
+            }
+
+            async loadActivities(dayNumber, destinationCountry) {
+                try {
+                    const response = await fetch(`/api/activities?country=${encodeURIComponent(destinationCountry)}&limit=20`);
+                    const data = await response.json();
+                    
+                    const container = document.getElementById(`activitiesDay${dayNumber}`);
+                    if (container && data.activities && data.activities.length > 0) {
+                        container.innerHTML = data.activities.map(activity => `
+                            <div class="activity-item p-3 bg-white rounded-lg border border-green-100 hover:border-green-300 transition duration-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1">
+                                        <h6 class="font-semibold text-gray-800 text-sm">${activity.name}</h6>
+                                        <p class="text-xs text-gray-600">${activity.type || 'Activity'}</p>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-xs text-yellow-600">★ ${activity.rating || 'N/A'}</span>
+                                            <span class="text-xs text-gray-500 ml-2">$${activity.price || 'Free'}</span>
+                                            <span class="text-xs text-gray-500 ml-2">${activity.duration_hr || 'N/A'}h</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 ml-3">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="like-checkbox hidden" data-type="activity" data-id="${activity.activity_id}" data-day="${dayNumber}">
+                                            <div class="like-btn w-8 h-8 rounded-full border-2 border-green-300 flex items-center justify-center hover:bg-green-50 transition duration-200">
+                                                <i class="fas fa-thumbs-up text-green-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="dislike-checkbox hidden" data-type="activity" data-id="${activity.activity_id}" data-day="${dayNumber}">
+                                            <div class="dislike-btn w-8 h-8 rounded-full border-2 border-red-300 flex items-center justify-center hover:bg-red-50 transition duration-200">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        this.setupLikeDislikeHandlers(container);
+                    } else {
+                        container.innerHTML = `<div class="text-center text-gray-500 py-4">
+                            <p data-en="No activities found" data-vi="Không tìm thấy hoạt động">No activities found</p>
+                        </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error loading activities:', error);
+                    const container = document.getElementById(`activitiesDay${dayNumber}`);
+                    if (container) {
+                        container.innerHTML = `<div class="text-center text-red-500 py-4">
+                            <p data-en="Error loading activities" data-vi="Lỗi tải hoạt động">Error loading activities</p>
+                        </div>`;
+                    }
+                }
+            }
+
+            async loadTransports(dayNumber, destinationCountry) {
+                try {
+                    const response = await fetch(`/api/transports?country=${encodeURIComponent(destinationCountry)}&limit=20`);
+                    const data = await response.json();
+                    
+                    const container = document.getElementById(`transportsDay${dayNumber}`);
+                    if (container && data.transports && data.transports.length > 0) {
+                        container.innerHTML = data.transports.map(transport => `
+                            <div class="transport-item p-3 bg-white rounded-lg border border-yellow-100 hover:border-yellow-300 transition duration-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1">
+                                        <h6 class="font-semibold text-gray-800 text-sm">${transport.type}</h6>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-xs text-yellow-600">★ ${transport.rating || 'N/A'}</span>
+                                            <span class="text-xs text-gray-500 ml-2">$${transport.avg_price_per_km || 'N/A'}/km</span>
+                                            <span class="text-xs text-gray-500 ml-2">${transport.operating_hours || '24/7'}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 ml-3">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="like-checkbox hidden" data-type="transport" data-id="${transport.transport_id}" data-day="${dayNumber}">
+                                            <div class="like-btn w-8 h-8 rounded-full border-2 border-green-300 flex items-center justify-center hover:bg-green-50 transition duration-200">
+                                                <i class="fas fa-thumbs-up text-green-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="dislike-checkbox hidden" data-type="transport" data-id="${transport.transport_id}" data-day="${dayNumber}">
+                                            <div class="dislike-btn w-8 h-8 rounded-full border-2 border-red-300 flex items-center justify-center hover:bg-red-50 transition duration-200">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        this.setupLikeDislikeHandlers(container);
+                    } else {
+                        container.innerHTML = `<div class="text-center text-gray-500 py-4">
+                            <p data-en="No transport found" data-vi="Không tìm thấy phương tiện">No transport found</p>
+                        </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error loading transports:', error);
+                    const container = document.getElementById(`transportsDay${dayNumber}`);
+                    if (container) {
+                        container.innerHTML = `<div class="text-center text-red-500 py-4">
+                            <p data-en="Error loading transport" data-vi="Lỗi tải phương tiện">Error loading transport</p>
+                        </div>`;
+                    }
+                }
+            }
+
+            setupLikeDislikeHandlers(container) {
+                const likeCheckboxes = container.querySelectorAll('.like-checkbox');
+                const dislikeCheckboxes = container.querySelectorAll('.dislike-checkbox');
+                
+                likeCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const likeBtn = e.target.nextElementSibling;
+                        const dislikeCheckbox = container.querySelector(`[data-type="${e.target.dataset.type}"][data-id="${e.target.dataset.id}"].dislike-checkbox`);
+                        const dislikeBtn = dislikeCheckbox.nextElementSibling;
+                        
+                        if (e.target.checked) {
+                            likeBtn.classList.add('bg-green-100', 'border-green-500');
+                            // Uncheck dislike if it was checked
+                            if (dislikeCheckbox.checked) {
+                                dislikeCheckbox.checked = false;
+                                dislikeBtn.classList.remove('bg-red-100', 'border-red-500');
+                            }
+                            // Store preference
+                            this.storePreference(e.target.dataset.type, e.target.dataset.id, e.target.dataset.day, 'like');
+                        } else {
+                            likeBtn.classList.remove('bg-green-100', 'border-green-500');
+                            this.removePreference(e.target.dataset.type, e.target.dataset.id, e.target.dataset.day);
+                        }
+                    });
+                });
+                
+                dislikeCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const dislikeBtn = e.target.nextElementSibling;
+                        const likeCheckbox = container.querySelector(`[data-type="${e.target.dataset.type}"][data-id="${e.target.dataset.id}"].like-checkbox`);
+                        const likeBtn = likeCheckbox.nextElementSibling;
+                        
+                        if (e.target.checked) {
+                            dislikeBtn.classList.add('bg-red-100', 'border-red-500');
+                            // Uncheck like if it was checked
+                            if (likeCheckbox.checked) {
+                                likeCheckbox.checked = false;
+                                likeBtn.classList.remove('bg-green-100', 'border-green-500');
+                            }
+                            // Store preference
+                            this.storePreference(e.target.dataset.type, e.target.dataset.id, e.target.dataset.day, 'dislike');
+                        } else {
+                            dislikeBtn.classList.remove('bg-red-100', 'border-red-500');
+                            this.removePreference(e.target.dataset.type, e.target.dataset.id, e.target.dataset.day);
+                        }
+                    });
+                });
+            }
+
+            storePreference(type, id, day, preference) {
+                if (!this.dailyFormsData.preferences[day]) {
+                    this.dailyFormsData.preferences[day] = {};
+                }
+                if (!this.dailyFormsData.preferences[day][type]) {
+                    this.dailyFormsData.preferences[day][type] = {};
+                }
+                this.dailyFormsData.preferences[day][type][id] = preference;
+                
+                console.log(`Day ${day} ${type} ${id}: ${preference}`, this.dailyFormsData.preferences);
+            }
+
+            removePreference(type, id, day) {
+                if (this.dailyFormsData.preferences[day] && 
+                    this.dailyFormsData.preferences[day][type] && 
+                    this.dailyFormsData.preferences[day][type][id]) {
+                    delete this.dailyFormsData.preferences[day][type][id];
+                }
+            }
+
+            setupDayNavigation(dayNumber, totalDays) {
+                const continueBtn = document.getElementById(`continueDay${dayNumber}`);
+                const backBtn = document.getElementById(`backToFlightBtn${dayNumber}`);
+                const previousDayBtn = document.getElementById(`previousDay${dayNumber}`);
+                
+                // Update daily forms data current day
+                this.dailyFormsData.currentDay = dayNumber;
+                
+                if (continueBtn) {
+                    continueBtn.addEventListener('click', () => {
+                        // Save current day preferences before moving
+                        this.saveCurrentDayPreferences(dayNumber);
+                        
+                        if (dayNumber < totalDays) {
+                            // Move to next day
+                            this.generateDayForm(dayNumber + 1, totalDays, this.dailyFormsData.destinationCountry);
+                        } else {
+                            // Generate tour (last day)
+                            this.generateTour();
+                        }
+                    });
+                }
+                
+                if (backBtn && dayNumber === 1) {
+                    backBtn.addEventListener('click', () => {
+                        // Save current preferences before going back
+                        this.saveCurrentDayPreferences(dayNumber);
+                        
+                        // Show flight booking section again
+                        const flightBookingSection = document.getElementById('flightBookingSection');
+                        const dailyPreferencesSection = document.getElementById('dailyPreferencesSection');
+                        
+                        if (flightBookingSection) {
+                            flightBookingSection.style.display = 'block';
+                        }
+                        if (dailyPreferencesSection) {
+                            dailyPreferencesSection.style.display = 'none';
+                        }
+                    });
+                }
+                
+                // Handle Previous Day button
+                if (previousDayBtn && dayNumber > 1) {
+                    previousDayBtn.addEventListener('click', () => {
+                        // Save current day preferences before going back
+                        this.saveCurrentDayPreferences(dayNumber);
+                        
+                        // Go back to previous day form while preserving data
+                        this.generateDayForm(dayNumber - 1, totalDays, this.dailyFormsData.destinationCountry);
+                    });
+                }
+                
+                // Setup clickable progress steps navigation
+                this.setupProgressStepsNavigation();
+                
+                // Restore preferences for current day
+                setTimeout(() => {
+                    this.restoreDayPreferences(dayNumber);
+                }, 500);
+            }
+            
+            setupProgressStepsNavigation() {
+                // Make Basic Information step clickable
+                const basicInfoStep = document.getElementById('backToBasicInfoStep');
+                if (basicInfoStep) {
+                    basicInfoStep.addEventListener('click', () => {
+                        // Save current preferences
+                        this.saveCurrentDayPreferences(this.dailyFormsData.currentDay);
+                        
+                        // Go back to package tab (Basic Information)
+                        this.showPackageForm();
+                    });
+                }
+                
+                // Make Flight Booking step clickable  
+                const flightBookingStep = document.getElementById('backToFlightBookingStep');
+                if (flightBookingStep) {
+                    flightBookingStep.addEventListener('click', () => {
+                        // Save current preferences
+                        this.saveCurrentDayPreferences(this.dailyFormsData.currentDay);
+                        
+                        // Show flight booking section
+                        const flightBookingSection = document.getElementById('flightBookingSection');
+                        const dailyPreferencesSection = document.getElementById('dailyPreferencesSection');
+                        
+                        if (flightBookingSection) {
+                            flightBookingSection.style.display = 'block';
+                        }
+                        if (dailyPreferencesSection) {
+                            dailyPreferencesSection.style.display = 'none';
+                        }
+                    });
+                }
+            }
+            
+            showPackageForm() {
+                // Hide daily preferences section
+                const dailyPreferencesSection = document.getElementById('dailyPreferencesSection');
+                if (dailyPreferencesSection) {
+                    dailyPreferencesSection.style.display = 'none';
+                }
+                
+                // Hide flight booking section  
+                const flightBookingSection = document.getElementById('flightBookingSection');
+                if (flightBookingSection) {
+                    flightBookingSection.style.display = 'none';
+                }
+                
+                // Show package form
+                const packageForm = document.getElementById('packageForm');
+                if (packageForm) {
+                    packageForm.style.display = 'block';
+                }
+                
+                // Switch to package tab
+                const packageTab = document.querySelector('[data-tab="package"]');
+                const packageTabContent = document.getElementById('package-tab');
+                
+                if (packageTab && packageTabContent) {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Activate package tab
+                    packageTab.classList.add('active');
+                    packageTabContent.classList.remove('hidden');
+                }
+            }
+            
+            saveCurrentDayPreferences(dayNumber) {
+                // Save like/dislike selections for current day
+                const dayContainer = document.getElementById(`dayForm${dayNumber}`);
+                if (!dayContainer) return;
+                
+                // Get all like/dislike checkboxes
+                const likeCheckboxes = dayContainer.querySelectorAll('.like-checkbox:checked');
+                const dislikeCheckboxes = dayContainer.querySelectorAll('.dislike-checkbox:checked');
+                
+                // Initialize preferences for this day if not exists
+                if (!this.dailyFormsData.preferences[dayNumber]) {
+                    this.dailyFormsData.preferences[dayNumber] = {};
+                }
+                
+                // Save liked items
+                likeCheckboxes.forEach(checkbox => {
+                    const type = checkbox.dataset.type;
+                    const id = checkbox.dataset.id;
+                    
+                    if (!this.dailyFormsData.preferences[dayNumber][type]) {
+                        this.dailyFormsData.preferences[dayNumber][type] = {};
+                    }
+                    this.dailyFormsData.preferences[dayNumber][type][id] = 'like';
+                });
+                
+                // Save disliked items
+                dislikeCheckboxes.forEach(checkbox => {
+                    const type = checkbox.dataset.type;
+                    const id = checkbox.dataset.id;
+                    
+                    if (!this.dailyFormsData.preferences[dayNumber][type]) {
+                        this.dailyFormsData.preferences[dayNumber][type] = {};
+                    }
+                    this.dailyFormsData.preferences[dayNumber][type][id] = 'dislike';
+                });
+            }
+            
+            restoreDayPreferences(dayNumber) {
+                // Restore like/dislike selections for current day
+                const dayPrefs = this.dailyFormsData.preferences[dayNumber];
+                if (!dayPrefs) return;
+                
+                const dayContainer = document.getElementById(`dayForm${dayNumber}`);
+                if (!dayContainer) return;
+                
+                // Restore preferences for each type
+                Object.keys(dayPrefs).forEach(type => {
+                    Object.keys(dayPrefs[type]).forEach(id => {
+                        const preference = dayPrefs[type][id];
+                        
+                        if (preference === 'like') {
+                            const likeCheckbox = dayContainer.querySelector(`[data-type="${type}"][data-id="${id}"].like-checkbox`);
+                            if (likeCheckbox) {
+                                likeCheckbox.checked = true;
+                                likeCheckbox.parentNode.querySelector('.like-btn').classList.add('bg-green-100', 'border-green-400');
+                            }
+                        } else if (preference === 'dislike') {
+                            const dislikeCheckbox = dayContainer.querySelector(`[data-type="${type}"][data-id="${id}"].dislike-checkbox`);
+                            if (dislikeCheckbox) {
+                                dislikeCheckbox.checked = true;
+                                dislikeCheckbox.parentNode.querySelector('.dislike-btn').classList.add('bg-red-100', 'border-red-400');
+                            }
+                        }
+                    });
+                });
+            }
+
+            generateTour() {
+                console.log('Generating tour with preferences:', this.dailyFormsData.preferences);
+                alert('Tour generation would be implemented here with all the collected preferences!');
+                
+                // Here you would normally send the preferences to the backend for tour generation
+                // Example API call:
+                /*
+                fetch('/api/generate-tour', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        preferences: this.dailyFormsData.preferences,
+                        totalDays: this.dailyFormsData.totalDays,
+                        destinationCountry: this.dailyFormsData.destinationCountry,
+                        flightDetails: {
+                            departure: this.selectedDepartureFlight,
+                            return: this.selectedReturnFlight
+                        }
+                    })
+                });
+                */
+            }
+
+            toggleFlightsList(type) {
+                const listContainer = document.getElementById(`${type}FlightsList`);
+                const chevron = document.querySelector(`.${type}-chevron`);
+                
+                if (listContainer && chevron) {
+                    listContainer.classList.toggle('hidden');
+                    chevron.style.transform = listContainer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            }
+
+            toggleSummaryCollapse() {
+                const content = document.querySelector('.collapse-preview__content');
+                const chevron = document.querySelector('.summary-chevron');
+                
+                if (content && chevron) {
+                    content.classList.toggle('hidden');
+                    chevron.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            if (document.getElementById('package-tab')) {
+                new PersonalizedTourV2();
+                
+                // Add budget suggestion handlers
+                setTimeout(() => {
+                    document.querySelectorAll('.budget-suggestion').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const amount = this.dataset.amount;
+                            document.getElementById('v2Budget').value = amount;
+                            
+                            // Add visual feedback
+                            document.querySelectorAll('.budget-suggestion').forEach(btn => {
+                                btn.classList.remove('bg-pink-300', 'text-pink-800');
+                                btn.classList.add('bg-pink-100', 'text-pink-700');
+                            });
+                            this.classList.remove('bg-pink-100', 'text-pink-700');
+                            this.classList.add('bg-pink-300', 'text-pink-800');
+                        });
+                    });
+                }, 100);
+            }
+        });
+        </script>
+
         <script src="assets/js/script.js"></script>
         <script src="assets/js/tour-search.js"></script>
         <script src="assets/js/components/tour-history.js"></script>
@@ -2600,7 +4968,7 @@
             
             // Function to update user display information from real data
             function updateUserDisplay(userName, userEmail) {
-                console.log('🔄 Updating user display with:', {userName, userEmail});
+                console.log('������ Updating user display with:', {userName, userEmail});
                 if (!userName || !userEmail) {
                     console.log('⚠️ Missing userName or userEmail, skipping update');
                     return;

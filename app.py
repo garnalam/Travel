@@ -33,10 +33,16 @@ DB_CONFIG = {
 
 def get_db_connection():
     """
-    Tạo kết nối database MySQL
+    Tạo kết nối database MySQL với connection pooling
     """
     try:
-        connection = mysql.connector.connect(**DB_CONFIG)
+        connection = mysql.connector.connect(
+            **DB_CONFIG,
+            pool_name="smart_travel_pool",
+            pool_size=10,
+            pool_reset_session=True,
+            autocommit=True
+        )
         return connection
     except mysql.connector.Error as e:
         print(f"Database connection error: {str(e)}")
@@ -485,6 +491,44 @@ def logout():
     session.clear()
     return jsonify({'success': True, 'redirect': 'index.html'})
 
+@app.route("/api/activities", methods=["GET"])
+def get_activities_by_country():
+    """
+    API endpoint để lấy danh sách activities theo country
+    Được sử dụng bởi Tour cá nhân v2
+    """
+    try:
+        country = request.args.get('country', '').strip()
+        limit = request.args.get('limit', 20)
+        
+        print(f"🔍 Getting activities for country: {country}")
+        
+        if not country:
+            return jsonify({"error": "Country parameter is required"}), 400
+        
+        # Query activities by country through cities table
+        query = """
+            SELECT a.activity_id, a.name, a.description, a.type, a.price, a.duration_hr, a.rating, c.name as city_name, c.country
+            FROM activities a
+            JOIN cities c ON a.city_id = c.city_id
+            WHERE c.country = %s
+            ORDER BY a.rating DESC, a.price ASC
+            LIMIT %s
+        """
+        
+        activities = execute_query(query, (country, int(limit)))
+        
+        if activities is None:
+            activities = []
+            
+        print(f"✅ Found {len(activities)} activities for country {country}")
+        
+        return jsonify({"activities": activities})
+    
+    except Exception as e:
+        print(f"❌ Error getting activities by country: {str(e)}")
+        return jsonify({"error": "Failed to retrieve activities"}), 500
+
 @app.route("/api/activities/by-city/<city_id>", methods=["GET"])
 def get_activities_by_city(city_id):
     """
@@ -518,6 +562,44 @@ def get_activities_by_city(city_id):
     except Exception as e:
         print(f"❌ Error getting activities by city: {str(e)}")
         return jsonify({"error": "Failed to retrieve activities"}), 500
+
+@app.route("/api/transports", methods=["GET"])
+def get_transports_by_country():
+    """
+    API endpoint để lấy danh sách transports theo country
+    Được sử dụng bởi Tour cá nhân v2
+    """
+    try:
+        country = request.args.get('country', '').strip()
+        limit = request.args.get('limit', 20)
+        
+        print(f"🔍 Getting transports for country: {country}")
+        
+        if not country:
+            return jsonify({"error": "Country parameter is required"}), 400
+        
+        # Query transports by country through cities table
+        query = """
+            SELECT t.transport_id, t.type, t.avg_price_per_km, t.operating_hours, t.min_price, t.max_capacity, t.rating, c.name as city_name, c.country
+            FROM transports t
+            JOIN cities c ON t.city_id = c.city_id
+            WHERE c.country = %s
+            ORDER BY t.rating DESC, t.type ASC
+            LIMIT %s
+        """
+        
+        transports = execute_query(query, (country, int(limit)))
+        
+        if transports is None:
+            transports = []
+            
+        print(f"✅ Found {len(transports)} transports for country {country}")
+        
+        return jsonify({"transports": transports})
+    
+    except Exception as e:
+        print(f"❌ Error getting transports by country: {str(e)}")
+        return jsonify({"error": "Failed to retrieve transports"}), 500
 
 @app.route("/api/transports/by-city/<city_id>", methods=["GET"])
 def get_transports_by_city(city_id):
@@ -1088,28 +1170,69 @@ def get_countries():
 
 @app.route("/api/cities", methods=["GET"])
 def get_cities():
-    """Lấy danh sách thành phố unique theo quốc gia từ hotels table"""
+    """Lấy danh sách thành phố từ cities table"""
     try:
-        country = request.args.get('country')
-        if not country:
-            return jsonify({"error": "Country parameter is required"}), 400
-        
+        # Lấy danh sách cities từ cities table với city_id, name, country
         query = """
-            SELECT DISTINCT city 
-            FROM hotels 
-            WHERE country = %s AND city IS NOT NULL AND city != '' 
-            ORDER BY city
+            SELECT city_id, name, country 
+            FROM cities 
+            WHERE name IS NOT NULL AND name != '' 
+            AND country IS NOT NULL AND country != ''
+            ORDER BY name
         """
-        results = execute_query(query, (country,))
+        results = execute_query(query)
         
         if results:
-            cities = [{"name": row['city']} for row in results]
-            return jsonify({"cities": cities})
+            cities = []
+            for row in results:
+                cities.append({
+                    "city_id": row['city_id'],
+                    "name": row['name'], 
+                    "country": row['country']
+                })
+            return jsonify(cities)
         else:
-            return jsonify({"cities": []})
+            return jsonify([])
             
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/api/hotels", methods=["GET"])
+def get_hotels_by_country():
+    """
+    API endpoint để lấy danh sách hotels theo country
+    Được sử dụng bởi Tour cá nhân v2
+    """
+    try:
+        country = request.args.get('country', '').strip()
+        limit = request.args.get('limit', 20)
+        
+        print(f"🔍 Getting hotels for country: {country}")
+        
+        if not country:
+            return jsonify({"error": "Country parameter is required"}), 400
+        
+        # Query hotels by country
+        query = """
+            SELECT hotel_id, name, city, country, stars, price_per_night, rating
+            FROM hotels
+            WHERE country = %s
+            ORDER BY rating DESC, stars DESC, name ASC
+            LIMIT %s
+        """
+        
+        hotels = execute_query(query, (country, int(limit)))
+        
+        if hotels is None:
+            hotels = []
+            
+        print(f"✅ Found {len(hotels)} hotels for country {country}")
+        
+        return jsonify({"hotels": hotels})
+    
+    except Exception as e:
+        print(f"❌ Error getting hotels by country: {str(e)}")
+        return jsonify({"error": "Failed to retrieve hotels"}), 500
 
 @app.route("/api/hotels/search", methods=["POST"])
 def search_hotels():
@@ -1395,6 +1518,43 @@ def get_transport_details_api(transport_id):
         return jsonify({"error": str(e)}), 500
 
 # ===== RESTAURANT API ENDPOINTS =====
+
+@app.route("/api/restaurants", methods=["GET"])
+def get_restaurants_by_country():
+    """
+    API endpoint để lấy danh sách restaurants theo country
+    Được sử dụng bởi Tour cá nhân v2
+    """
+    try:
+        country = request.args.get('country', '').strip()
+        limit = request.args.get('limit', 20)
+        
+        print(f"🔍 Getting restaurants for country: {country}")
+        
+        if not country:
+            return jsonify({"error": "Country parameter is required"}), 400
+        
+        # Query restaurants by country
+        query = """
+            SELECT restaurant_id, name, city, country, cuisine_type, rating, price_avg
+            FROM restaurants
+            WHERE country = %s
+            ORDER BY rating DESC, name ASC
+            LIMIT %s
+        """
+        
+        restaurants = execute_query(query, (country, int(limit)))
+        
+        if restaurants is None:
+            restaurants = []
+            
+        print(f"✅ Found {len(restaurants)} restaurants for country {country}")
+        
+        return jsonify({"restaurants": restaurants})
+    
+    except Exception as e:
+        print(f"❌ Error getting restaurants by country: {str(e)}")
+        return jsonify({"error": "Failed to retrieve restaurants"}), 500
 
 @app.route("/api/restaurants/autocomplete", methods=["GET"])
 def restaurants_autocomplete():
