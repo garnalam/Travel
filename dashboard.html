@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard - Vietnam Travel</title>
-        <script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
+        <script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
         <script src="https://cdn.tailwindcss.com/3.4.16"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://public.youware.com/users-website-assets/prod/0aebb26b-6df2-4a65-b76c-5567b44e6aa6/e06f1a84e783465fb2c3cbe5c8a497d9.css">
@@ -929,7 +929,7 @@
                                                     <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
                                                         <i class="fas fa-user text-orange-600 text-sm"></i>
                                                     </div>
-                                                    <span id="passengersSelected" class="text-gray-700 font-medium">1 Adult</span>
+                                                    <span id="passengersSelected" class="text-gray-700 font-medium">0 Passengers</span>
                                                 </div>
                                                 <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
                                             </button>
@@ -947,7 +947,7 @@
                                                             <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="adults">
                                                                 <i class="fas fa-minus text-sm text-gray-600"></i>
                                                             </button>
-                                                            <span id="adultsCount" class="w-8 text-center font-medium">1</span>
+                                                            <span id="adultsCount" class="w-8 text-center font-medium">0</span>
                                                             <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="adults">
                                                                 <i class="fas fa-plus text-sm text-gray-600"></i>
                                                             </button>
@@ -964,7 +964,7 @@
                                                             <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="children">
                                                                 <i class="fas fa-minus text-sm text-gray-600"></i>
                                                             </button>
-                                                            <span id="childrenCount" class="w-8 text-center font-medium">1</span>
+                                                            <span id="childrenCount" class="w-8 text-center font-medium">0</span>
                                                             <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="children">
                                                                 <i class="fas fa-plus text-sm text-gray-600"></i>
                                                             </button>
@@ -981,7 +981,7 @@
                                                             <button type="button" class="passenger-btn-minus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="infants">
                                                                 <i class="fas fa-minus text-sm text-gray-600"></i>
                                                             </button>
-                                                            <span id="infantsCount" class="w-8 text-center font-medium">1</span>
+                                                            <span id="infantsCount" class="w-8 text-center font-medium">0</span>
                                                             <button type="button" class="passenger-btn-plus w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50" data-type="infants">
                                                                 <i class="fas fa-plus text-sm text-gray-600"></i>
                                                             </button>
@@ -1198,13 +1198,13 @@
                                                                             <p class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">1</p>
                                                                         </div>
                                                                         <div class="flight-preview-booking__content--info ml-3">
-                                                                            <span class="text-sm text-gray-600" id="departureFlightDate">Thứ Sáu, 29/08/2025</span>
+                                                                            <span class="text-sm text-gray-600" id="departureFlightDate" data-en="Friday, 29/08/2025" data-vi="Thứ sáu, 29/08/2025">Friday, 29/08/2025</span>
                                                                             <div class="flex items-center mt-1">
-                                                                                <p class="text-sm font-medium" id="departureFlightAirline"></p>
+                                                                                <p class="text-sm font-medium" id="departureFlightAirline">Vietnam Airlines</p>
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" class="mx-2">
                                                                                     <path fill="#000" d="M16.434 12.5c.29-.266.32-.898.03-1.164L12.509 7.7a.79.79 0 0 0-1.049 0 .644.644 0 0 0 0 .964l2.69 2.472H4.074c-.41 0-.742.306-.742.682s.332.682.742.682z"></path>
                                                                                 </svg>
-                                                                                <p class="text-sm font-medium" id="departureFlightTime"></p>
+                                                                                <p class="text-sm font-medium" id="departureFlightTime">08:45 - 11:00</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1220,13 +1220,13 @@
                                                                             <p class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">2</p>
                                                                         </div>
                                                                         <div class="flight-preview-booking__content--info ml-3">
-                                                                            <span class="text-sm text-gray-600" id="returnFlightDate">Thứ Tư, 10/09/2025</span>
+                                                                            <span class="text-sm text-gray-600" id="returnFlightDate" data-en="Wednesday, 10/09/2025" data-vi="Thứ Tư, 10/09/2025">Wednesday, 10/09/2025</span>
                                                                             <div class="flex items-center mt-1">
-                                                                                <p class="text-sm font-medium" id="returnFlightAirline"></p>
+                                                                                <p class="text-sm font-medium" id="returnFlightAirline">Vietjet Air</p>
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" class="mx-2">
                                                                                     <path fill="#000" d="M16.434 12.5c.29-.266.32-.898.03-1.164L12.509 7.7a.79.79 0 0 0-1.049 0 .644.644 0 0 0 0 .964l2.69 2.472H4.074c-.41 0-.742.306-.742.682s.332.682.742.682z"></path>
                                                                                 </svg>
-                                                                                <p class="text-sm font-medium" id="returnFlightTime"></p>
+                                                                                <p class="text-sm font-medium" id="returnFlightTime">06:15 - 08:30</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1245,26 +1245,26 @@
                                                             </div>
                                                             <p class="font-bold text-xl text-gray-800" data-en="Total Price:" data-vi="Tổng Tiền:">Total Price:</p>
                                                         </div>
-                                                        <span id="totalFlightPrice" class="font-bold text-2xl bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">0 ₫</span>
+                                                        <span id="totalFlightPrice" class="font-bold text-2xl bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">$1,580</span>
                                                     </div>
                                                     
                                                     <!-- Price breakdown -->
                                                     <div class="space-y-2 mb-6 text-sm">
                                                         <div class="flex justify-between text-gray-600">
                                                             <span data-en="Departure flight" data-vi="Chuyến bay đi">Departure flight</span>
-                                                            <span id="departureFlightPriceDisplay">0 ₫</span>
+                                                            <span id="departureFlightPriceDisplay">$790</span>
                                                         </div>
                                                         <div class="flex justify-between text-gray-600">
                                                             <span data-en="Return flight" data-vi="Chuyến bay về">Return flight</span>
-                                                            <span id="returnFlightPriceDisplay">0 ₫</span>
+                                                            <span id="returnFlightPriceDisplay">$790</span>
                                                         </div>
                                                         <div class="border-t border-purple-200 pt-2 flex justify-between font-semibold text-gray-800">
                                                             <span data-en="Total" data-vi="Tổng cộng">Total</span>
-                                                            <span id="totalPriceDisplay">0 ₫</span>
+                                                            <span id="totalPriceDisplay">$1,580</span>
                                                         </div>
                                                     </div>
                                                     
-                                                    <button id="confirmFlightBookingBtn" aria-label="Chọn vé" class="btn-confirm-pick btn-primary w-full py-4 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:bg-gray-400 disabled:bg-none" disabled>
+                                                    <button id="confirmFlightBookingBtn" aria-label="Select Flights" class="btn-confirm-pick btn-primary w-full py-4 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:bg-gray-400 disabled:bg-none" disabled>
                                                         <div class="flex items-center justify-center">
                                                             <i class="fas fa-check-circle mr-2"></i>
                                                             <span data-en="Confirm Flight Selection" data-vi="Xác Nhận Chọn Vé">Confirm Flight Selection</span>
@@ -2489,9 +2489,9 @@
                 this.selectedDepartureCity = null;
                 this.selectedDestinationCity = null;
                 this.passengerCounts = {
-                    adults: 1,
-                    children: 1,
-                    infants: 1
+                    adults: 0,
+                    children: 0,
+                    infants: 0
                 };
                 this.citiesData = [];
                 this.selectedDepartureFlight = null;
@@ -3012,7 +3012,7 @@
 
             updatePassengerCount(type, delta) {
                 const currentCount = this.passengerCounts[type];
-                const newCount = Math.max(1, currentCount + delta);
+                const newCount = Math.max(0, currentCount + delta);
                 
                 // Set maximum limits
                 const maxLimits = { adults: 9, children: 9, infants: 9 };
@@ -3033,6 +3033,11 @@
                 if (adults > 0) summary += `${adults} Adult${adults > 1 ? 's' : ''}`;
                 if (children > 0) summary += `${summary ? ', ' : ''}${children} Child${children > 1 ? 'ren' : ''}`;
                 if (infants > 0) summary += `${summary ? ', ' : ''}${infants} Infant${infants > 1 ? 's' : ''}`;
+                
+                // If no passengers selected, show default text
+                if (adults === 0 && children === 0 && infants === 0) {
+                    summary = '0 Passengers';
+                }
                 
                 const selectedSpan = document.getElementById('passengersSelected');
                 if (selectedSpan) {
@@ -3289,7 +3294,7 @@
                         <div class="flight-card__content--right">
                             <div class="flight-card__content--right--price text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
                                 <p class="mb-3">
-                                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">${flight.priceVND.toLocaleString()} ₫</span>
+                                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">$${Math.round(flight.priceVND / 25000)}</span>
                                     <span class="text-sm text-blue-600 block font-medium" data-en="/ Guest" data-vi="/ Khách">/ Guest</span>
                                 </p>
                                 <button class="select-flight-btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105" 
@@ -3320,21 +3325,21 @@
                                 <tbody>
                                     <tr class="border-b border-gray-200">
                                         <td class="py-2" data-en="Adult" data-vi="Người lớn">Adult</td>
-                                        <td class="py-2">${(flight.priceVND * 0.75).toLocaleString()} ₫</td>
-                                        <td class="py-2">${(flight.priceVND * 0.25).toLocaleString()} ₫</td>
-                                        <td class="py-2 font-semibold">${flight.priceVND.toLocaleString()} ₫</td>
+                                        <td class="py-2">$${Math.round(flight.priceVND * 0.75 / 25000)}</td>
+                                        <td class="py-2">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
+                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND / 25000)}</td>
                                     </tr>
                                     <tr class="border-b border-gray-200">
                                         <td class="py-2" data-en="Child" data-vi="Trẻ em">Trẻ em</td>
-                                        <td class="py-2">${(flight.priceVND * 0.65).toLocaleString()} ₫</td>
-                                        <td class="py-2">${(flight.priceVND * 0.25).toLocaleString()} ₫</td>
-                                        <td class="py-2 font-semibold">${(flight.priceVND * 0.9).toLocaleString()} ₫</td>
+                                        <td class="py-2">$${Math.round(flight.priceVND * 0.65 / 25000)}</td>
+                                        <td class="py-2">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
+                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND * 0.9 / 25000)}</td>
                                     </tr>
                                     <tr>
                                         <td class="py-2" data-en="Infant" data-vi="Em bé">Em bé</td>
-                                        <td class="py-2">0 ₫</td>
-                                        <td class="py-2">${(flight.priceVND * 0.1).toLocaleString()} ₫</td>
-                                        <td class="py-2 font-semibold">${(flight.priceVND * 0.1).toLocaleString()} ₫</td>
+                                        <td class="py-2">$0</td>
+                                        <td class="py-2">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
+                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -3402,7 +3407,7 @@
                 
                 const totalElement = document.getElementById('totalFlightPrice');
                 if (totalElement) {
-                    totalElement.textContent = totalPrice > 0 ? `${totalPrice.toLocaleString()} ₫` : '0 ₫';
+                    totalElement.textContent = totalPrice > 0 ? `$${Math.round(totalPrice / 25000)}` : '$0';
                 }
             }
 
@@ -3412,7 +3417,7 @@
                     if (this.selectedDepartureFlight && this.selectedReturnFlight) {
                         confirmBtn.disabled = false;
                         confirmBtn.className = 'btn-confirm-pick btn-primary w-full py-3 bg-blue-600 text-white rounded-lg font-medium transition-colors hover:bg-blue-700 cursor-pointer';
-                        confirmBtn.innerHTML = '<span data-en="Confirm Booking" data-vi="Xác nhận đặt vé">Xác nhận đặt vé</span>';
+                        confirmBtn.innerHTML = '<span data-en="Confirm Booking" data-vi="Xác nhận đặt vé">Confirm Booking</span>';
                         
                         confirmBtn.addEventListener('click', () => {
                             this.confirmBooking();
@@ -3420,7 +3425,7 @@
                     } else {
                         confirmBtn.disabled = true;
                         confirmBtn.className = 'btn-confirm-pick btn-primary w-full py-3 bg-gray-400 text-white rounded-lg font-medium transition-colors cursor-not-allowed';
-                        confirmBtn.innerHTML = '<span data-en="Select Flights" data-vi="Chọn vé">Chọn vé</span>';
+                        confirmBtn.innerHTML = '<span data-en="Select Flights" data-vi="Chọn vé">Select Flights</span>';
                     }
                 }
             }
@@ -4009,16 +4014,36 @@
                 this.dailyFormsData.currentDay = dayNumber;
                 
                 if (continueBtn) {
-                    continueBtn.addEventListener('click', () => {
+                    continueBtn.addEventListener('click', async () => {
                         // Save current day preferences before moving
                         this.saveCurrentDayPreferences(dayNumber);
                         
-                        if (dayNumber < totalDays) {
-                            // Move to next day
-                            this.generateDayForm(dayNumber + 1, totalDays, this.dailyFormsData.destinationCountry);
-                        } else {
-                            // Generate tour (last day)
-                            this.generateTour();
+                        // Show loading state
+                        continueBtn.disabled = true;
+                        continueBtn.innerHTML = `
+                            <i class="fas fa-spinner fa-spin mr-2"></i>
+                            <span data-en="Generating Schedule..." data-vi="Đang tạo lịch trình...">Generating Schedule...</span>
+                        `;
+                        
+                        try {
+                            // Generate recommendation for current day
+                            await this.generateDayRecommendation(dayNumber);
+                            
+                            // Note: displayDaySchedule now handles the transition to schedule view
+                            // No need to manually move to next day here
+                            
+                        } catch (error) {
+                            console.error('Error generating day recommendation:', error);
+                            // Restore button state
+                            continueBtn.disabled = false;
+                            const isLastDay = dayNumber === totalDays;
+                            continueBtn.innerHTML = `
+                                <span data-en="${isLastDay ? 'Generate Tour' : 'Continue'}" data-vi="${isLastDay ? 'Tạo Tour' : 'Tiếp tục'}">${isLastDay ? 'Generate Tour' : 'Continue'}</span>
+                                <i class="fas fa-${isLastDay ? 'magic' : 'arrow-right'} ml-2"></i>
+                            `;
+                            
+                            // Show error message
+                            this.showErrorMessage('Failed to generate day schedule. Please try again.');
                         }
                     });
                 }
@@ -4200,29 +4225,483 @@
                 });
             }
 
-            generateTour() {
-                console.log('Generating tour with preferences:', this.dailyFormsData.preferences);
-                alert('Tour generation would be implemented here with all the collected preferences!');
+            async generateDayRecommendation(dayNumber) {
+                console.log(`🎯 Generating recommendation for Day ${dayNumber}`);
                 
-                // Here you would normally send the preferences to the backend for tour generation
-                // Example API call:
-                /*
-                fetch('/api/generate-tour', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        preferences: this.dailyFormsData.preferences,
-                        totalDays: this.dailyFormsData.totalDays,
-                        destinationCountry: this.dailyFormsData.destinationCountry,
-                        flightDetails: {
-                            departure: this.selectedDepartureFlight,
-                            return: this.selectedReturnFlight
+                // Collect all liked IDs from current day
+                const currentDayPrefs = this.dailyFormsData.preferences[dayNumber] || {};
+                
+                const likedIds = {
+                    activity_ids: [],
+                    hotel_ids: [],
+                    restaurant_ids: [],
+                    transport_ids: []
+                };
+                
+                // Extract liked IDs from preferences
+                Object.keys(currentDayPrefs).forEach(type => {
+                    Object.keys(currentDayPrefs[type]).forEach(id => {
+                        if (currentDayPrefs[type][id] === 'like') {
+                            if (type === 'activity') {
+                                likedIds.activity_ids.push(id);
+                            } else if (type === 'hotel') {
+                                likedIds.hotel_ids.push(id);
+                            } else if (type === 'restaurant') {
+                                likedIds.restaurant_ids.push(id);
+                            } else if (type === 'transport') {
+                                likedIds.transport_ids.push(id);
+                            }
                         }
-                    })
+                    });
                 });
-                */
+                
+                // Prepare request payload
+                const requestPayload = {
+                    user_id: null,
+                    start_city_id: this.selectedDepartureCity?.city_id || 1704413791,
+                    destination_city_id: this.selectedDestinationCity?.city_id || 1704774326,
+                    hotel_ids: likedIds.hotel_ids,
+                    activity_ids: likedIds.activity_ids,
+                    restaurant_ids: likedIds.restaurant_ids,
+                    transport_ids: likedIds.transport_ids,
+                    guest_count: this.passengerCounts.adults + this.passengerCounts.children,
+                    duration_days: 1, // Single day recommendation
+                    target_budget: 1111 // Default budget, could be made configurable
+                };
+                
+                console.log('🔍 Request payload:', requestPayload);
+                
+                // Call recommendation API using the existing generate-tour endpoint
+                try {
+                    const response = await fetch('/api/generate-tour', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestPayload)
+                    });
+                    
+                    const result = await response.json();
+                    console.log('📅 Day recommendation result:', result);
+                    
+                    // Check if API returned success
+                    if (!result.success) {
+                        throw new Error(result.error || 'API call failed');
+                    }
+                    
+                    // Display schedule result using the data field
+                    this.displayDaySchedule(dayNumber, result.data);
+                } catch (error) {
+                    console.error('Error calling recommendation API:', error);
+                    throw error;
+                }
+            }
+
+            displayDaySchedule(dayNumber, tourResult) {
+                if (!tourResult.schedule || tourResult.schedule.length === 0) {
+                    console.error('No schedule data received');
+                    return;
+                }
+                
+                // Find the correct day from schedule array based on day property
+                const daySchedule = tourResult.schedule.find(day => day.day === 1) || tourResult.schedule[0];
+                const activities = daySchedule.activities || [];
+                
+                console.log(`📅 Displaying schedule for Day ${dayNumber} (showing day ${daySchedule.day} from API response)`);
+                
+                const isLastDay = dayNumber === this.dailyFormsData.totalDays;
+                const currentDate = new Date(document.getElementById('v2DepartureDate').value);
+                currentDate.setDate(currentDate.getDate() + dayNumber - 1);
+                const dateString = currentDate.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                // Create complete schedule view that replaces the form
+                const scheduleViewHtml = `
+                    <div id="dayScheduleView${dayNumber}" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                        <!-- Day Header -->
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg mr-4">
+                                        <span class="text-white font-bold text-lg">${dayNumber}</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-2xl font-bold text-gray-800" data-en="Day ${dayNumber} - Schedule" data-vi="Ngày ${dayNumber} - Lịch Trình">Day ${dayNumber} - Schedule</h4>
+                                        <p class="text-gray-600" data-en="${dateString}" data-vi="${dateString}">${dateString}</p>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full font-medium">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        <span data-en="Completed" data-vi="Hoàn thành">Completed</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Generated Schedule -->
+                        <div class="mb-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-calendar-check text-white"></i>
+                                </div>
+                                <h5 class="text-xl font-bold text-gray-800">
+                                    <span data-en="Your Personalized Schedule" data-vi="Lịch Trình Cá Nhân Của Bạn">Your Personalized Schedule</span>
+                                </h5>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                ${activities.map((activity, index) => `
+                                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-${this.getActivityIcon(activity.type)} text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center mb-1">
+                                                <span class="text-sm font-medium text-blue-600 mr-2">${activity.start_time} - ${activity.end_time}</span>
+                                                <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">${activity.type}</span>
+                                            </div>
+                                            <h6 class="font-semibold text-gray-800">${activity.place_name}</h6>
+                                            <p class="text-sm text-gray-600">Cost: $${activity.cost}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <div class="mt-4 p-3 bg-blue-100 rounded-lg">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-blue-800">
+                                        <span data-en="Total Day Cost:" data-vi="Tổng Chi Phí Ngày:">Total Day Cost:</span>
+                                    </span>
+                                    <span class="font-bold text-blue-900">$${activities.reduce((sum, activity) => sum + (activity.cost || 0), 0).toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="flex justify-between items-center pt-6 border-t border-gray-100">
+                            <div class="flex space-x-3">
+                                <button type="button" id="editDay${dayNumber}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                                    <i class="fas fa-edit mr-2"></i>
+                                    <span data-en="Edit Preferences" data-vi="Sửa Sở Thích">Edit Preferences</span>
+                                </button>
+                                ${dayNumber > 1 ? `
+                                    <button type="button" id="previousSchedule${dayNumber}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                                        <i class="fas fa-chevron-left mr-2"></i>
+                                        <span data-en="Previous Day" data-vi="Ngày trước">Previous Day</span>
+                                    </button>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="flex-1"></div>
+                            
+                            <button type="button" id="proceedDay${dayNumber}" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition duration-300 font-bold shadow-lg">
+                                <span data-en="${isLastDay ? 'Generate Final Tour' : 'Continue to Next Day'}" data-vi="${isLastDay ? 'Tạo Tour Cuối Cùng' : 'Tiếp tục Ngày Tiếp Theo'}">${isLastDay ? 'Generate Final Tour' : 'Continue to Next Day'}</span>
+                                <i class="fas fa-${isLastDay ? 'magic' : 'arrow-right'} ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Replace the current day form with schedule view
+                const formContainer = document.getElementById('dailyFormContainer');
+                if (formContainer) {
+                    formContainer.innerHTML = scheduleViewHtml;
+                    console.log(`✅ Day ${dayNumber} form replaced with schedule view`);
+                    
+                    // Setup navigation for schedule view
+                    this.setupScheduleNavigation(dayNumber);
+                } else {
+                    console.error(`❌ Daily form container not found`);
+                }
+                
+                // Store schedule data for later use
+                if (!this.dailyFormsData.generatedSchedules) {
+                    this.dailyFormsData.generatedSchedules = {};
+                }
+                this.dailyFormsData.generatedSchedules[dayNumber] = tourResult;
+            }
+
+            setupScheduleNavigation(dayNumber) {
+                const editBtn = document.getElementById(`editDay${dayNumber}`);
+                const proceedBtn = document.getElementById(`proceedDay${dayNumber}`);
+                const previousScheduleBtn = document.getElementById(`previousSchedule${dayNumber}`);
+                
+                // Edit preferences button
+                if (editBtn) {
+                    editBtn.addEventListener('click', () => {
+                        // Go back to form view for this day
+                        this.generateDayForm(dayNumber, this.dailyFormsData.totalDays, this.dailyFormsData.destinationCountry);
+                    });
+                }
+                
+                // Proceed button (Continue to next day or Generate Final Tour)
+                if (proceedBtn) {
+                    proceedBtn.addEventListener('click', () => {
+                        if (dayNumber === this.dailyFormsData.totalDays) {
+                            // Last day - Generate Final Tour
+                            this.generateFinalTour();
+                        } else {
+                            // Continue to next day
+                            this.generateDayForm(dayNumber + 1, this.dailyFormsData.totalDays, this.dailyFormsData.destinationCountry);
+                        }
+                    });
+                }
+                
+                // Previous schedule button
+                if (previousScheduleBtn) {
+                    previousScheduleBtn.addEventListener('click', () => {
+                        // Show previous day's schedule if it exists
+                        if (this.dailyFormsData.generatedSchedules[dayNumber - 1]) {
+                            this.showDaySchedule(dayNumber - 1);
+                        } else {
+                            // Go back to previous day form
+                            this.generateDayForm(dayNumber - 1, this.dailyFormsData.totalDays, this.dailyFormsData.destinationCountry);
+                        }
+                    });
+                }
+            }
+            
+            showDaySchedule(dayNumber) {
+                // Show an existing schedule for a specific day
+                const scheduleData = this.dailyFormsData.generatedSchedules[dayNumber];
+                if (scheduleData) {
+                    this.displayDaySchedule(dayNumber, scheduleData);
+                }
+            }
+            
+            generateFinalTour() {
+                console.log('🎉 Generating final tour with all daily schedules...');
+                
+                // Collect all generated schedules
+                const allSchedules = this.dailyFormsData.generatedSchedules;
+                const totalDays = Object.keys(allSchedules).length;
+                
+                if (totalDays !== this.dailyFormsData.totalDays) {
+                    console.error('Not all days have been completed');
+                    this.showErrorMessage('Please complete all days before generating final tour');
+                    return;
+                }
+                
+                // Show final tour generation loading
+                const formContainer = document.getElementById('dailyFormContainer');
+                if (formContainer) {
+                    formContainer.innerHTML = `
+                        <div class="text-center py-16">
+                            <div class="loading-spinner mx-auto mb-4"></div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                                <span data-en="Generating Your Complete Tour..." data-vi="Đang Tạo Tour Hoàn Chỉnh...">Generating Your Complete Tour...</span>
+                            </h3>
+                            <p class="text-gray-600">
+                                <span data-en="Combining all your daily preferences into the perfect itinerary" data-vi="Kết hợp tất cả sở thích hàng ngày thành lịch trình hoàn hảo">Combining all your daily preferences into the perfect itinerary</span>
+                            </p>
+                        </div>
+                    `;
+                }
+                
+                // Simulate final tour generation (replace with actual API call)
+                setTimeout(() => {
+                    this.displayFinalTour(allSchedules);
+                }, 3000);
+            }
+            
+            displayFinalTour(allSchedules) {
+                console.log('🎊 Displaying final complete tour');
+                
+                const totalCost = Object.values(allSchedules).reduce((sum, schedule) => {
+                    return sum + (schedule.total_estimated_cost || 0);
+                }, 0);
+                
+                const formContainer = document.getElementById('dailyFormContainer');
+                if (formContainer) {
+                    let scheduleHtml = '';
+                    
+                    Object.keys(allSchedules).sort((a, b) => parseInt(a) - parseInt(b)).forEach(day => {
+                        const schedule = allSchedules[day];
+                        const daySchedule = schedule.schedule?.[0] || {};
+                        const activities = daySchedule.activities || [];
+                        
+                        scheduleHtml += `
+                            <div class="mb-6 p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                    <span class="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm mr-3">${day}</span>
+                                    Day ${day}
+                                </h4>
+                                <div class="space-y-2">
+                                    ${activities.map(activity => `
+                                        <div class="flex items-center p-2 bg-gray-50 rounded-lg">
+                                            <span class="text-sm font-medium text-blue-600 mr-3 w-20">${activity.start_time}</span>
+                                            <span class="flex-1 text-gray-800">${activity.place_name}</span>
+                                            <span class="text-sm text-gray-600">$${activity.cost}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    formContainer.innerHTML = `
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                            <div class="text-center mb-8">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-magic text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+                                    <span data-en="Your Complete Tour Itinerary" data-vi="Lịch Trình Tour Hoàn Chỉnh">Your Complete Tour Itinerary</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-en="A personalized ${this.dailyFormsData.totalDays}-day journey crafted just for you" data-vi="Hành trình ${this.dailyFormsData.totalDays} ngày được thiết kế riêng cho bạn">A personalized ${this.dailyFormsData.totalDays}-day journey crafted just for you</span>
+                                </p>
+                            </div>
+                            
+                            ${scheduleHtml}
+                            
+                            <div class="mt-8 p-6 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-200">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-xl font-bold text-gray-800">
+                                        <span data-en="Tour Summary" data-vi="Tóm Tắt Tour">Tour Summary</span>
+                                    </h4>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">${this.dailyFormsData.totalDays}</div>
+                                        <div class="text-sm text-gray-600">
+                                            <span data-en="Days" data-vi="Ngày">Days</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">$${totalCost.toFixed(2)}</div>
+                                        <div class="text-sm text-gray-600">
+                                            <span data-en="Total Cost" data-vi="Tổng Chi Phí">Total Cost</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">${Object.values(allSchedules).reduce((sum, schedule) => sum + (schedule.schedule?.[0]?.activities?.length || 0), 0)}</div>
+                                        <div class="text-sm text-gray-600">
+                                            <span data-en="Activities" data-vi="Hoạt Động">Activities</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-center space-x-4 mt-8">
+                                <button class="px-8 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                                    <i class="fas fa-download mr-2"></i>
+                                    <span data-en="Download PDF" data-vi="Tải PDF">Download PDF</span>
+                                </button>
+                                <button class="px-8 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition duration-300 font-medium">
+                                    <i class="fas fa-share mr-2"></i>
+                                    <span data-en="Share Tour" data-vi="Chia Sẻ Tour">Share Tour</span>
+                                </button>
+                                <button class="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition duration-300 font-bold shadow-lg">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span data-en="Book This Tour" data-vi="Đặt Tour Này">Book This Tour</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            getActivityIcon(type) {
+                const iconMap = {
+                    'activity': 'map-marker-alt',
+                    'restaurant': 'utensils',
+                    'hotel': 'bed',
+                    'transport': 'car'
+                };
+                return iconMap[type] || 'map-marker-alt';
+            }
+
+            showErrorMessage(message) {
+                // Simple error display - could be enhanced with a proper notification system
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'mt-4 p-4 bg-red-100 border border-red-300 rounded-lg text-red-700';
+                errorDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                
+                // Insert error message
+                const currentDay = this.dailyFormsData?.currentDay || 1;
+                const dayContainer = document.getElementById(`dayForm${currentDay}`);
+                if (dayContainer) {
+                    const continueBtn = document.getElementById(`continueDay${currentDay}`);
+                    if (continueBtn) {
+                        continueBtn.parentNode.insertBefore(errorDiv, continueBtn);
+                        
+                        // Auto-remove after 5 seconds
+                        setTimeout(() => {
+                            errorDiv.remove();
+                        }, 5000);
+                    }
+                }
+            }
+
+            generateTour() {
+                console.log('Generating complete tour with preferences:', this.dailyFormsData.preferences);
+                console.log('Generated schedules for each day:', this.dailyFormsData.generatedSchedules);
+                
+                // Display final tour summary with all generated schedules
+                this.displayFinalTourSummary();
+            }
+
+            displayFinalTourSummary() {
+                const summaryHtml = `
+                    <div class="mt-8 p-6 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-magic text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">
+                                <span data-en="Complete Tour Generated!" data-vi="Tour Hoàn Chỉnh Đã Được Tạo!">Complete Tour Generated!</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 mb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                                <span data-en="Tour Summary" data-vi="Tóm Tắt Tour">Tour Summary</span>
+                            </h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-gray-600">From:</span> 
+                                    <span class="font-medium">${this.selectedDepartureCity?.name || 'Unknown'}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">To:</span> 
+                                    <span class="font-medium">${this.selectedDestinationCity?.name || 'Unknown'}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Duration:</span> 
+                                    <span class="font-medium">${this.dailyFormsData?.totalDays || 0} days</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Guests:</span> 
+                                    <span class="font-medium">${this.passengerCounts.adults + this.passengerCounts.children} people</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 text-center">
+                            <span data-en="Your personalized tour has been generated based on your preferences for each day." data-vi="Tour cá nhân của bạn đã được tạo dựa trên sở thích của bạn cho từng ngày.">
+                                Your personalized tour has been generated based on your preferences for each day.
+                            </span>
+                        </p>
+                    </div>
+                `;
+                
+                const dailyPreferencesSection = document.getElementById('dailyPreferencesSection');
+                if (dailyPreferencesSection) {
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.innerHTML = summaryHtml;
+                    dailyPreferencesSection.appendChild(summaryDiv);
+                }
             }
 
             toggleFlightsList(type) {
