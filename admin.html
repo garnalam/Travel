@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Vietnam Travel</title>
-    <script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
+    <script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Chart.js for analytics charts -->
@@ -240,7 +240,7 @@
                             </div>
                             <div>
                                 <button id="refreshUsers" class="admin-btn w-full">
-                                    <i class="fas fa-sync-alt mr-2"></i>Làm mới
+                                    <i class="fas fa-sync-alt mr-2"></i><span data-en="Refresh" data-vi="Làm mới">Làm mới</span>
                                 </button>
                             </div>
                         </div>
@@ -248,7 +248,7 @@
                         <!-- Users Table -->
                         <div class="bg-white rounded-xl border overflow-hidden">
                             <div class="p-4 bg-gray-50 border-b">
-                                <h4 class="font-semibold text-gray-800">Danh Sách Người Dùng</h4>
+                                <h4 class="font-semibold text-gray-800" data-en="User List" data-vi="Danh Sách Người Dùng">Danh Sách Người Dùng</h4>
                             </div>
                             <div class="overflow-x-auto">
                                 <table class="w-full" id="usersTable">
@@ -306,31 +306,31 @@
                                 <div class="flex items-center justify-between mb-6">
                                     <h4 class="text-xl font-semibold text-gray-800 flex items-center">
                                         <i class="fas fa-route mr-3 text-green-600"></i>
-                                        Thống Kê Tour
+                                        <span data-en="Tour Statistics" data-vi="Thống Kê Tour">Thống Kê Tour</span>
                                     </h4>
                                     <button onclick="loadTourStatistics()" 
                                         class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                                        <i class="fas fa-sync-alt mr-2"></i>Làm mới
+                                        <i class="fas fa-sync-alt mr-2"></i><span data-en="Refresh" data-vi="Làm mới">Làm mới</span>
                                     </button>
                                 </div>
                                 
                                 <!-- Filters Section -->
                                 <div class="filter-section">
                                     <h5 class="font-semibold text-gray-700 mb-4 flex items-center">
-                                        <i class="fas fa-filter mr-2"></i>Bộ Lọc
+                                        <i class="fas fa-filter mr-2"></i><span data-en="Filters" data-vi="Bộ Lọc">Bộ Lọc</span>
                                     </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Quốc gia</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Country" data-vi="Quốc gia">Quốc gia</label>
                                             <select id="tourCountryFilter" class="w-full p-3 border rounded-xl bg-white">
-                                                <option value="">Tất cả quốc gia</option>
+                                                <option value="" data-en="All countries" data-vi="Tất cả quốc gia">Tất cả quốc gia</option>
                                                 <!-- Dropdown sẽ được điền động bằng dữ liệu từ database -->
                                             </select>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Mức giá (USD)</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Price Range (USD)" data-vi="Mức giá (USD)">Mức giá (USD)</label>
                                             <select id="tourPriceFilter" class="w-full p-3 border rounded-xl bg-white">
-                                                <option value="">Tất cả mức giá</option>
+                                                <option value="" data-en="All price ranges" data-vi="Tất cả mức giá">Tất cả mức giá</option>
                                                 <option value="0-500">$0 - $500</option>
                                                 <option value="500-1000">$500 - $1,000</option>
                                                 <option value="1000-2000">$1,000 - $2,000</option>
@@ -339,9 +339,9 @@
                                             </select>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Thao tác</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Action" data-vi="Thao tác">Thao tác</label>
                                             <button onclick="applyTourFilters()" class="w-full px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
-                                                <i class="fas fa-search mr-2"></i>Áp dụng lọc
+                                                <i class="fas fa-search mr-2"></i><span data-en="Apply Filters" data-vi="Áp dụng lọc">Áp dụng lọc</span>
                                             </button>
                                         </div>
                                     </div>
@@ -350,28 +350,28 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                                     <div class="bg-green-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-green-600" id="totalTours">-</div>
-                                        <div class="text-sm text-gray-600">Tổng tour</div>
+                                        <div class="text-sm text-gray-600" data-en="Total tours" data-vi="Tổng tour">Tổng tour</div>
                                     </div>
                                     <div class="bg-blue-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-blue-600" id="totalOptions">-</div>
-                                        <div class="text-sm text-gray-600">Tổng tùy chọn tour</div>
+                                        <div class="text-sm text-gray-600" data-en="Total tour options" data-vi="Tổng tùy chọn tour">Tổng tùy chọn tour</div>
                                     </div>
                                     <div class="bg-orange-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-orange-600" id="avgCost">-</div>
-                                        <div class="text-sm text-gray-600">Chi phí tour trung bình</div>
+                                        <div class="text-sm text-gray-600" data-en="Average tour cost" data-vi="Chi phí tour trung bình">Chi phí tour trung bình</div>
                                     </div>
                                 </div>
                                 
                                 <!-- Top Cities Chart -->
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                                     <div class="bg-gray-50 p-4 rounded-lg">
-                                        <h5 class="font-semibold text-gray-700 mb-3">Top 5 Thành Phố Phổ Biến</h5>
+                                        <h5 class="font-semibold text-gray-700 mb-3" data-en="Top 5 Popular Cities" data-vi="Top 5 Thành Phố Phổ Biến">Top 5 Thành Phố Phổ Biến</h5>
                                         <div class="chart-container" style="position: relative; height: 250px; width: 100%;">
                                             <canvas id="topCitiesChart"></canvas>
                                         </div>
                                     </div>
                                     <div class="bg-gray-50 p-4 rounded-lg">
-                                        <h5 class="font-semibold text-gray-700 mb-3">Phân Bố Chi Phí Tour</h5>
+                                        <h5 class="font-semibold text-gray-700 mb-3" data-en="Tour Cost Distribution" data-vi="Phân Bố Chi Phí Tour">Phân Bố Chi Phí Tour</h5>
                                         <div class="chart-container" style="position: relative; height: 250px; width: 100%;">
                                             <canvas id="costDistributionChart"></canvas>
                                         </div>
@@ -384,31 +384,31 @@
                                 <div class="flex items-center justify-between mb-6">
                                     <h4 class="text-xl font-semibold text-gray-800 flex items-center">
                                         <i class="fas fa-map-marked-alt mr-3 text-purple-600"></i>
-                                        Hoạt Động & Điểm Đến
+                                        <span data-en="Activities & Destinations" data-vi="Hoạt Động & Điểm Đến">Hoạt Động & Điểm Đến</span>
                                     </h4>
                                     <button onclick="loadActivityStats()" 
                                         class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                                        <i class="fas fa-sync-alt mr-2"></i>Làm mới
+                                        <i class="fas fa-sync-alt mr-2"></i><span data-en="Refresh" data-vi="Làm mới">Làm mới</span>
                                     </button>
                                 </div>
                                 
                                 <!-- Activity Filters Section -->
                                 <div class="filter-section">
                                     <h5 class="font-semibold text-gray-700 mb-4 flex items-center">
-                                        <i class="fas fa-filter mr-2"></i>Bộ Lọc Hoạt Động
+                                        <i class="fas fa-filter mr-2"></i><span data-en="Activity Filters" data-vi="Bộ Lọc Hoạt Động">Bộ Lọc Hoạt Động</span>
                                     </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Quốc gia</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Country" data-vi="Quốc gia">Quốc gia</label>
                                             <select id="activityCountryFilter" class="w-full p-3 border rounded-xl bg-white">
-                                                <option value="">Tất cả quốc gia</option>
+                                                <option value="" data-en="All countries" data-vi="Tất cả quốc gia">Tất cả quốc gia</option>
                                                 <!-- Dropdown sẽ được điền động bằng dữ liệu từ database -->
                                             </select>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Mức giá (USD)</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Price Range (USD)" data-vi="Mức giá (USD)">Mức giá (USD)</label>
                                             <select id="activityPriceFilter" class="w-full p-3 border rounded-xl bg-white">
-                                                <option value="">Tất cả mức giá</option>
+                                                <option value="" data-en="All price ranges" data-vi="Tất cả mức giá">Tất cả mức giá</option>
                                                 <option value="0-50">$0 - $50</option>
                                                 <option value="50-100">$50 - $100</option>
                                                 <option value="100-200">$100 - $200</option>
@@ -416,9 +416,9 @@
                                             </select>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Thao tác</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Action" data-vi="Thao tác">Thao tác</label>
                                             <button onclick="applyActivityFilters()" class="w-full px-4 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors">
-                                                <i class="fas fa-search mr-2"></i>Áp dụng lọc
+                                                <i class="fas fa-search mr-2"></i><span data-en="Apply Filters" data-vi="Áp dụng lọc">Áp dụng lọc</span>
                                             </button>
                                         </div>
                                     </div>
@@ -427,28 +427,28 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                                     <div class="bg-purple-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-purple-600" id="totalActivities">-</div>
-                                        <div class="text-sm text-gray-600">Tổng hoạt động</div>
+                                        <div class="text-sm text-gray-600" data-en="Total activities" data-vi="Tổng hoạt động">Tổng hoạt động</div>
                                     </div>
                                     <div class="bg-blue-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-blue-600" id="totalCities">-</div>
-                                        <div class="text-sm text-gray-600">Tổng thành phố</div>
+                                        <div class="text-sm text-gray-600" data-en="Total cities" data-vi="Tổng thành phố">Tổng thành phố</div>
                                     </div>
                                     <div class="bg-green-50 p-4 rounded-lg">
                                         <div class="text-2xl font-bold text-green-600" id="avgRating">-</div>
-                                        <div class="text-sm text-gray-600">Đánh giá trung bình</div>
+                                        <div class="text-sm text-gray-600" data-en="Average rating" data-vi="Đánh giá trung bình">Đánh giá trung bình</div>
                                     </div>
                                 </div>
                                 
                                 <!-- Activity Type & Rating Charts -->
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                     <div class="bg-gray-50 p-4 rounded-lg">
-                                        <h5 class="font-semibold text-gray-700 mb-3">Phân Bố Loại Hoạt Động</h5>
+                                        <h5 class="font-semibold text-gray-700 mb-3" data-en="Activity Type Distribution" data-vi="Phân Bố Loại Hoạt Động">Phân Bố Loại Hoạt Động</h5>
                                         <div class="chart-container" style="position: relative; height: 250px; width: 100%;">
                                             <canvas id="activityTypeChart"></canvas>
                                         </div>
                                     </div>
                                     <div class="bg-gray-50 p-4 rounded-lg">
-                                        <h5 class="font-semibold text-gray-700 mb-3">Top 5 Hoạt Động Được Đánh Giá Cao Nhất</h5>
+                                        <h5 class="font-semibold text-gray-700 mb-3" data-en="Top 5 Highest Rated Activities" data-vi="Top 5 Hoạt Động Được Đánh Giá Cao Nhất">Top 5 Hoạt Động Được Đánh Giá Cao Nhất</h5>
                                         <div class="chart-container" style="position: relative; height: 250px; width: 100%;">
                                             <canvas id="topRatedActivitiesChart"></canvas>
                                         </div>
@@ -600,7 +600,13 @@
                 return;
             }
             
-            tbody.innerHTML = users.map(user => `
+            tbody.innerHTML = users.map(user => {
+                const editText = languageManager.currentLanguage === 'en' ? 'Edit' : 'Sửa';
+                const deleteText = languageManager.currentLanguage === 'en' ? 'Delete' : 'Xóa';
+                const adminText = languageManager.currentLanguage === 'en' ? 'Admin' : 'Admin';
+                const userText = languageManager.currentLanguage === 'en' ? 'User' : 'User';
+                
+                return `
                 <tr class="hover:bg-gray-50 transition">
                     <td class="p-4">${user.user_id}</td>
                     <td class="p-4">
@@ -613,23 +619,24 @@
                         <span class="px-2 py-1 rounded-full text-xs font-medium ${
                             user.is_admin ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800'
                         }">
-                            ${user.is_admin ? 'Admin' : 'User'}
+                            ${user.is_admin ? adminText : userText}
                         </span>
                     </td>
                     <td class="p-4">
                         <div class="flex space-x-2">
                             <button onclick="editUser('${user.user_id}')" 
                                     class="px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600">
-                                <i class="fas fa-edit mr-1"></i>Sửa
+                                <i class="fas fa-edit mr-1"></i>${editText}
                             </button>
                             <button onclick="deleteUser('${user.user_id}', '${user.name}')" 
                                     class="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">
-                                <i class="fas fa-trash mr-1"></i>Xóa
+                                <i class="fas fa-trash mr-1"></i>${deleteText}
                             </button>
                         </div>
                     </td>
                 </tr>
-            `).join('');
+                `;
+            }).join('');
         }
         
         function updateUserPagination(pagination) {
@@ -639,7 +646,11 @@
             const start = (pagination.current_page - 1) * pagination.limit + 1;
             const end = Math.min(start + pagination.limit - 1, pagination.total_users);
             
-            info.textContent = `Hiển thị ${start} - ${end} của ${pagination.total_users} người dùng`;
+            const showingText = languageManager.currentLanguage === 'en' ? 'Showing' : 'Hiển thị';
+            const ofText = languageManager.currentLanguage === 'en' ? 'of' : 'của';
+            const usersText = languageManager.currentLanguage === 'en' ? 'users' : 'người dùng';
+            
+            info.textContent = `${showingText} ${start} - ${end} ${ofText} ${pagination.total_users} ${usersText}`;
             
             // Generate pagination buttons
             let paginationHTML = '';
@@ -1082,6 +1093,261 @@
             loadActivityStats(country, price);
         }
         
+        // ==================== LANGUAGE SYNCHRONIZATION SYSTEM ====================
+        
+        // Import getUserPreferences function từ script.js
+        function getUserPreferences() {
+            try {
+                const storedPrefs = localStorage.getItem('vietnam_travel_ui_config');
+                if (storedPrefs) {
+                    return JSON.parse(storedPrefs);
+                }
+            } catch (error) {
+                console.warn('⚠️ Error reading localStorage, falling back to cookie', error);
+            }
+            
+            // Try cookie fallback
+            const prefsCookie = getCookie('vietnam_travel_ui_config');
+            if (prefsCookie) {
+                try {
+                    return JSON.parse(decodeURIComponent(prefsCookie));
+                } catch (error) {
+                    console.warn('🍪 Invalid preferences cookie');
+                }
+            }
+            
+            return { language: 'en', currency: 'USD' };
+        }
+        
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.trim().split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+        
+        class LanguageManager {
+            constructor() {
+                this.currentLanguage = 'en';
+                this.supportedLanguages = ['en', 'vi'];
+                this.init();
+            }
+            
+            init() {
+                // Load saved language preference on startup
+                this.loadLanguagePreference();
+                
+                // Listen for language changes from other tabs/windows
+                window.addEventListener('storage', (e) => {
+                    if (e.key === 'selectedLanguage' && e.newValue) {
+                        console.log('🌐 Language changed in another tab:', e.newValue);
+                        this.changeLanguage(e.newValue, false); // Don't save again
+                    }
+                });
+                
+                // Add language toggle in admin panel
+                this.addLanguageToggle();
+            }
+            
+            loadLanguagePreference() {
+                // Try to get from localStorage first
+                const savedLanguage = localStorage.getItem('selectedLanguage');
+                if (savedLanguage && this.supportedLanguages.includes(savedLanguage)) {
+                    this.changeLanguage(savedLanguage, false);
+                    return;
+                }
+                
+                // Fallback to checking cookies (for compatibility with dashboard)
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.trim().split('=');
+                    if (name === 'selectedLanguage' && value && this.supportedLanguages.includes(value)) {
+                        this.changeLanguage(value, false);
+                        return;
+                    }
+                }
+                
+                // Default to Vietnamese
+                this.changeLanguage('vi', false);
+            }
+            
+            changeLanguage(language, savePreference = true) {
+                if (!this.supportedLanguages.includes(language)) {
+                    console.warn('Unsupported language:', language);
+                    return;
+                }
+                
+                const oldLanguage = this.currentLanguage;
+                this.currentLanguage = language;
+                
+                console.log(`🌐 Changing language from ${oldLanguage} to ${language}`);
+                
+                // Update all elements with data-en and data-vi attributes
+                this.updateElementsText();
+                
+                // Update language indicator
+                this.updateLanguageToggle();
+                
+                // Save preference if requested
+                if (savePreference) {
+                    this.saveLanguagePreference(language);
+                }
+                
+                // Update document language
+                document.documentElement.lang = language;
+                
+                showNotification(
+                    language === 'en' ? 'Language changed to English' : 'Đã chuyển sang tiếng Việt', 
+                    'success'
+                );
+            }
+            
+            updateElementsText() {
+                // Update all elements with data attributes
+                document.querySelectorAll('[data-en][data-vi]').forEach(element => {
+                    const text = element.getAttribute(`data-${this.currentLanguage}`);
+                    if (text) {
+                        element.textContent = text;
+                    }
+                });
+                
+                // Update placeholders
+                document.querySelectorAll('[data-en-placeholder][data-vi-placeholder]').forEach(element => {
+                    const placeholder = element.getAttribute(`data-${this.currentLanguage}-placeholder`);
+                    if (placeholder) {
+                        element.setAttribute('placeholder', placeholder);
+                    }
+                });
+                
+                // Update specific admin elements
+                this.updateAdminSpecificElements();
+            }
+            
+            updateAdminSpecificElements() {
+                // Update table headers
+                const tableHeaders = {
+                    'en': {
+                        'ID': 'ID',
+                        'Họ Tên': 'Name', 
+                        'Email': 'Email',
+                        'Số ĐT': 'Phone',
+                        'Vai Trò': 'Role',
+                        'Thao Tác': 'Actions'
+                    },
+                    'vi': {
+                        'ID': 'ID',
+                        'Name': 'Họ Tên',
+                        'Email': 'Email', 
+                        'Phone': 'Số ĐT',
+                        'Role': 'Vai Trò',
+                        'Actions': 'Thao Tác'
+                    }
+                };
+                
+                // Update user table headers
+                const userTableHeaders = document.querySelectorAll('#usersTable th');
+                const headerTexts = this.currentLanguage === 'en' ? 
+                    ['ID', 'Name', 'Email', 'Phone', 'Role', 'Actions'] :
+                    ['ID', 'Họ Tên', 'Email', 'Số ĐT', 'Vai Trò', 'Thao Tác'];
+                    
+                userTableHeaders.forEach((header, index) => {
+                    if (headerTexts[index]) {
+                        header.textContent = headerTexts[index];
+                    }
+                });
+                
+                // Update filter placeholders
+                const userSearch = document.getElementById('userSearch');
+                if (userSearch) {
+                    userSearch.placeholder = this.currentLanguage === 'en' ? 
+                        'Search by name, email...' : 
+                        'Tìm kiếm theo tên, email...';
+                }
+                
+                // Update dropdown options
+                this.updateDropdownOptions();
+            }
+            
+            updateDropdownOptions() {
+                // Update role filter
+                const roleFilter = document.getElementById('roleFilter');
+                if (roleFilter) {
+                    const options = roleFilter.querySelectorAll('option');
+                    const roleTexts = this.currentLanguage === 'en' ? 
+                        ['All roles', 'Admin', 'Regular user'] :
+                        ['Tất cả vai trò', 'Admin', 'User thường'];
+                    
+                    options.forEach((option, index) => {
+                        if (roleTexts[index]) {
+                            option.textContent = roleTexts[index];
+                        }
+                    });
+                }
+            }
+            
+            saveLanguagePreference(language) {
+                // Save to localStorage for immediate access
+                localStorage.setItem('selectedLanguage', language);
+                
+                // Save to cookie for cross-page compatibility
+                const expires = new Date();
+                expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 year
+                document.cookie = `selectedLanguage=${language}; expires=${expires.toUTCString()}; path=/`;
+                
+                console.log('💾 Language preference saved:', language);
+            }
+            
+            addLanguageToggle() {
+                // Find the sidebar header area to add language toggle
+                const sidebarHeader = document.querySelector('.admin-sidebar .mb-10');
+                if (!sidebarHeader) return;
+                
+                const toggleHTML = `
+                    <div class="mt-4 pt-4 border-t border-white/20">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm opacity-80">Language:</span>
+                            <div class="flex space-x-1">
+                                <button id="langToggleEN" class="px-2 py-1 text-xs rounded transition ${this.currentLanguage === 'en' ? 'bg-white/20 text-white' : 'text-white/70 hover:text-white'}">
+                                    EN
+                                </button>
+                                <button id="langToggleVI" class="px-2 py-1 text-xs rounded transition ${this.currentLanguage === 'vi' ? 'bg-white/20 text-white' : 'text-white/70 hover:text-white'}">
+                                    VI
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                sidebarHeader.insertAdjacentHTML('beforeend', toggleHTML);
+                
+                // Add event listeners
+                document.getElementById('langToggleEN').addEventListener('click', () => {
+                    this.changeLanguage('en');
+                });
+                
+                document.getElementById('langToggleVI').addEventListener('click', () => {
+                    this.changeLanguage('vi');
+                });
+            }
+            
+            updateLanguageToggle() {
+                const enBtn = document.getElementById('langToggleEN');
+                const viBtn = document.getElementById('langToggleVI');
+                
+                if (enBtn && viBtn) {
+                    enBtn.className = `px-2 py-1 text-xs rounded transition ${this.currentLanguage === 'en' ? 'bg-white/20 text-white' : 'text-white/70 hover:text-white'}`;
+                    viBtn.className = `px-2 py-1 text-xs rounded transition ${this.currentLanguage === 'vi' ? 'bg-white/20 text-white' : 'text-white/70 hover:text-white'}`;
+                }
+            }
+        }
+        
+        // Global language manager instance
+        const languageManager = new LanguageManager();
+        
         // ==================== INITIALIZATION ====================
         
         document.addEventListener('DOMContentLoaded', function() {
@@ -1096,6 +1362,19 @@
                 if (!data.is_admin) {
                     window.location.href = '/';
                     return;
+                }
+                
+                // Initialize language manager và synchronize với dashboard
+                console.log('🌐 Initializing language synchronization system');
+                
+                // Load và apply language từ dashboard cookie  
+                const preferences = getUserPreferences();
+                if (preferences && preferences.language) {
+                    console.log(`📖 Syncing language from preferences: ${preferences.language}`);
+                    languageManager.changeLanguage(preferences.language);
+                } else {
+                    // Fallback to English
+                    languageManager.changeLanguage('en');
                 }
                 
                 // Load default section
