@@ -974,7 +974,7 @@ async function generateTour() {
     if (loadingDiv) loadingDiv.classList.remove('hidden');
     if (resultsDiv) resultsDiv.classList.add('hidden');
     
-    // Chuẩn bị dữ liệu để gửi đến API
+    // Chuẩn bị dữ liệu để gửi đến Gemini AI
     const tourData = {
         "user_id": currentUser && currentUser.user_id ? currentUser.user_id : null,
         "start_city_id": formState.departureId || null,
@@ -985,7 +985,17 @@ async function generateTour() {
         "transport_ids": formState.transports || [],
         "guest_count": formState.guestCount ? parseInt(formState.guestCount) : null,
         "duration_days": formState.durationDays ? parseInt(formState.durationDays) : null,
-        "target_budget": formState.targetBudget ? parseFloat(formState.targetBudget) : null
+        "target_budget": formState.targetBudget ? parseFloat(formState.targetBudget) : null,
+        "user_preferences": {
+            "liked_hotels": formState.hotels || [],
+            "liked_activities": formState.activities || [],
+            "liked_restaurants": formState.restaurants || [],
+            "liked_transport_modes": formState.transports || [],
+            "disliked_hotels": [],
+            "disliked_activities": [],
+            "disliked_restaurants": [],
+            "disliked_transport_modes": []
+        }
     };
     
     console.log('📤 Sending tour data to API:', tourData);
@@ -1622,11 +1632,18 @@ function generateActivitiesTimeline(activities) {
                             ${activity.start_time} - ${activity.end_time}
                         </div>
                         <div class="activity-description mb-3">
-                            <span>${placeTypeInfo.actionText}</span> 
-                            <a href="#" class="text-blue-600 hover:underline font-medium" 
-                               onclick="showPlaceDetails('${activity.type}', '${activity.place_id}')">
-                                ${activity.place_name}
-                            </a>
+                            ${activity.type === 'transfer' ? 
+                                `<span class="transfer-info">
+                                    <i class="fas ${getTransportIcon(activity.transport_mode)} mr-2 text-blue-500"></i>
+                                    <span class="font-medium">${getTransportName(activity.transport_mode)}</span>
+                                    ${activity.distance_km ? `<span class="text-gray-500 ml-2">(${activity.distance_km}km)</span>` : ''}
+                                </span>` :
+                                `<span>${placeTypeInfo.actionText}</span> 
+                                <a href="#" class="text-blue-600 hover:underline font-medium" 
+                                   onclick="showPlaceDetails('${activity.type}', '${activity.place_id}')">
+                                    ${activity.place_name}
+                                </a>`
+                            }
                             <span class="place-type-badge place-type-${activity.type} ml-2">
                                 <i class="${placeTypeInfo.icon} mr-1"></i>
                                 ${placeTypeInfo.label}
@@ -1672,6 +1689,11 @@ function getPlaceTypeInfo(placeType) {
             actionText: 'Di chuyển bằng',
             icon: 'fas fa-car',
             label: 'Vận chuyển'
+        },
+        'transfer': {
+            actionText: 'Di chuyển bằng',
+            icon: 'fas fa-route',
+            label: 'Di chuyển'
         }
     };
     
@@ -1680,6 +1702,105 @@ function getPlaceTypeInfo(placeType) {
         icon: 'fas fa-map-marker-alt',
         label: 'Địa điểm'
     };
+}
+
+/**
+ * Get transport mode icon
+ * @param {string} transportMode - Transport mode (walk, bike, scooter, taxi, bus, metro)
+ * @returns {string} Font Awesome icon class
+ */
+function getTransportIcon(transportMode) {
+    if (!transportMode) return 'fa-route';
+    
+    const iconMap = {
+        'walk': 'fa-walking',
+        'bike': 'fa-bicycle',
+        'bicycle': 'fa-bicycle',
+        'scooter': 'fa-motorcycle',
+        'motorcycle': 'fa-motorcycle',
+        'motorbike': 'fa-motorcycle',
+        'taxi': 'fa-taxi',
+        'grab': 'fa-taxi',
+        'uber': 'fa-taxi',
+        'bus': 'fa-bus',
+        'metro': 'fa-subway',
+        'subway': 'fa-subway',
+        'train': 'fa-train',
+        'car': 'fa-car',
+        'ojek': 'fa-motorcycle',
+        'grabbike': 'fa-motorcycle',
+        'rickshaw': 'fa-taxi',
+        'cyclo': 'fa-taxi',
+        'tricycle': 'fa-taxi',
+        'ferry': 'fa-ship',
+        'boat': 'fa-ship',
+        'ship': 'fa-ship'
+    };
+    
+    // First try exact match (case-insensitive)
+    const lowerMode = transportMode.toLowerCase();
+    if (iconMap[lowerMode]) {
+        return iconMap[lowerMode];
+    }
+    
+    // Then try partial matches for database transport names
+    for (const [key, value] of Object.entries(iconMap)) {
+        if (lowerMode.includes(key)) {
+            return value;
+        }
+    }
+    
+    return 'fa-route';
+}
+
+/**
+ * Get transport mode Vietnamese name
+ * @param {string} transportMode - Transport mode
+ * @returns {string} Vietnamese name
+ */
+function getTransportName(transportMode) {
+    if (!transportMode) return 'Di chuyển';
+    
+    const nameMap = {
+        'walk': 'Đi bộ',
+        'bike': 'Xe đạp', 
+        'bicycle': 'Xe đạp',
+        'scooter': 'Xe máy',
+        'motorcycle': 'Xe máy',
+        'motorbike': 'Xe máy',
+        'taxi': 'Taxi',
+        'grab': 'Grab',
+        'uber': 'Uber',
+        'bus': 'Xe buýt',
+        'metro': 'Tàu điện',
+        'subway': 'Tàu điện ngầm',
+        'train': 'Tàu hóa',
+        'car': 'Ô tô',
+        'ojek': 'Ojek',
+        'grabbike': 'GrabBike',
+        'rickshaw': 'Xích lô',
+        'cyclo': 'Xích lô',
+        'tricycle': 'Xe ba bánh',
+        'ferry': 'Phà',
+        'boat': 'Thuyền',
+        'ship': 'Tàu thủy'
+    };
+    
+    // First try exact match (case-insensitive)
+    const lowerMode = transportMode.toLowerCase();
+    if (nameMap[lowerMode]) {
+        return nameMap[lowerMode];
+    }
+    
+    // Then try partial matches for database transport names
+    for (const [key, value] of Object.entries(nameMap)) {
+        if (lowerMode.includes(key)) {
+            return value;
+        }
+    }
+    
+    // If no match found, capitalize the first letter and return
+    return transportMode.charAt(0).toUpperCase() + transportMode.slice(1).toLowerCase();
 }
 
 /**

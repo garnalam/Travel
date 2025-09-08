@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard - Vietnam Travel</title>
-        <script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
+        <script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756906013.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1756814202.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib-editor.1754557047.js" id="yourware-lib"></script>
         <script src="https://cdn.tailwindcss.com/3.4.16"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://public.youware.com/users-website-assets/prod/0aebb26b-6df2-4a65-b76c-5567b44e6aa6/e06f1a84e783465fb2c3cbe5c8a497d9.css">
@@ -392,11 +392,16 @@
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label class="block text-gray-700 font-medium mb-2">
-                                                    <span data-en="Budget (USD)" data-vi="Ngân sách (USD)">Budget (USD)</span>
+                                                    <span id="budgetLabelBasic" data-en="Budget" data-vi="Ngân sách">Budget</span>
                                                     <span class="text-red-500">*</span>
                                                 </label>
-                                                <input type="number" class="form-control w-full p-3 bg-white" placeholder="500"
-                                                    min="0" id="targetBudget" name="targetBudget" required>
+                                                <div class="relative">
+                                                    <input type="number" class="form-control w-full p-3 bg-white pr-16" placeholder="500"
+                                                        min="0" id="targetBudget" name="targetBudget" required>
+                                                    <div id="targetBudgetCurrency" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
+                                                        USD
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div>
                                                 <label class="block text-gray-700 font-medium mb-2"
@@ -1011,7 +1016,7 @@
                                         
                                         <label class="block text-gray-700 font-semibold mb-3 flex items-center">
                                             <i class="fas fa-dollar-sign text-pink-500 mr-2"></i>
-                                            <span data-en="Total Budget (USD)" data-vi="Tổng Ngân Sách (USD)">Total Budget (USD)</span>
+                                            <span id="budgetLabel" data-en="Total Budget" data-vi="Tổng Ngân Sách">Total Budget</span>
                                             <span class="text-red-500 ml-1">*</span>
                                         </label>
                                         <div class="relative">
@@ -1022,7 +1027,7 @@
                                             <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
                                                 <i class="fas fa-dollar-sign text-pink-500"></i>
                                             </div>
-                                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
+                                            <div id="budgetCurrencySymbol" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
                                                 USD
                                             </div>
                                         </div>
@@ -1245,22 +1250,22 @@
                                                             </div>
                                                             <p class="font-bold text-xl text-gray-800" data-en="Total Price:" data-vi="Tổng Tiền:">Total Price:</p>
                                                         </div>
-                                                        <span id="totalFlightPrice" class="font-bold text-2xl bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">$1,580</span>
+                                                        <span id="totalFlightPrice" class="font-bold text-2xl bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent flight-price" data-price-vnd="0" data-price-usd="0">$0</span>
                                                     </div>
                                                     
                                                     <!-- Price breakdown -->
                                                     <div class="space-y-2 mb-6 text-sm">
                                                         <div class="flex justify-between text-gray-600">
                                                             <span data-en="Departure flight" data-vi="Chuyến bay đi">Departure flight</span>
-                                                            <span id="departureFlightPriceDisplay">$790</span>
+                                                            <span id="departureFlightPriceDisplay" class="flight-price" data-price-vnd="0" data-price-usd="0">$0</span>
                                                         </div>
                                                         <div class="flex justify-between text-gray-600">
                                                             <span data-en="Return flight" data-vi="Chuyến bay về">Return flight</span>
-                                                            <span id="returnFlightPriceDisplay">$790</span>
+                                                            <span id="returnFlightPriceDisplay" class="flight-price" data-price-vnd="0" data-price-usd="0">$0</span>
                                                         </div>
                                                         <div class="border-t border-purple-200 pt-2 flex justify-between font-semibold text-gray-800">
                                                             <span data-en="Total" data-vi="Tổng cộng">Total</span>
-                                                            <span id="totalPriceDisplay">$1,580</span>
+                                                            <span id="totalPriceDisplay" class="flight-price" data-price-vnd="0" data-price-usd="0">$0</span>
                                                         </div>
                                                     </div>
                                                     
@@ -3128,6 +3133,9 @@
                 if (flightSection) {
                     flightSection.classList.remove('hidden');
                     
+                    // Initialize price displays
+                    this.initializePriceDisplays();
+                    
                     // Update flight routes
                     this.updateFlightRoutes();
                     
@@ -3137,6 +3145,65 @@
                     // Scroll to flight section
                     flightSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            }
+
+            // Helper function to get current currency from user config
+            getCurrentCurrency() {
+                try {
+                    const userConfig = getUserConfig();
+                    return userConfig && userConfig.currency ? userConfig.currency : 'USD';
+                } catch (error) {
+                    console.log('⚠️ Error getting currency from config, using USD as fallback');
+                    return 'USD';
+                }
+            }
+
+            initializePriceDisplays() {
+                // Get current currency from user preferences
+                const currentCurrency = this.getCurrentCurrency() || 'USD';
+                
+                // Get appropriate zero display based on currency
+                let zeroDisplay;
+                if (currentCurrency === 'VND') {
+                    zeroDisplay = '₫0';
+                } else if (currentCurrency === 'USD') {
+                    zeroDisplay = '$0';
+                } else if (currentCurrency === 'EUR') {
+                    zeroDisplay = '€0';
+                } else {
+                    zeroDisplay = '$0'; // fallback
+                }
+                
+                // Reset all price displays with proper currency format
+                const departureElement = document.getElementById('departureFlightPriceDisplay');
+                const returnElement = document.getElementById('returnFlightPriceDisplay');
+                const totalElement = document.getElementById('totalPriceDisplay');
+                const totalFlightElement = document.getElementById('totalFlightPrice');
+                
+                if (departureElement) {
+                    departureElement.textContent = zeroDisplay;
+                    departureElement.setAttribute('data-price-vnd', '0');
+                    departureElement.setAttribute('data-price-usd', '0');
+                }
+                if (returnElement) {
+                    returnElement.textContent = zeroDisplay;
+                    returnElement.setAttribute('data-price-vnd', '0');
+                    returnElement.setAttribute('data-price-usd', '0');
+                }
+                if (totalElement) {
+                    totalElement.textContent = zeroDisplay;
+                    totalElement.setAttribute('data-price-vnd', '0');
+                    totalElement.setAttribute('data-price-usd', '0');
+                }
+                if (totalFlightElement) {
+                    totalFlightElement.textContent = zeroDisplay;
+                    totalFlightElement.setAttribute('data-price-vnd', '0');
+                    totalFlightElement.setAttribute('data-price-usd', '0');
+                }
+                
+                // Reset selected flights
+                this.selectedDepartureFlight = null;
+                this.selectedReturnFlight = null;
             }
 
             updateFlightRoutes() {
@@ -3185,6 +3252,13 @@
                 }
                 
                 this.renderFlightCards();
+                
+                // Auto-trigger currency conversion after flights are rendered
+                setTimeout(() => {
+                    if (window.updatePriceDisplay) {
+                        updatePriceDisplay();
+                    }
+                }, 200);
             }
 
             generateRandomFlight(type, airline) {
@@ -3294,7 +3368,7 @@
                         <div class="flight-card__content--right">
                             <div class="flight-card__content--right--price text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
                                 <p class="mb-3">
-                                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">$${Math.round(flight.priceVND / 25000)}</span>
+                                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent flight-price" data-price-vnd="${flight.priceVND}" data-price-usd="${Math.round(flight.priceVND / 25000)}">$${Math.round(flight.priceVND / 25000)}</span>
                                     <span class="text-sm text-blue-600 block font-medium" data-en="/ Guest" data-vi="/ Khách">/ Guest</span>
                                 </p>
                                 <button class="select-flight-btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105" 
@@ -3325,21 +3399,21 @@
                                 <tbody>
                                     <tr class="border-b border-gray-200">
                                         <td class="py-2" data-en="Adult" data-vi="Người lớn">Adult</td>
-                                        <td class="py-2">$${Math.round(flight.priceVND * 0.75 / 25000)}</td>
-                                        <td class="py-2">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
-                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND / 25000)}</td>
+                                        <td class="py-2 flight-price" data-price-vnd="${flight.priceVND * 0.75}" data-price-usd="${Math.round(flight.priceVND * 0.75 / 25000)}">$${Math.round(flight.priceVND * 0.75 / 25000)}</td>
+                                        <td class="py-2 flight-price" data-price-vnd="${flight.priceVND * 0.25}" data-price-usd="${Math.round(flight.priceVND * 0.25 / 25000)}">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
+                                        <td class="py-2 font-semibold flight-price" data-price-vnd="${flight.priceVND}" data-price-usd="${Math.round(flight.priceVND / 25000)}">$${Math.round(flight.priceVND / 25000)}</td>
                                     </tr>
                                     <tr class="border-b border-gray-200">
-                                        <td class="py-2" data-en="Child" data-vi="Trẻ em">Trẻ em</td>
-                                        <td class="py-2">$${Math.round(flight.priceVND * 0.65 / 25000)}</td>
-                                        <td class="py-2">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
-                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND * 0.9 / 25000)}</td>
+                                        <td class="py-2" data-en="Child" data-vi="Trẻ em">Child</td>
+                                        <td class="py-2 flight-price" data-price-vnd="${flight.priceVND * 0.65}" data-price-usd="${Math.round(flight.priceVND * 0.65 / 25000)}">$${Math.round(flight.priceVND * 0.65 / 25000)}</td>
+                                        <td class="py-2 flight-price" data-price-vnd="${flight.priceVND * 0.25}" data-price-usd="${Math.round(flight.priceVND * 0.25 / 25000)}">$${Math.round(flight.priceVND * 0.25 / 25000)}</td>
+                                        <td class="py-2 font-semibold flight-price" data-price-vnd="${flight.priceVND * 0.9}" data-price-usd="${Math.round(flight.priceVND * 0.9 / 25000)}">$${Math.round(flight.priceVND * 0.9 / 25000)}</td>
                                     </tr>
                                     <tr>
-                                        <td class="py-2" data-en="Infant" data-vi="Em bé">Em bé</td>
-                                        <td class="py-2">$0</td>
-                                        <td class="py-2">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
-                                        <td class="py-2 font-semibold">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
+                                        <td class="py-2" data-en="Infant" data-vi="Em bé">Infant</td>
+                                        <td class="py-2 flight-price" data-price-vnd="0" data-price-usd="0">$0</td>
+                                        <td class="py-2 flight-price" data-price-vnd="${flight.priceVND * 0.1}" data-price-usd="${Math.round(flight.priceVND * 0.1 / 25000)}">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
+                                        <td class="py-2 font-semibold flight-price" data-price-vnd="${flight.priceVND * 0.1}" data-price-usd="${Math.round(flight.priceVND * 0.1 / 25000)}">$${Math.round(flight.priceVND * 0.1 / 25000)}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -3396,18 +3470,77 @@
 
             updateOrderSummary() {
                 let totalPrice = 0;
+                let departurePriceUSD = 0;
+                let returnPriceUSD = 0;
                 
+                // Only update prices if flights are actually selected
                 if (this.selectedDepartureFlight) {
+                    departurePriceUSD = Math.round(this.selectedDepartureFlight.priceVND / 25000);
                     totalPrice += this.selectedDepartureFlight.priceVND;
+                    
+                    const departureElement = document.getElementById('departureFlightPriceDisplay');
+                    if (departureElement) {
+                        departureElement.setAttribute('data-price-vnd', this.selectedDepartureFlight.priceVND);
+                        departureElement.setAttribute('data-price-usd', departurePriceUSD);
+                        departureElement.textContent = `$${departurePriceUSD}`;
+                    }
                 }
                 
                 if (this.selectedReturnFlight) {
+                    returnPriceUSD = Math.round(this.selectedReturnFlight.priceVND / 25000);
                     totalPrice += this.selectedReturnFlight.priceVND;
+                    
+                    const returnElement = document.getElementById('returnFlightPriceDisplay');
+                    if (returnElement) {
+                        returnElement.setAttribute('data-price-vnd', this.selectedReturnFlight.priceVND);
+                        returnElement.setAttribute('data-price-usd', returnPriceUSD);
+                        returnElement.textContent = `$${returnPriceUSD}`;
+                    }
+                }
+                
+                // Update total price displays only if there are selected flights
+                const totalPriceUSD = departurePriceUSD + returnPriceUSD;
+                
+                // Always ensure these elements show $0 when no flights selected
+                const departureElement = document.getElementById('departureFlightPriceDisplay');
+                if (departureElement && !this.selectedDepartureFlight) {
+                    departureElement.setAttribute('data-price-vnd', '0');
+                    departureElement.setAttribute('data-price-usd', '0');
+                    departureElement.textContent = '$0';
+                }
+                
+                const returnElement = document.getElementById('returnFlightPriceDisplay');
+                if (returnElement && !this.selectedReturnFlight) {
+                    returnElement.setAttribute('data-price-vnd', '0');
+                    returnElement.setAttribute('data-price-usd', '0');
+                    returnElement.textContent = '$0';
                 }
                 
                 const totalElement = document.getElementById('totalFlightPrice');
                 if (totalElement) {
-                    totalElement.textContent = totalPrice > 0 ? `$${Math.round(totalPrice / 25000)}` : '$0';
+                    totalElement.setAttribute('data-price-vnd', totalPrice);
+                    totalElement.setAttribute('data-price-usd', totalPriceUSD);
+                    totalElement.textContent = totalPriceUSD > 0 ? `$${totalPriceUSD}` : '$0';
+                }
+                
+                const totalPriceDisplayElement = document.getElementById('totalPriceDisplay');
+                if (totalPriceDisplayElement) {
+                    totalPriceDisplayElement.setAttribute('data-price-vnd', totalPrice);
+                    totalPriceDisplayElement.setAttribute('data-price-usd', totalPriceUSD);
+                    totalPriceDisplayElement.textContent = totalPriceUSD > 0 ? `$${totalPriceUSD}` : '$0';
+                }
+                
+                // Update all flight prices with current currency
+                setTimeout(() => {
+                    if (window.updatePriceDisplay) {
+                        updatePriceDisplay();
+                    }
+                }, 50);
+                
+                // Update detailed price breakdown total
+                const totalPriceElement = document.getElementById('totalPriceDisplay');
+                if (totalPriceElement) {
+                    totalPriceElement.textContent = totalPriceUSD > 0 ? `$${totalPriceUSD.toLocaleString()}` : '$0';
                 }
             }
 
@@ -3505,6 +3638,13 @@
                 
                 // Create daily preferences section
                 this.createDailyPreferencesSection(dayCount, destinationCountry);
+                
+                // Auto-trigger currency conversion after daily preferences are rendered
+                setTimeout(() => {
+                    if (window.updatePriceDisplay) {
+                        updatePriceDisplay();
+                    }
+                }, 500);
             }
 
             createDailyPreferencesSection(dayCount, destinationCountry) {
@@ -3738,7 +3878,7 @@
                                         <p class="text-xs text-gray-600">${restaurant.cuisine_type || 'Restaurant'}</p>
                                         <div class="flex items-center mt-1">
                                             <span class="text-xs text-yellow-600">★ ${restaurant.rating || 'N/A'}</span>
-                                            <span class="text-xs text-gray-500 ml-2">$${restaurant.price_avg || 'N/A'}</span>
+                                            <span class="text-xs text-gray-500 ml-2 restaurant-price" data-price="${restaurant.price_avg || 0}">$${restaurant.price_avg || 'N/A'}</span>
                                         </div>
                                     </div>
                                     <div class="flex items-center space-x-2 ml-3">
@@ -3760,6 +3900,13 @@
                         `).join('');
                         
                         this.setupLikeDislikeHandlers(container);
+                        
+                        // Auto-trigger currency conversion for restaurants
+                        setTimeout(() => {
+                            if (window.updatePriceDisplay) {
+                                updatePriceDisplay();
+                            }
+                        }, 100);
                     } else {
                         container.innerHTML = `<div class="text-center text-gray-500 py-4">
                             <p data-en="No restaurants found" data-vi="Không tìm thấy nhà hàng">No restaurants found</p>
@@ -3791,7 +3938,7 @@
                                         <div class="flex items-center mt-1">
                                             <span class="text-xs text-yellow-600">★ ${hotel.rating || 'N/A'}</span>
                                             <span class="text-xs text-blue-600 ml-2">${hotel.stars || 0}⭐</span>
-                                            <span class="text-xs text-gray-500 ml-2">$${hotel.price_per_night || 'N/A'}/night</span>
+                                            <span class="text-xs text-gray-500 ml-2 hotel-price" data-price="${hotel.price_per_night || 0}">$${hotel.price_per_night || 'N/A'}/night</span>
                                         </div>
                                     </div>
                                     <div class="flex items-center space-x-2 ml-3">
@@ -3813,6 +3960,13 @@
                         `).join('');
                         
                         this.setupLikeDislikeHandlers(container);
+                        
+                        // Auto-trigger currency conversion for hotels
+                        setTimeout(() => {
+                            if (window.updatePriceDisplay) {
+                                updatePriceDisplay();
+                            }
+                        }, 100);
                     } else {
                         container.innerHTML = `<div class="text-center text-gray-500 py-4">
                             <p data-en="No hotels found" data-vi="Không tìm thấy khách sạn">No hotels found</p>
@@ -3844,7 +3998,7 @@
                                         <p class="text-xs text-gray-600">${activity.type || 'Activity'}</p>
                                         <div class="flex items-center mt-1">
                                             <span class="text-xs text-yellow-600">★ ${activity.rating || 'N/A'}</span>
-                                            <span class="text-xs text-gray-500 ml-2">$${activity.price || 'Free'}</span>
+                                            <span class="text-xs text-gray-500 ml-2 activity-price" data-price="${activity.price || 0}">$${activity.price || 'Free'}</span>
                                             <span class="text-xs text-gray-500 ml-2">${activity.duration_hr || 'N/A'}h</span>
                                         </div>
                                     </div>
@@ -3867,6 +4021,13 @@
                         `).join('');
                         
                         this.setupLikeDislikeHandlers(container);
+                        
+                        // Auto-trigger currency conversion for activities
+                        setTimeout(() => {
+                            if (window.updatePriceDisplay) {
+                                updatePriceDisplay();
+                            }
+                        }, 100);
                     } else {
                         container.innerHTML = `<div class="text-center text-gray-500 py-4">
                             <p data-en="No activities found" data-vi="Không tìm thấy hoạt động">No activities found</p>
@@ -3897,7 +4058,7 @@
                                         <h6 class="font-semibold text-gray-800 text-sm">${transport.type}</h6>
                                         <div class="flex items-center mt-1">
                                             <span class="text-xs text-yellow-600">★ ${transport.rating || 'N/A'}</span>
-                                            <span class="text-xs text-gray-500 ml-2">$${transport.avg_price_per_km || 'N/A'}/km</span>
+                                            <span class="text-xs text-gray-500 ml-2 transport-price" data-price="${transport.avg_price_per_km || 0}">$${transport.avg_price_per_km || 'N/A'}/km</span>
                                             <span class="text-xs text-gray-500 ml-2">${transport.operating_hours || '24/7'}</span>
                                         </div>
                                     </div>
@@ -3920,6 +4081,13 @@
                         `).join('');
                         
                         this.setupLikeDislikeHandlers(container);
+                        
+                        // Auto-trigger currency conversion for transports
+                        setTimeout(() => {
+                            if (window.updatePriceDisplay) {
+                                updatePriceDisplay();
+                            }
+                        }, 100);
                     } else {
                         container.innerHTML = `<div class="text-center text-gray-500 py-4">
                             <p data-en="No transport found" data-vi="Không tìm thấy phương tiện">No transport found</p>
@@ -4255,7 +4423,45 @@
                     });
                 });
                 
-                // Prepare request payload
+                // Chuẩn bị user preferences từ daily preferences data
+                const userPreferences = {
+                    liked_hotels: likedIds.hotel_ids,
+                    liked_activities: likedIds.activity_ids,
+                    liked_restaurants: likedIds.restaurant_ids,
+                    liked_transport_modes: likedIds.transport_ids,
+                    disliked_hotels: [],
+                    disliked_activities: [],
+                    disliked_restaurants: [],
+                    disliked_transport_modes: []
+                };
+                
+                // Thu thập disliked items từ preferences
+                Object.keys(currentDayPrefs).forEach(type => {
+                    Object.keys(currentDayPrefs[type]).forEach(id => {
+                        if (currentDayPrefs[type][id] === 'dislike') {
+                            if (type === 'activity') {
+                                userPreferences.disliked_activities.push(id);
+                            } else if (type === 'hotel') {
+                                userPreferences.disliked_hotels.push(id);
+                            } else if (type === 'restaurant') {
+                                userPreferences.disliked_restaurants.push(id);
+                            } else if (type === 'transport') {
+                                userPreferences.disliked_transport_modes.push(id);
+                            }
+                        }
+                    });
+                });
+                const budget = document.getElementById('v2Budget');
+                const totalFlightElement = document.getElementById('totalFlightPrice');
+                
+                // Parse the total flight price from text content (format: "$1,580")
+                let totalFlightPrice = 0;
+                if (totalFlightElement && totalFlightElement.textContent) {
+                    const priceText = totalFlightElement.textContent.replace(/[$,]/g, '');
+                    totalFlightPrice = parseFloat(priceText) || 0;
+                }
+                
+                // Prepare request payload - CHỈ SỬ DỤNG GEMINI AI
                 const requestPayload = {
                     user_id: null,
                     start_city_id: this.selectedDepartureCity?.city_id || 1704413791,
@@ -4266,7 +4472,8 @@
                     transport_ids: likedIds.transport_ids,
                     guest_count: this.passengerCounts.adults + this.passengerCounts.children,
                     duration_days: 1, // Single day recommendation
-                    target_budget: 1111 // Default budget, could be made configurable
+                    target_budget: budget.value - totalFlightPrice, // Default budget, could be made configurable
+                    user_preferences: userPreferences // ⭐ User preferences cho Gemini AI
                 };
                 
                 console.log('🔍 Request payload:', requestPayload);
@@ -4358,14 +4565,41 @@
                                 ${activities.map((activity, index) => `
                                     <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
                                         <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center mr-4">
-                                            <i class="fas fa-${this.getActivityIcon(activity.type)} text-white"></i>
+                                            <i class="fas fa-${activity.type === 'transfer' ? this.getTransportIcon(activity.transport_mode) : this.getActivityIcon(activity.type)} text-white"></i>
                                         </div>
                                         <div class="flex-1">
                                             <div class="flex items-center mb-1">
                                                 <span class="text-sm font-medium text-blue-600 mr-2">${activity.start_time} - ${activity.end_time}</span>
                                                 <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">${activity.type}</span>
+                                                ${activity.type === 'transfer' && activity.distance_km ? `<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs ml-1">${activity.distance_km}km</span>` : ''}
                                             </div>
-                                            <h6 class="font-semibold text-gray-800">${activity.place_name}</h6>
+                                            <h6 class="font-semibold text-gray-800">
+                                                ${activity.type === 'transfer' ? 
+                                                    `Transfer by ${this.getTransportName(activity.transport_mode)}` : 
+                                                    (activity.type === 'meal' ? 
+                                                        (() => {
+                                                            const startHour = parseInt(activity.start_time.split(':')[0]);
+                                                            let mealType;
+                                                            if (startHour >= 6 && startHour < 11) {
+                                                                mealType = 'Breakfast at';
+                                                            } else if (startHour >= 11 && startHour < 14) {
+                                                                mealType = 'Lunch at';
+                                                            } else if (startHour >= 14 && startHour < 18) {
+                                                                mealType = 'Afternoon meal at';
+                                                            } else {
+                                                                mealType = 'Dinner at';
+                                                            }
+                                                            return `${mealType} ${activity.place_name}`;
+                                                        })()
+                                                        : (activity.type === 'hotel' ? 
+                                                            `Stay at ${activity.place_name}` :
+                                                            (activity.type === 'activity' ?
+                                                                `Visit ${activity.place_name}` :
+                                                                activity.place_name)
+                                                        )
+                                                    )
+                                                }
+                                            </h6>
                                             <p class="text-sm text-gray-600">Cost: $${activity.cost}</p>
                                         </div>
                                     </div>
@@ -4412,6 +4646,13 @@
                 if (formContainer) {
                     formContainer.innerHTML = scheduleViewHtml;
                     console.log(`✅ Day ${dayNumber} form replaced with schedule view`);
+                    
+                    // Auto-trigger currency conversion after schedule is displayed
+                    setTimeout(() => {
+                        if (window.updatePriceDisplay) {
+                            updatePriceDisplay();
+                        }
+                    }, 200);
                     
                     // Setup navigation for schedule view
                     this.setupScheduleNavigation(dayNumber);
@@ -4531,12 +4772,47 @@
                                     <span class="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm mr-3">${day}</span>
                                     Day ${day}
                                 </h4>
-                                <div class="space-y-2">
-                                    ${activities.map(activity => `
-                                        <div class="flex items-center p-2 bg-gray-50 rounded-lg">
-                                            <span class="text-sm font-medium text-blue-600 mr-3 w-20">${activity.start_time}</span>
-                                            <span class="flex-1 text-gray-800">${activity.place_name}</span>
-                                            <span class="text-sm text-gray-600">$${activity.cost}</span>
+                                <div class="space-y-3">
+                                    ${activities.map((activity, index) => `
+                                        <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                                                <i class="fas fa-${activity.type === 'transfer' ? this.getTransportIcon(activity.transport_mode) : this.getActivityIcon(activity.type)} text-white"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-medium text-blue-600 mr-2">${activity.start_time} - ${activity.end_time}</span>
+                                                    <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">${activity.type}</span>
+                                                    ${activity.type === 'transfer' && activity.distance_km ? `<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs ml-1">${activity.distance_km}km</span>` : ''}
+                                                </div>
+                                                <h6 class="font-semibold text-gray-800">
+                                                    ${activity.type === 'transfer' ? 
+                                                        `Transfer by ${this.getTransportName(activity.transport_mode)}` : 
+                                                        (activity.type === 'meal' ? 
+                                                            (() => {
+                                                                const startHour = parseInt(activity.start_time.split(':')[0]);
+                                                                let mealType;
+                                                                if (startHour >= 6 && startHour < 11) {
+                                                                    mealType = 'Breakfast at';
+                                                                } else if (startHour >= 11 && startHour < 14) {
+                                                                    mealType = 'Lunch at';
+                                                                } else if (startHour >= 14 && startHour < 18) {
+                                                                    mealType = 'Afternoon meal at';
+                                                                } else {
+                                                                    mealType = 'Dinner at';
+                                                                }
+                                                                return `${mealType} ${activity.place_name}`;
+                                                            })()
+                                                            : (activity.type === 'hotel' ? 
+                                                                `Stay at ${activity.place_name}` :
+                                                                (activity.type === 'activity' ?
+                                                                    `Visit ${activity.place_name}` :
+                                                                    activity.place_name)
+                                                            )
+                                                        )
+                                                    }
+                                                </h6>
+                                                <p class="text-sm text-gray-600">Cost: $${activity.cost}</p>
+                                            </div>
                                         </div>
                                     `).join('')}
                                 </div>
@@ -4612,9 +4888,87 @@
                     'activity': 'map-marker-alt',
                     'restaurant': 'utensils',
                     'hotel': 'bed',
-                    'transport': 'car'
+                    'transport': 'car',
+                    'transfer': 'route',
+                    'meal': 'utensils',
+                    'rest': 'bed'
                 };
                 return iconMap[type] || 'map-marker-alt';
+            }
+
+            getTransportIcon(transportMode) {
+                if (!transportMode) return 'route';
+                
+                // Map database transport names to appropriate icons
+                const mode = transportMode.toLowerCase();
+                
+                if (mode.includes('taxi') || mode.includes('grab') || mode.includes('uber') || mode.includes('didi')) {
+                    return 'taxi';
+                } else if (mode.includes('bus') || mode.includes('brt') || mode.includes('transjakarta') || mode.includes('jeepney') || mode.includes('matatu')) {
+                    return 'bus';
+                } else if (mode.includes('metro') || mode.includes('train') || mode.includes('subway') || mode.includes('lrt') || mode.includes('mrt') || mode.includes('skytrain') || mode.includes('tram')) {
+                    return 'subway';
+                } else if (mode.includes('bike') || mode.includes('bicycle')) {
+                    return 'bicycle';
+                } else if (mode.includes('scooter') || mode.includes('motorcycle') || mode.includes('ojek') || mode.includes('grabbike') || mode.includes('motorbike')) {
+                    return 'motorcycle';
+                } else if (mode.includes('walk') || mode.includes('foot')) {
+                    return 'walking';
+                } else if (mode.includes('ferry') || mode.includes('boat')) {
+                    return 'ship';
+                } else if (mode.includes('rickshaw') || mode.includes('cyclo') || mode.includes('tricycle')) {
+                    return 'taxi';  // Use taxi icon for unique transport
+                } else {
+                    return 'route';  // Default fallback
+                }
+            }
+
+            getTransportName(transportMode) {
+                if (!transportMode) return 'Transport';
+                
+                // Map transport modes to English names
+                const nameMap = {
+                    'walk': 'Walking',
+                    'bike': 'Bicycle', 
+                    'bicycle': 'Bicycle',
+                    'scooter': 'Scooter',
+                    'motorcycle': 'Motorcycle',
+                    'motorbike': 'Motorbike',
+                    'taxi': 'Taxi',
+                    'grab': 'Grab',
+                    'uber': 'Uber',
+                    'bus': 'Bus',
+                    'metro': 'Metro',
+                    'subway': 'Subway',
+                    'train': 'Train',
+                    'car': 'Car',
+                    'ojek': 'Ojek',
+                    'grabbike': 'GrabBike',
+                    'rickshaw': 'Rickshaw',
+                    'cyclo': 'Cyclo',
+                    'tricycle': 'Tricycle',
+                    'ferry': 'Ferry',
+                    'boat': 'Boat',
+                    'ship': 'Ship',
+                    'mrt' : 'Mass Rapid Transport',
+                    'lrt' : "Light Rail Transit"
+                };
+                
+                // First try exact match (case-insensitive)
+                const lowerMode = transportMode.toLowerCase();
+                if (nameMap[lowerMode]) {
+                    return nameMap[lowerMode];
+                }
+                
+                // Then try partial matches for database transport names
+                for (const [key, value] of Object.entries(nameMap)) {
+                    if (lowerMode.includes(key)) {
+                        return value;
+                    }
+                }
+                
+                // If no match found, capitalize the first letter and return
+                return transportMode.charAt(0).toUpperCase() + transportMode.slice(1).toLowerCase();
             }
 
             showErrorMessage(message) {
@@ -4886,7 +5240,7 @@
                     
                     closeDeleteConfirmModal();
                 };
-                }
+                
                 
                 // Add Hotel Button Functionality
                 const addHotelBtn = document.getElementById('addHotelBtn');

@@ -383,7 +383,7 @@ function renderTourHistory(tourHistory) {
                     <div class="tour-info-item">
                         <i class="fas fa-dollar-sign"></i>
                         <span data-en="Budget" data-vi="Ngân sách">Budget:</span>
-                        <span class="tour-info-value">${formatCurrency(tourData.budget, tourData.currency)}</span>
+                        <span class="tour-info-value">${formatCurrency(tourData.budget)}</span>
                     </div>
                     <div class="tour-info-item">
                         <i class="fas fa-users"></i>
@@ -725,7 +725,7 @@ function renderTourHistoryDetail(tourDetail) {
                         <i class="fas fa-dollar-sign"></i>
                         <span data-en="Budget" data-vi="Ngân sách">Budget</span>
                     </div>
-                    <div class="summary-card-amount">${formatCurrency(tourDetail.target_budget || tourDetail.budget || 0, tourDetail.currency)}</div>
+                    <div class="summary-card-amount">${formatCurrency(tourDetail.target_budget || tourDetail.budget || 0)}</div>
                 </div>
                 
                 <div class="summary-card">
@@ -733,7 +733,7 @@ function renderTourHistoryDetail(tourDetail) {
                         <i class="fas fa-wallet"></i>
                         <span data-en="Estimated" data-vi="Ước tính">Estimated</span>
                     </div>
-                    <div class="summary-card-amount">${formatCurrency(tourDetail.total_estimated_cost || tourDetail.totalEstimatedCost || 0, tourDetail.cost_currency || tourDetail.currency)}</div>
+                    <div class="summary-card-amount">${formatCurrency(tourDetail.total_estimated_cost || tourDetail.totalEstimatedCost || 0)}</div>
                 </div>
                 
                 <div class="summary-card total">
@@ -1023,6 +1023,14 @@ function renderActivityDescription(item) {
                         min_price: item.cost || 0
                     };
                     break;
+                case 'transfer':
+                    placeInfo = {
+                        type: item.transport_mode || 'taxi',
+                        name: placeName || item.description || 'Di chuyển đến địa điểm tiếp theo',
+                        distance_km: item.distance_km,
+                        min_price: item.cost || 0
+                    };
+                    break;
             }
         } else {
             // Try to extract info from flattened API response
@@ -1062,6 +1070,14 @@ function renderActivityDescription(item) {
                             min_price: item.cost
                         };
                     }
+                    break;
+                case 'transfer':
+                    placeInfo = {
+                        type: item.transport_mode || 'taxi',
+                        name: item.place_name || item.description || 'Di chuyển đến địa điểm tiếp theo',
+                        distance_km: item.distance_km,
+                        min_price: item.cost || 0
+                    };
                     break;
             }
         }
@@ -1103,6 +1119,103 @@ function renderActivityDescription(item) {
             }
             badgeIcon = 'fa-car';
             badgeText = transportText;
+            break;
+            
+        case 'transfer':
+            const transportModeNames = {
+                'walk': currentLang === 'en' ? 'Walking' : 'Đi bộ',
+                'bike': currentLang === 'en' ? 'Bicycle' : 'Xe đạp',
+                'bicycle': currentLang === 'en' ? 'Bicycle' : 'Xe đạp',
+                'scooter': currentLang === 'en' ? 'Scooter' : 'Xe máy',
+                'motorcycle': currentLang === 'en' ? 'Motorcycle' : 'Xe máy',
+                'motorbike': currentLang === 'en' ? 'Motorbike' : 'Xe máy',
+                'taxi': 'Taxi',
+                'grab': 'Grab',
+                'uber': 'Uber',
+                'bus': currentLang === 'en' ? 'Bus' : 'Xe buýt',
+                'metro': currentLang === 'en' ? 'Metro' : 'Tàu điện',
+                'subway': currentLang === 'en' ? 'Subway' : 'Tàu điện ngầm',
+                'train': currentLang === 'en' ? 'Train' : 'Tàu hóa',
+                'car': currentLang === 'en' ? 'Car' : 'Ô tô',
+                'ojek': 'Ojek',
+                'grabbike': 'GrabBike',
+                'rickshaw': currentLang === 'en' ? 'Rickshaw' : 'Xích lô',
+                'cyclo': currentLang === 'en' ? 'Cyclo' : 'Xích lô',
+                'tricycle': currentLang === 'en' ? 'Tricycle' : 'Xe ba bánh',
+                'ferry': currentLang === 'en' ? 'Ferry' : 'Phà',
+                'boat': currentLang === 'en' ? 'Boat' : 'Thuyền',
+                'ship': currentLang === 'en' ? 'Ship' : 'Tàu thủy'
+            };
+            
+            const transportModeIcons = {
+                'walk': 'fa-walking',
+                'bike': 'fa-bicycle',
+                'bicycle': 'fa-bicycle',
+                'scooter': 'fa-motorcycle',
+                'motorcycle': 'fa-motorcycle',
+                'motorbike': 'fa-motorcycle',
+                'taxi': 'fa-taxi',
+                'grab': 'fa-taxi',
+                'uber': 'fa-taxi',
+                'bus': 'fa-bus',
+                'metro': 'fa-subway',
+                'subway': 'fa-subway',
+                'train': 'fa-train',
+                'car': 'fa-car',
+                'ojek': 'fa-motorcycle',
+                'grabbike': 'fa-motorcycle',
+                'rickshaw': 'fa-taxi',
+                'cyclo': 'fa-taxi',
+                'tricycle': 'fa-taxi',
+                'ferry': 'fa-ship',
+                'boat': 'fa-ship',
+                'ship': 'fa-ship'
+            };
+            
+            // Try exact match first, then partial match for database transport names
+            let transportModeName = transportModeNames[placeInfo.type?.toLowerCase()];
+            if (!transportModeName && placeInfo.type) {
+                // Try partial matches for database transport names
+                const lowerType = placeInfo.type.toLowerCase();
+                for (const [key, value] of Object.entries(transportModeNames)) {
+                    if (lowerType.includes(key)) {
+                        transportModeName = value;
+                        break;
+                    }
+                }
+            }
+            // Fallback
+            if (!transportModeName) {
+                transportModeName = placeInfo.type ? 
+                    (placeInfo.type.charAt(0).toUpperCase() + placeInfo.type.slice(1).toLowerCase()) : 
+                    (currentLang === 'en' ? 'Transport' : 'Di chuyển');
+            }
+            const transferText = currentLang === 'en' ? 'Transfer by' : 'Di chuyển bằng';
+            
+            description = `<span class="font-medium text-blue-600">
+                <i class="fas ${badgeIcon} mr-2"></i>
+                ${transportModeName}
+            </span>`;
+            
+            if (placeInfo.distance_km) {
+                description += ` <span class="text-gray-500">(${placeInfo.distance_km}km)</span>`;
+            }
+            
+            description += `<br><span class="text-gray-600 text-sm">${placeInfo.name}</span>`;
+            
+            // Find matching icon with same logic as name
+            let badgeIconName = transportModeIcons[placeInfo.type?.toLowerCase()];
+            if (!badgeIconName && placeInfo.type) {
+                const lowerType = placeInfo.type.toLowerCase();
+                for (const [key, value] of Object.entries(transportModeIcons)) {
+                    if (lowerType.includes(key)) {
+                        badgeIconName = value;
+                        break;
+                    }
+                }
+            }
+            badgeIcon = badgeIconName || 'fa-route';
+            badgeText = currentLang === 'en' ? 'Transfer' : 'Di chuyển';
             break;
             
         case 'restaurant':
@@ -1184,8 +1297,8 @@ function renderCostContent(tourDetail) {
         progressColor = 'bg-yellow-500';
     }
     
-    // Get currency symbol based on tour currency or user preferences
-    const currencySymbol = getCurrencySymbol(tourCurrency);
+    // Get currency symbol based on user preferences (ignore tourCurrency parameter)
+    const currencySymbol = getCurrencySymbol();
     
     // ID tour từ API hoặc mock data
     const tourId = tourDetail.tour_id || tourDetail.id || tourDetail.option_id || tourDetail.optionId || '';
@@ -1236,10 +1349,10 @@ function renderCostContent(tourDetail) {
         }
     };
     
-    // Update elements with numeric values
-    updateElementTextContent('targetBudget', formatCurrency(budget, tourCurrency));
-    updateElementTextContent('estimatedCost', formatCurrency(totalCost, tourCurrency));
-    updateElementTextContent('remainingBudget', formatCurrency(Math.abs(remaining), tourCurrency));
+    // Update elements with numeric values (use current user currency preference)
+    updateElementTextContent('targetBudget', formatCurrency(budget));
+    updateElementTextContent('estimatedCost', formatCurrency(totalCost));
+    updateElementTextContent('remainingBudget', formatCurrency(Math.abs(remaining)));
     
     // Update progress bar and percentages
     updateElementStyle('budgetProgress', 'width', `${percentUsed}%`);
@@ -1278,7 +1391,7 @@ function renderCostContent(tourDetail) {
                     </div>
                     <div class="estimated-cost-currency">${currencySymbol}</div>
                 </div>
-                <div class="estimated-cost-value">${formatCurrency(totalCost, tourCurrency).replace(/[^\d.,]/g, '')}</div>
+                <div class="estimated-cost-value">${formatCurrency(totalCost).replace(/[^\d.,]/g, '')}</div>
                 <div class="estimated-cost-details">
                     <div class="tour-option-id">${tourId}</div>
                 </div>
@@ -1804,15 +1917,66 @@ function showRestaurantDetailsModal(restaurantInfo) {
 }
 
 /**
+ * Clean currency value from string format to pure number
+ * Removes currency symbols and converts to float
+ * @param {string|number} value - Currency value that might contain symbols
+ * @returns {number} Pure numeric value
+ */
+function cleanCurrencyValue(value) {
+    if (typeof value === 'number') {
+        return value;
+    }
+    
+    if (typeof value === 'string') {
+        // Remove all currency symbols and formatting
+        const cleaned = value.replace(/[$₫€,\s]/g, '');
+        const numericValue = parseFloat(cleaned);
+        return isNaN(numericValue) ? 0 : numericValue;
+    }
+    
+    return 0;
+}
+
+/**
  * Format currency value with conversion
- * @param {number} value - Currency value in USD base
+ * @param {number|string} value - Currency value (can contain symbols) 
  * @param {string} targetCurrency - Target currency (optional, will use current user preference)
  * @returns {string} Formatted currency string
  */
 function formatCurrency(value, targetCurrency) {
-    // Get user preferences from localStorage or use defaults
-    const preferences = getUserPreferences();
-    const currency = targetCurrency || preferences.currency || 'USD';
+    // Clean the input value first to ensure it's a pure number
+    const cleanValue = cleanCurrencyValue(value);
+    
+    let currency = 'USD'; // default fallback
+    
+    // Try multiple sources for currency preference (in order of priority):
+    
+    // 1. Explicit targetCurrency parameter (highest priority)
+    if (targetCurrency) {
+        currency = targetCurrency;
+    }
+    // 2. Check user's currency preference from cookie first (user selection takes priority)
+    else {
+        try {
+            const cookieValue = getCookie('vietnam_travel_ui_config');
+            if (cookieValue) {
+                const cookieData = JSON.parse(decodeURIComponent(cookieValue));
+                currency = cookieData.currency || 'USD';
+            } else {
+                // 3. Fallback to localStorage if cookie not available
+                const localStorageData = localStorage.getItem('vietnam_travel_ui_config');
+                if (localStorageData) {
+                    const parsed = JSON.parse(localStorageData);
+                    currency = parsed.currency || 'USD';
+                } else if (window.currentCurrency) {
+                    // 4. Finally check window.currentCurrency (from global state)
+                    currency = window.currentCurrency;
+                }
+            }
+        } catch (e) {
+            console.warn('Error parsing currency from preferences:', e);
+        }
+    }
     
     // Conversion rates (USD as base)
     const conversionRates = {
@@ -1821,8 +1985,21 @@ function formatCurrency(value, targetCurrency) {
         'EUR': 0.85
     };
     
+    // If value is 0 or invalid, return properly formatted zero
+    if (!cleanValue || cleanValue === 0) {
+        switch (currency) {
+            case 'VND':
+                return '₫0';
+            case 'EUR':
+                return '€0';
+            case 'USD':
+            default:
+                return '$0';
+        }
+    }
+    
     // Convert value to target currency
-    const convertedValue = value * (conversionRates[currency] || 1);
+    const convertedValue = cleanValue * (conversionRates[currency] || 1);
     
     // Format based on currency type
     switch (currency) {
@@ -1853,8 +2030,38 @@ function formatCurrency(value, targetCurrency) {
  * @returns {string} Currency symbol
  */
 function getCurrencySymbol() {
-    const preferences = getUserPreferences();
-    const currency = preferences.currency || 'USD';
+    let currency = 'USD'; // default fallback
+    
+    // Try multiple sources for currency preference (in order of priority):
+    
+    // 1. Check window.currentCurrency if available (from global state)
+    if (window.currentCurrency) {
+        currency = window.currentCurrency;
+    }
+    // 2. Try localStorage first (faster access, more reliable on page refresh)
+    else {
+        try {
+            const localStorageData = localStorage.getItem('vietnam_travel_ui_config');
+            if (localStorageData) {
+                const parsed = JSON.parse(localStorageData);
+                currency = parsed.currency || 'USD';
+            } else {
+                // 3. Fallback to cookie if localStorage not available
+                const cookieValue = getCookie('vietnam_travel_ui_config');
+                if (cookieValue) {
+                    const cookieData = JSON.parse(decodeURIComponent(cookieValue));
+                    currency = cookieData.currency || 'USD';
+                }
+            }
+        } catch (e) {
+            console.warn('Error parsing currency from preferences:', e);
+        }
+    }
+    
+    // Also check window.currentCurrency if available
+    if (window.currentCurrency) {
+        currency = window.currentCurrency;
+    }
     
     switch (currency) {
         case 'VND': return '₫';
@@ -1872,6 +2079,7 @@ function getCurrencySymbol() {
  */
 function calculateSavingPercentage(budget, cost) {
     if (!budget || budget <= 0) return 0;
+    if (!cost || cost <= 0) return 100;
     
     const saving = budget - cost;
     if (saving <= 0) return 0;
@@ -1885,9 +2093,20 @@ function calculateSavingPercentage(budget, cost) {
  */
 function getUserPreferences() {
     try {
+        // Try localStorage first (faster access, more reliable on page refresh)
         const preferencesString = localStorage.getItem('vietnam_travel_ui_config');
         if (preferencesString) {
-            return JSON.parse(preferencesString);
+            const parsed = JSON.parse(preferencesString);
+            console.log('🔄 Currency from localStorage:', parsed.currency); // Debug log
+            return parsed;
+        }
+        
+        // Fallback to cookies (vietnam_travel_ui_config)
+        const cookieValue = getCookie('vietnam_travel_ui_config');
+        if (cookieValue) {
+            const parsed = JSON.parse(decodeURIComponent(cookieValue));
+            console.log('🔄 Currency from cookie:', parsed.currency); // Debug log
+            return parsed;
         }
     } catch (error) {
         console.error('Error reading user preferences:', error);
@@ -1899,6 +2118,18 @@ function getUserPreferences() {
         currency: 'USD',
         setupCompleted: true
     };
+}
+
+/**
+ * Helper function to get cookie value
+ * @param {string} name - Cookie name
+ * @returns {string|null} Cookie value
+ */
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
 }
 
 /**
@@ -3032,5 +3263,40 @@ function getTourHistoryDetail(optionId) {
         default:
             // Return empty data for unknown optionId
             return baseDetail;
+    }
+}
+// Add getCurrencySymbol helper function to get symbol based on user's currency preference
+function getCurrencySymbol() {
+    let currency = 'USD'; // default fallback
+    
+    // Check user's currency preference from cookie first
+    try {
+        const cookieValue = getCookie('vietnam_travel_ui_config');
+        if (cookieValue) {
+            const cookieData = JSON.parse(decodeURIComponent(cookieValue));
+            currency = cookieData.currency || 'USD';
+        } else {
+            // Fallback to localStorage if cookie not available
+            const localStorageData = localStorage.getItem('vietnam_travel_ui_config');
+            if (localStorageData) {
+                const parsed = JSON.parse(localStorageData);
+                currency = parsed.currency || 'USD';
+            } else if (window.currentCurrency) {
+                currency = window.currentCurrency;
+            }
+        }
+    } catch (e) {
+        console.warn('Error parsing currency from preferences:', e);
+    }
+    
+    // Return appropriate symbol
+    switch (currency) {
+        case 'VND':
+            return '₫';
+        case 'EUR':
+            return '€';
+        case 'USD':
+        default:
+            return '$';
     }
 }

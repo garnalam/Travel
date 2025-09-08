@@ -1327,6 +1327,9 @@ function saveUserPreferences(preferences) {
 function updateCurrency(currency) {
     currentCurrency = currency;
     
+    // Update window.currentCurrency for global access
+    window.currentCurrency = currency;
+    
     // Save to unified preferences cookie
     const prefs = getUserPreferences();
     prefs.currency = currency;
@@ -1338,8 +1341,63 @@ function updateCurrency(currency) {
         currentCurrencyEl.textContent = currency;
     }
     
+    // **NEW: Update budget planning label to show current currency**
+    const budgetLabel = document.getElementById('budgetLabel');
+    if (budgetLabel) {
+        const enText = `Total Budget (${currency})`;
+        const viText = `Tổng Ngân Sách (${currency})`;
+        budgetLabel.setAttribute('data-en', enText);
+        budgetLabel.setAttribute('data-vi', viText);
+        
+        // Update current text based on current language
+        const currentLang = currentLanguage || 'en';
+        budgetLabel.textContent = currentLang === 'vi' ? viText : enText;
+    }
+    
+    // **CRITICAL FIX: Update budget input currency symbols IMMEDIATELY and on page load**
+    const budgetCurrencySymbol = document.getElementById('budgetCurrencySymbol');
+    if (budgetCurrencySymbol) {
+        budgetCurrencySymbol.textContent = currency;
+        console.log(`💰 Updated budgetCurrencySymbol to: ${currency}`);
+    }
+    
+    // Update additional budget currency symbols for different forms
+    const targetBudgetCurrency = document.getElementById('targetBudgetCurrency');
+    if (targetBudgetCurrency) {
+        targetBudgetCurrency.textContent = currency;
+    }
+    
+    // Update currency indicators in dropdown
+    document.querySelectorAll('.currency-option span:last-child').forEach(indicator => {
+        indicator.classList.add('hidden');
+    });
+    document.querySelectorAll(`.currency-option[data-currency="${currency}"] span:last-child`).forEach(indicator => {
+        indicator.classList.remove('hidden');
+    });
+    
     // Update prices displayed on the page
     updatePriceDisplay();
+    
+    // **NEW: Update tour history budgets and summary cards**
+    updateTourHistoryBudgets(currency);
+    updateEstimatedCostDisplays(currency);
+    
+    // Force update TourV2 prices as well
+    updateTourV2Prices(currency, (price, curr) => {
+        const rates = {'USD': 1, 'VND': 24000, 'EUR': 0.85};
+        const symbols = {'USD': '$', 'VND': '₫', 'EUR': '€'};
+        const convertedPrice = price * rates[curr];
+        return curr === 'VND' ? `${symbols[curr]}${Math.round(convertedPrice).toLocaleString()}` : `${symbols[curr]}${Math.round(convertedPrice)}`;
+    });
+    
+    // **CRITICAL: Schedule another update for next frame to ensure DOM update**
+    setTimeout(() => {
+        const budgetCurrencySymbol = document.getElementById('budgetCurrencySymbol');
+        if (budgetCurrencySymbol && budgetCurrencySymbol.textContent !== currency) {
+            budgetCurrencySymbol.textContent = currency;
+            console.log(`🔄 Re-updated budgetCurrencySymbol to: ${currency}`);
+        }
+    }, 100);
     
     console.log(`💰 Currency changed to: ${currency}`);
 }
@@ -1413,10 +1471,57 @@ function updatePriceDisplay() {
         }
     });
     
+    // **NEW: Update flight prices with VND/USD data attributes**
+    document.querySelectorAll('.flight-price').forEach(el => {
+        const priceVND = parseFloat(el.getAttribute('data-price-vnd') || '0');
+        const priceUSD = parseFloat(el.getAttribute('data-price-usd') || '0');
+        
+        if (currentCurrency === 'VND') {
+            // VND price is already in VND, just format it
+            try {
+                const formatted = new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(priceVND);
+                el.textContent = formatted;
+            } catch (error) {
+                el.textContent = priceVND === 0 ? '₫0' : `₫${Math.round(priceVND).toLocaleString('vi-VN')}`;
+            }
+        } else if (currentCurrency === 'USD') {
+            try {
+                const formatted = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(priceUSD);
+                el.textContent = formatted;
+            } catch (error) {
+                el.textContent = `$${priceUSD}`;
+            }
+        } else if (currentCurrency === 'EUR') {
+            const basePrice = priceUSD > 0 ? priceUSD : (priceVND / rates['VND']);
+            const eurPrice = basePrice * rates['EUR'];
+            try {
+                const formatted = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'EUR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(eurPrice);
+                el.textContent = formatted;
+            } catch (error) {
+                el.textContent = `€${Math.round(eurPrice)}`;
+            }
+        }
+    });
+    
     // Update specific price elements by class
     const priceElementClasses = [
         '.hotel-price', '.restaurant-price', '.tour-price', 
-        '.price', '.product-price', '.service-price'
+        '.price', '.product-price', '.service-price', '.activity-price', '.transport-price'
     ];
     
     priceElementClasses.forEach(selector => {
@@ -1432,11 +1537,364 @@ function updatePriceDisplay() {
             }
         });
     });
+
+    // **NEW: Update hardcoded USD values in dashboard.html**
+    // Update Budget Planning section
+    const budgetSuggestions = document.querySelectorAll('.budget-suggestion');
+    budgetSuggestions.forEach(btn => {
+        const usdAmount = parseFloat(btn.getAttribute('data-amount') || '0');
+        if (usdAmount > 0) {
+            const convertedPrice = formatPrice(usdAmount, currentCurrency);
+            btn.textContent = convertedPrice;
+            
+            // Store the converted value for click handler
+            btn.setAttribute('data-converted-amount', usdAmount * rates[currentCurrency]);
+        }
+    });
+    
+    // Update flight booking prices
+    updateFlightPrices(currentCurrency, formatPrice);
+    
+    // Update Personalized Tour V2 data prices
+    updateTourV2Prices(currentCurrency, formatPrice);
+    
+    // Update restaurant and hotel prices
+    updateRestaurantHotelPrices(currentCurrency, formatPrice);
     
     // Trigger an event that other components can listen for
     window.dispatchEvent(new CustomEvent('pricesUpdated', {
         detail: { currency: currentCurrency }
     }));
+}
+
+// **NEW: Setup budget suggestion click handlers**
+function setupBudgetSuggestionHandlers() {
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('budget-suggestion')) {
+            const budgetInput = document.getElementById('v2Budget');
+            if (budgetInput) {
+                // Get the converted amount for the current currency
+                const convertedAmount = parseFloat(e.target.getAttribute('data-converted-amount'));
+                if (!isNaN(convertedAmount)) {
+                    budgetInput.value = Math.round(convertedAmount);
+                    
+                    // Add visual feedback
+                    e.target.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        e.target.style.transform = '';
+                    }, 150);
+                    
+                    console.log(`💰 Budget set to: ${budgetInput.value} (${currentCurrency})`);
+                }
+            }
+        }
+    });
+}
+
+// **NEW FUNCTIONS: Update hardcoded prices to use user currency preference**
+function updateFlightPrices(currency, formatPrice) {
+    // Update Total Flight Price - ONLY if prices have been set from actual flight selection
+    const totalFlightPrice = document.getElementById('totalFlightPrice');
+    if (totalFlightPrice) {
+        // Check if this element has actual flight data (non-zero price attributes)
+        const hasActualPrice = totalFlightPrice.getAttribute('data-price-vnd') !== '0' && 
+                              totalFlightPrice.getAttribute('data-price-usd') !== '0';
+        
+        if (hasActualPrice) {
+            // Only update if there's actual flight data
+            const priceVnd = parseInt(totalFlightPrice.getAttribute('data-price-vnd')) || 0;
+            const priceUsd = parseInt(totalFlightPrice.getAttribute('data-price-usd')) || 0;
+            
+            if (currency === 'VND' && priceVnd > 0) {
+                totalFlightPrice.textContent = `₫${priceVnd.toLocaleString()}`;
+            } else if (currency === 'USD' && priceUsd > 0) {
+                totalFlightPrice.textContent = `$${priceUsd.toLocaleString()}`;
+            } else if (currency === 'EUR' && priceUsd > 0) {
+                const eurPrice = Math.round(priceUsd * exchangeRates.USD_TO_EUR);
+                totalFlightPrice.textContent = `€${eurPrice.toLocaleString()}`;
+            }
+        } else {
+            // No flight selected - show 0 price
+            totalFlightPrice.textContent = currency === 'VND' ? '₫0' : currency === 'EUR' ? '€0' : '$0';
+        }
+    }
+    
+    // Update Departure and Return flight price displays - ONLY if flights are actually selected
+    const departureFlightPriceDisplay = document.getElementById('departureFlightPriceDisplay');
+    const returnFlightPriceDisplay = document.getElementById('returnFlightPriceDisplay');
+    const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+    
+    if (departureFlightPriceDisplay) {
+        const hasActualPrice = departureFlightPriceDisplay.getAttribute('data-price-vnd') !== '0' && 
+                              departureFlightPriceDisplay.getAttribute('data-price-usd') !== '0';
+        
+        if (hasActualPrice) {
+            const priceVnd = parseInt(departureFlightPriceDisplay.getAttribute('data-price-vnd')) || 0;
+            const priceUsd = parseInt(departureFlightPriceDisplay.getAttribute('data-price-usd')) || 0;
+            
+            if (currency === 'VND' && priceVnd > 0) {
+                departureFlightPriceDisplay.textContent = `₫${priceVnd.toLocaleString()}`;
+            } else if (currency === 'USD' && priceUsd > 0) {
+                departureFlightPriceDisplay.textContent = `$${priceUsd.toLocaleString()}`;
+            } else if (currency === 'EUR' && priceUsd > 0) {
+                const eurPrice = Math.round(priceUsd * exchangeRates.USD_TO_EUR);
+                departureFlightPriceDisplay.textContent = `€${eurPrice.toLocaleString()}`;
+            }
+        } else {
+            departureFlightPriceDisplay.textContent = currency === 'VND' ? '₫0' : currency === 'EUR' ? '€0' : '$0';
+        }
+    }
+    
+    if (returnFlightPriceDisplay) {
+        const hasActualPrice = returnFlightPriceDisplay.getAttribute('data-price-vnd') !== '0' && 
+                              returnFlightPriceDisplay.getAttribute('data-price-usd') !== '0';
+        
+        if (hasActualPrice) {
+            const priceVnd = parseInt(returnFlightPriceDisplay.getAttribute('data-price-vnd')) || 0;
+            const priceUsd = parseInt(returnFlightPriceDisplay.getAttribute('data-price-usd')) || 0;
+            
+            if (currency === 'VND' && priceVnd > 0) {
+                returnFlightPriceDisplay.textContent = `₫${priceVnd.toLocaleString()}`;
+            } else if (currency === 'USD' && priceUsd > 0) {
+                returnFlightPriceDisplay.textContent = `$${priceUsd.toLocaleString()}`;
+            } else if (currency === 'EUR' && priceUsd > 0) {
+                const eurPrice = Math.round(priceUsd * exchangeRates.USD_TO_EUR);
+                returnFlightPriceDisplay.textContent = `€${eurPrice.toLocaleString()}`;
+            }
+        } else {
+            returnFlightPriceDisplay.textContent = currency === 'VND' ? '₫0' : currency === 'EUR' ? '€0' : '$0';
+        }
+    }
+    
+    if (totalPriceDisplay) {
+        const hasActualPrice = totalPriceDisplay.getAttribute('data-price-vnd') !== '0' && 
+                              totalPriceDisplay.getAttribute('data-price-usd') !== '0';
+        
+        if (hasActualPrice) {
+            const priceVnd = parseInt(totalPriceDisplay.getAttribute('data-price-vnd')) || 0;
+            const priceUsd = parseInt(totalPriceDisplay.getAttribute('data-price-usd')) || 0;
+            
+            if (currency === 'VND' && priceVnd > 0) {
+                totalPriceDisplay.textContent = `₫${priceVnd.toLocaleString()}`;
+            } else if (currency === 'USD' && priceUsd > 0) {
+                totalPriceDisplay.textContent = `$${priceUsd.toLocaleString()}`;
+            } else if (currency === 'EUR' && priceUsd > 0) {
+                const eurPrice = Math.round(priceUsd * exchangeRates.USD_TO_EUR);
+                totalPriceDisplay.textContent = `€${eurPrice.toLocaleString()}`;
+            }
+        } else {
+            totalPriceDisplay.textContent = currency === 'VND' ? '₫0' : currency === 'EUR' ? '€0' : '$0';
+        }
+    }
+    
+    // Update flight cards with $80/Guest pattern
+    document.querySelectorAll('.flight-price').forEach(el => {
+        const text = el.textContent;
+        // Extract USD amount from pattern like "$80" or "$80 / Guest"
+        const usdMatch = text.match(/\$(\d+(?:,\d+)*)/);
+        if (usdMatch) {
+            const usdAmount = parseFloat(usdMatch[1].replace(',', ''));
+            const convertedPrice = formatPrice(usdAmount, currency);
+            
+            // Replace the USD part with converted currency
+            if (text.includes('/')) {
+                const suffix = text.split('$')[1].split(/\d+/)[1] || '';
+                el.textContent = convertedPrice + suffix;
+            } else {
+                el.textContent = convertedPrice;
+            }
+        }
+    });
+}
+
+function updateTourV2Prices(currency, formatPrice) {
+    // Update restaurant prices in Tour V2 preferences
+    document.querySelectorAll('[data-restaurant-price]').forEach(el => {
+        const usdPrice = parseFloat(el.getAttribute('data-restaurant-price'));
+        if (!isNaN(usdPrice)) {
+            const convertedPrice = formatPrice(usdPrice, currency);
+            // Find the price element within this restaurant item
+            const priceEl = el.querySelector('.restaurant-price-display');
+            if (priceEl) {
+                priceEl.textContent = convertedPrice;
+            }
+        }
+    });
+    
+    // Update hotel prices in Tour V2 preferences  
+    document.querySelectorAll('[data-hotel-price]').forEach(el => {
+        const usdPrice = parseFloat(el.getAttribute('data-hotel-price'));
+        if (!isNaN(usdPrice)) {
+            const convertedPrice = formatPrice(usdPrice, currency);
+            const priceEl = el.querySelector('.hotel-price-display');
+            if (priceEl) {
+                priceEl.textContent = convertedPrice;
+            }
+        }
+    });
+    
+    // Update recreation place prices
+    document.querySelectorAll('[data-recreation-price]').forEach(el => {
+        const usdPrice = parseFloat(el.getAttribute('data-recreation-price'));
+        if (!isNaN(usdPrice)) {
+            const convertedPrice = formatPrice(usdPrice, currency);
+            const priceEl = el.querySelector('.recreation-price-display');
+            if (priceEl) {
+                priceEl.textContent = convertedPrice;
+            }
+        }
+    });
+    
+    // Update local transport prices  
+    document.querySelectorAll('[data-transport-price]').forEach(el => {
+        const usdPricePerKm = parseFloat(el.getAttribute('data-transport-price'));
+        if (!isNaN(usdPricePerKm)) {
+            const convertedPrice = formatPrice(usdPricePerKm, currency);
+            const priceEl = el.querySelector('.transport-price-display');
+            if (priceEl) {
+                priceEl.textContent = convertedPrice + '/km';
+            }
+        }
+    });
+}
+
+// **NEW FUNCTIONS: Update tour history and estimated cost displays**
+function updateTourHistoryBudgets(currency) {
+    // Update tour history budget displays that show saved tour budgets
+    document.querySelectorAll('.tour-info-value').forEach(element => {
+        // Check if this element contains budget information
+        if (element.textContent.includes('$') || element.textContent.includes('₫') || element.textContent.includes('€')) {
+            const parentItem = element.closest('.tour-info-item');
+            if (parentItem && (parentItem.textContent.includes('Budget') || parentItem.textContent.includes('Ngân sách'))) {
+                // Extract numeric value from current text using improved cleaning
+                const cleanedValue = element.textContent.replace(/[$₫€,\s]/g, '');
+                const numericValue = parseFloat(cleanedValue);
+                if (!isNaN(numericValue) && numericValue > 0) {
+                    element.textContent = formatPrice(numericValue, currency);
+                }
+            }
+        }
+    });
+    
+    // Update summary card amounts for budgets and estimated costs
+    document.querySelectorAll('.summary-card-amount').forEach(element => {
+        const parentCard = element.closest('.summary-card');
+        if (parentCard && (parentCard.textContent.includes('Budget') || parentCard.textContent.includes('Ngân sách') ||
+                          parentCard.textContent.includes('Estimated') || parentCard.textContent.includes('Ước tính'))) {
+            // Extract numeric value and convert using improved cleaning
+            const cleanedValue = element.textContent.replace(/[$₫€,\s]/g, '');
+            const numericValue = parseFloat(cleanedValue);
+            if (!isNaN(numericValue) && numericValue >= 0) {
+                element.textContent = formatPrice(numericValue, currency);
+            }
+        }
+    });
+}
+
+function updateEstimatedCostDisplays(currency) {
+    // Update Overall Estimated Cost displays
+    const costElements = [
+        'targetBudget',
+        'estimatedCost', 
+        'remainingBudget',
+        'totalEstimatedCost'
+    ];
+    
+    costElements.forEach(elementId => {
+        const element = document.getElementById(elementId);
+        if (element && element.textContent) {
+            // Extract numeric value from current text
+            const numericValue = parseFloat(element.textContent.replace(/[^0-9.,]/g, '').replace(',', ''));
+            if (!isNaN(numericValue) && numericValue > 0) {
+                element.textContent = formatPrice(numericValue, currency);
+            }
+        }
+    });
+    
+    // Update cost breakdown displays in Overall Estimated Cost tab
+    document.querySelectorAll('.cost-breakdown .text-right').forEach(element => {
+        if (element.textContent.includes('$') || element.textContent.includes('₫') || element.textContent.includes('€')) {
+            const numericValue = parseFloat(element.textContent.replace(/[^0-9.,]/g, '').replace(',', ''));
+            if (!isNaN(numericValue) && numericValue > 0) {
+                element.textContent = formatPrice(numericValue, currency);
+            }
+        }
+    });
+    
+    // Update schedule item costs in Schedule tab
+    document.querySelectorAll('[data-en="Cost"], [data-vi="Chi phí"]').forEach(costLabel => {
+        const costElement = costLabel.parentElement;
+        if (costElement && costElement.textContent) {
+            // Find cost amount after the label
+            const textContent = costElement.textContent;
+            const costMatch = textContent.match(/[\$₫€][\d,]+/);
+            if (costMatch) {
+                const numericValue = parseFloat(costMatch[0].replace(/[^0-9.,]/g, '').replace(',', ''));
+                if (!isNaN(numericValue) && numericValue > 0) {
+                    const formattedCost = formatPrice(numericValue, currency);
+                    // Replace the cost part in the text content
+                    costElement.innerHTML = costElement.innerHTML.replace(costMatch[0], formattedCost);
+                }
+            }
+        }
+    });
+}
+
+function updateBudgetCurrencyIndicators(currency) {
+    // Update currency indicators in budget input fields
+    const currencyIndicators = [
+        'targetBudgetCurrency',
+        'v2BudgetCurrency'
+    ];
+    
+    currencyIndicators.forEach(indicatorId => {
+        const indicator = document.getElementById(indicatorId);
+        if (indicator) {
+            indicator.textContent = currency;
+        }
+    });
+    
+    // Update budget suggestion buttons
+    document.querySelectorAll('.budget-suggestion').forEach(button => {
+        const amount = parseInt(button.getAttribute('data-amount')) || 500;
+        button.textContent = formatPrice(amount, currency);
+    });
+}
+
+function updateRestaurantHotelPrices(currency, formatPrice) {
+    // Update all elements that contain hardcoded $ prices
+    const elementsWithDollarPrices = document.querySelectorAll('*');
+    
+    elementsWithDollarPrices.forEach(el => {
+        if (el.children.length === 0) { // Only text nodes
+            const text = el.textContent;
+            
+            // Match patterns like $100, $1,000, $25.00
+            const dollarPattern = /\$(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/g;
+            const matches = text.match(dollarPattern);
+            
+            if (matches) {
+                let newText = text;
+                matches.forEach(match => {
+                    const usdAmount = parseFloat(match.substring(1).replace(',', ''));
+                    if (!isNaN(usdAmount)) {
+                        const convertedPrice = formatPrice(usdAmount, currency);
+                        newText = newText.replace(match, convertedPrice);
+                    }
+                });
+                
+                // Only update if text actually changed
+                if (newText !== text) {
+                    el.textContent = newText;
+                    
+                    // Add data attribute to track original USD value
+                    if (!el.hasAttribute('data-original-usd')) {
+                        el.setAttribute('data-original-usd', text);
+                    }
+                }
+            }
+        }
+    });
 }
 
 // ===== AUTO-COMPLETE GHOST TEXT CLASS =====
@@ -2508,6 +2966,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Shared initialization for all pages
     initializeCurrencyLanguageModal();
     setupLanguageAndCurrency(); // Initialize language and currency system
+    
+    // Initialize currency from preferences and set window.currentCurrency
+    const userPrefs = getUserPreferences();
+    if (userPrefs && userPrefs.currency) {
+        currentCurrency = userPrefs.currency;
+        window.currentCurrency = userPrefs.currency;
+        console.log('🔄 Initialized currency from preferences:', userPrefs.currency);
+    }
+    
+    // Update prices after currency is loaded
+    setTimeout(() => {
+        updatePriceDisplay();
+        // Also update tour history budgets and summary cards after page load
+        updateTourHistoryBudgets(currentCurrency);
+        updateEstimatedCostDisplays(currentCurrency);
+        
+        // **CRITICAL FIX: Force update budget currency symbol after page load**
+        const budgetCurrencySymbol = document.getElementById('budgetCurrencySymbol');
+        if (budgetCurrencySymbol) {
+            budgetCurrencySymbol.textContent = currentCurrency;
+            console.log(`🎯 Force updated budgetCurrencySymbol on page load to: ${currentCurrency}`);
+        }
+    }, 100);
     initializeAuthSystem();
     initializeDownloadFeature();
     initializeTabSystem();
@@ -2524,6 +3005,16 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCurrencyDisplay();
     checkAuthenticationStatus();
     resetDownloadButtonState(); // Đảm bảo nút download reset về trạng thái ban đầu
+    
+    // Force update prices after everything is loaded
+    setTimeout(() => {
+        if (typeof updatePriceDisplay === 'function') {
+            updatePriceDisplay();
+        }
+    }, 1000);
+    
+    // **NEW: Setup budget suggestion click handlers**
+    setupBudgetSuggestionHandlers();
     
     // Page-specific initialization
     const currentPage = window.location.pathname;
@@ -3649,6 +4140,13 @@ function updateCurrencyDisplay() {
     if (currencyIndicator) {
         currencyIndicator.textContent = currentCurrency;
     }
+    
+    // **CRITICAL: Update budget currency symbol immediately when page loads**
+    const budgetCurrencySymbol = document.getElementById('budgetCurrencySymbol');
+    if (budgetCurrencySymbol) {
+        budgetCurrencySymbol.textContent = currentCurrency;
+        console.log(`🎯 Initial budgetCurrencySymbol set to: ${currentCurrency}`);
+    }
 
     // Update all price displays
     document.querySelectorAll('[data-price]').forEach(element => {
@@ -3674,6 +4172,29 @@ function updateCurrencyDisplay() {
 
         element.textContent = `${symbol}${convertedPrice.toLocaleString()}`;
     });
+    
+    // Update flight booking prices
+    updateFlightPrices(currentCurrency, formatPrice);
+    
+    // Update Personalized Tour V2 data prices
+    updateTourV2Prices(currentCurrency, formatPrice);
+    
+    // Update restaurant and hotel prices
+    updateRestaurantHotelPrices(currentCurrency, formatPrice);
+    
+    // Update tour history Budget display
+    updateTourHistoryBudgets(currentCurrency);
+    
+    // Update Overall Estimated Cost displays
+    updateEstimatedCostDisplays(currentCurrency);
+    
+    // Update budget currency indicators in forms
+    updateBudgetCurrencyIndicators(currentCurrency);
+    
+    // Dispatch event for components that need to re-render with new currency
+    window.dispatchEvent(new CustomEvent('pricesUpdated', {
+        detail: { currency: currentCurrency }
+    }));
 }
 
 // Get translation helper

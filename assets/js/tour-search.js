@@ -147,7 +147,7 @@ function handleTravelTourSearch() {
 // Generate tour using the backend API
 async function generateTourFromAPI(searchData) {
     try {
-        // Prepare the data in the format expected by the backend
+        // Prepare the data in the format expected by Gemini AI
         const tourRequestData = {
             user_id: "U094",  // This should come from session/login
             start_city_id: parseInt(searchData.departure) || 1818253931,  // Convert to int
@@ -158,7 +158,17 @@ async function generateTourFromAPI(searchData) {
             transport_ids: searchData.transport ? [searchData.transport] : [],
             guest_count: parseInt(searchData.days) || 3,  // Using days as guest_count for now
             duration_days: parseInt(searchData.days) || 3,
-            target_budget: parseInt(searchData.budget) || 1000
+            target_budget: parseInt(searchData.budget) || 1000,
+            user_preferences: {
+                liked_hotels: searchData.hotel ? [searchData.hotel] : [],
+                liked_activities: searchData.recreation ? [searchData.recreation] : [],
+                liked_restaurants: searchData.restaurant ? [searchData.restaurant] : [],
+                liked_transport_modes: searchData.transport ? [searchData.transport] : [],
+                disliked_hotels: [],
+                disliked_activities: [],
+                disliked_restaurants: [],
+                disliked_transport_modes: []
+            }
         };
         
         console.log('📤 Sending tour request to API:', tourRequestData);
@@ -874,11 +884,16 @@ function generateDetailedScheduleHTML(schedule) {
                     <div class="timeline-content">
                         <div class="activity-card">
                             <div class="activity-time">
-                                <i class="fas fa-clock"></i> ${activity.time}
+                                <i class="fas fa-clock"></i> ${activity.start_time} - ${activity.end_time}
+                                ${activity.type === 'transfer' && activity.distance_km ? `<span class="text-gray-500 ml-2">${activity.distance_km}km</span>` : ''}
                             </div>
                             <div class="activity-description">
-                                <i class="fas ${activityIcon} mr-2 ${iconColor}"></i>
-                                ${activity.activity}
+                                ${activity.type === 'transfer' ? 
+                                    `<i class="fas ${getTransportIcon(activity.transport_mode)} mr-2 text-blue-500"></i>
+                                     <span class="font-medium">${getTransportName(activity.transport_mode)}</span>` :
+                                    `<i class="fas ${activityIcon} mr-2 ${iconColor}"></i>
+                                     ${activity.activity || activity.place_name}`
+                                }
                             </div>
                             <div class="activity-cost" data-en="Cost: ${activity.cost}" data-vi="Chi phí: ${activity.cost}">
                                 <i class="fas fa-tag"></i> Cost: ${activity.cost}
@@ -898,6 +913,104 @@ function generateDetailedScheduleHTML(schedule) {
     
     scheduleHTML += '</div>';
     return scheduleHTML;
+}
+
+/**
+ * Get transport mode icon
+ * @param {string} transportMode - Transport mode (walk, bike, scooter, taxi, bus, metro)
+ * @returns {string} Font Awesome icon class
+ */
+function getTransportIcon(transportMode) {
+    if (!transportMode) return 'fa-route';
+    
+    const iconMap = {
+        'walk': 'fa-walking',
+        'bike': 'fa-bicycle',
+        'bicycle': 'fa-bicycle',
+        'scooter': 'fa-motorcycle',
+        'motorcycle': 'fa-motorcycle',
+        'motorbike': 'fa-motorcycle',
+        'taxi': 'fa-taxi',
+        'grab': 'fa-taxi',
+        'uber': 'fa-taxi',
+        'bus': 'fa-bus',
+        'metro': 'fa-subway',
+        'subway': 'fa-subway',
+        'train': 'fa-train',
+        'car': 'fa-car',
+        'ojek': 'fa-motorcycle',
+        'grabbike': 'fa-motorcycle',
+        'rickshaw': 'fa-taxi',
+        'cyclo': 'fa-taxi',
+        'tricycle': 'fa-taxi',
+        'ferry': 'fa-ship',
+        'boat': 'fa-ship',
+        'ship': 'fa-ship'
+    };
+    
+    // First try exact match (case-insensitive)
+    const lowerMode = transportMode.toLowerCase();
+    if (iconMap[lowerMode]) {
+        return iconMap[lowerMode];
+    }
+    
+    // Then try partial matches for database transport names
+    for (const [key, value] of Object.entries(iconMap)) {
+        if (lowerMode.includes(key)) {
+            return value;
+        }
+    }
+    
+    return 'fa-route';
+}
+
+/**
+ * Get transport mode Vietnamese name
+ * @param {string} transportMode - Transport mode
+ * @returns {string} Vietnamese name
+ */
+function getTransportName(transportMode) {
+    if (!transportMode) return 'Di chuyển';
+    
+    const nameMap = {
+        'walk': 'Đi bộ',
+        'bike': 'Xe đạp', 
+        'bicycle': 'Xe đạp',
+        'scooter': 'Xe máy',
+        'motorcycle': 'Xe máy',
+        'motorbike': 'Xe máy',
+        'taxi': 'Taxi',
+        'grab': 'Grab',
+        'uber': 'Uber',
+        'bus': 'Xe buýt',
+        'metro': 'Tàu điện',
+        'train': 'Tàu hóa',
+        'car': 'Ô tô',
+        'ojek': 'Ojek',
+        'grabbike': 'GrabBike',
+        'rickshaw': 'Xích lô',
+        'cyclo': 'Xích lô',
+        'tricycle': 'Xe ba bánh',
+        'ferry': 'Phà',
+        'boat': 'Thuyền',
+        'ship': 'Tàu thủy'
+    };
+    
+    // First try exact match (case-insensitive)
+    const lowerMode = transportMode.toLowerCase();
+    if (nameMap[lowerMode]) {
+        return nameMap[lowerMode];
+    }
+    
+    // Then try partial matches for database transport names
+    for (const [key, value] of Object.entries(nameMap)) {
+        if (lowerMode.includes(key)) {
+            return value;
+        }
+    }
+    
+    // If no match found, capitalize the first letter and return
+    return transportMode.charAt(0).toUpperCase() + transportMode.slice(1).toLowerCase();
 }
 
 // Generate summary HTML with improved visual representation

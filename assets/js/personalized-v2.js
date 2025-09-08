@@ -12,12 +12,70 @@ class PersonalizedTourV2Manager {
     init() {
         console.log('🎯 PersonalizedTourV2Manager initialized');
         this.setupEventListeners();
+        this.setupCurrencyChangeListener();
     }
 
     setupEventListeners() {
         // This class is integrated with the main dashboard.html flight booking manager
         // Event listeners are managed there to avoid conflicts
         console.log('✅ PersonalizedTourV2Manager event listeners ready');
+    }
+
+    // Listen for currency changes and update displays
+    setupCurrencyChangeListener() {
+        window.addEventListener('pricesUpdated', (event) => {
+            console.log('🔄 Currency changed in PersonalizedTourV2, updating displays...');
+            this.refreshPriceDisplays();
+        });
+    }
+
+    // Refresh all price displays with current currency
+    refreshPriceDisplays() {
+        // Re-generate any visible daily preference forms with updated currency
+        const dailyForms = document.querySelectorAll('.daily-preferences-day');
+        dailyForms.forEach(form => {
+            // Get the day number
+            const dayNumber = form.dataset.dayNumber;
+            if (dayNumber && this.dailyFormsData) {
+                // Refresh the form content with updated currency formatting
+                this.refreshDayFormPrices(form, dayNumber);
+            }
+        });
+    }
+
+    // Refresh prices in a specific day form
+    refreshDayFormPrices(formElement, dayNumber) {
+        // Find all price displays in the form and update them
+        const priceElements = formElement.querySelectorAll('[data-original-price]');
+        priceElements.forEach(element => {
+            const originalPrice = parseFloat(element.dataset.originalPrice);
+            if (!isNaN(originalPrice)) {
+                const currentCurrency = window.currentCurrency || 'USD';
+                element.textContent = formatCurrency(originalPrice, currentCurrency);
+            }
+        });
+
+        // Also refresh generated item details if they exist
+        const itemContainers = formElement.querySelectorAll('.restaurant-item, .hotel-item, .activity-item, .transport-item');
+        itemContainers.forEach(container => {
+            const itemData = container.dataset.itemData;
+            if (itemData) {
+                try {
+                    const item = JSON.parse(itemData);
+                    const itemType = container.classList.contains('restaurant-item') ? 'restaurant' :
+                                   container.classList.contains('hotel-item') ? 'hotel' :
+                                   container.classList.contains('activity-item') ? 'activity' : 'transport';
+                    
+                    // Update the item details with new currency
+                    const detailsContainer = container.querySelector('.item-details');
+                    if (detailsContainer) {
+                        detailsContainer.innerHTML = this.generateItemDetails(item, itemType);
+                    }
+                } catch (e) {
+                    console.warn('Could not refresh item price display:', e);
+                }
+            }
+        });
     }
 
     // Calculate number of days between two dates
@@ -64,12 +122,17 @@ class PersonalizedTourV2Manager {
     generateLikeDislikeUI(item, type, dayNumber) {
         const itemId = item[`${type}_id`] || item.id;
         
+        // Store item data for later currency updates
+        const itemDataJson = JSON.stringify(item).replace(/"/g, '&quot;');
+        
         return `
-            <div class="${type}-item p-3 bg-white rounded-lg border border-gray-100 hover:border-gray-300 transition duration-200">
+            <div class="${type}-item p-3 bg-white rounded-lg border border-gray-100 hover:border-gray-300 transition duration-200" data-item-data="${itemDataJson}">
                 <div class="flex items-center justify-between">
                     <div class="flex-1">
                         <h6 class="font-semibold text-gray-800 text-sm">${item.name}</h6>
-                        ${this.generateItemDetails(item, type)}
+                        <div class="item-details">
+                            ${this.generateItemDetails(item, type)}
+                        </div>
                     </div>
                     <div class="flex items-center space-x-2 ml-3">
                         <label class="flex items-center cursor-pointer">
@@ -94,37 +157,44 @@ class PersonalizedTourV2Manager {
 
     // Generate specific details for each item type
     generateItemDetails(item, type) {
+        // Get current currency from global state
+        const currentCurrency = window.currentCurrency || 'USD';
+        
         switch(type) {
             case 'restaurant':
+                const restaurantPrice = item.price_avg ? formatCurrency(item.price_avg, currentCurrency) : 'N/A';
                 return `
                     <p class="text-xs text-gray-600">${item.cuisine_type || 'Restaurant'}</p>
                     <div class="flex items-center mt-1">
                         <span class="text-xs text-yellow-600">★ ${item.rating || 'N/A'}</span>
-                        <span class="text-xs text-gray-500 ml-2">$${item.price_avg || 'N/A'}</span>
+                        <span class="text-xs text-gray-500 ml-2 item-price" data-price="${item.price_avg || 0}">${restaurantPrice}</span>
                     </div>
                 `;
             case 'hotel':
+                const hotelPrice = item.price_per_night ? formatCurrency(item.price_per_night, currentCurrency) : 'N/A';
                 return `
                     <div class="flex items-center mt-1">
                         <span class="text-xs text-yellow-600">★ ${item.rating || 'N/A'}</span>
                         <span class="text-xs text-blue-600 ml-2">${item.stars || 0}⭐</span>
-                        <span class="text-xs text-gray-500 ml-2">$${item.price_per_night || 'N/A'}/night</span>
+                        <span class="text-xs text-gray-500 ml-2 item-price" data-price="${item.price_per_night || 0}">${hotelPrice}/night</span>
                     </div>
                 `;
             case 'activity':
+                const activityPrice = item.price ? (item.price > 0 ? formatCurrency(item.price, currentCurrency) : 'Free') : 'Free';
                 return `
                     <p class="text-xs text-gray-600">${item.type || 'Activity'}</p>
                     <div class="flex items-center mt-1">
                         <span class="text-xs text-yellow-600">★ ${item.rating || 'N/A'}</span>
-                        <span class="text-xs text-gray-500 ml-2">$${item.price || 'Free'}</span>
+                        <span class="text-xs text-gray-500 ml-2 item-price" data-price="${item.price || 0}">${activityPrice}</span>
                         <span class="text-xs text-gray-500 ml-2">${item.duration_hr || 'N/A'}h</span>
                     </div>
                 `;
             case 'transport':
+                const transportPrice = item.avg_price_per_km ? formatCurrency(item.avg_price_per_km, currentCurrency) : 'N/A';
                 return `
                     <div class="flex items-center mt-1">
                         <span class="text-xs text-yellow-600">★ ${item.rating || 'N/A'}</span>
-                        <span class="text-xs text-gray-500 ml-2">$${item.avg_price_per_km || 'N/A'}/km</span>
+                        <span class="text-xs text-gray-500 ml-2 item-price" data-price="${item.avg_price_per_km || 0}">${transportPrice}/km</span>
                         <span class="text-xs text-gray-500 ml-2">${item.operating_hours || '24/7'}</span>
                     </div>
                 `;

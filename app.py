@@ -5779,14 +5779,14 @@ def generate_tour():
                     "error": f"Missing required field: {field}"
                 }), 400
         
-        # Import recommendation functions
+        # Import recommendation functions - CHỈ SỬ DỤNG GEMINI AI
         try:
-            from recommendation import UserTourInfo, recommend_cold_start, build_final_tour_json
+            from recommendation import UserTourInfo, get_gemini_travel_recommendations
         except ImportError as e:
             print(f"❌ Error importing recommendation module: {str(e)}")
             return jsonify({
                 "success": False,
-                "error": "Recommendation system not available"
+                "error": "Gemini AI recommendation system not available"
             }), 500
         
         # Chuẩn bị dữ liệu cho recommendation system
@@ -5803,7 +5803,117 @@ def generate_tour():
             "target_budget": float(data["target_budget"])
         }
         
+        # Xử lý user preferences từ frontend (từ daily preferences)
+        user_prefs = data.get("user_preferences", {})
+        
+        # Chuyển đổi hotel_ids, activity_ids, restaurant_ids, transport_ids thành preferences format
+        if tour_input["hotel_ids"] or tour_input["activity_ids"] or tour_input["restaurant_ids"] or tour_input["transport_ids"]:
+            # Nếu có IDs được truyền vào, coi như là liked preferences
+            if not user_prefs:
+                user_prefs = {}
+            
+            if tour_input["hotel_ids"]:
+                user_prefs["liked_hotels"] = user_prefs.get("liked_hotels", []) + tour_input["hotel_ids"]
+            if tour_input["activity_ids"]:
+                user_prefs["liked_activities"] = user_prefs.get("liked_activities", []) + tour_input["activity_ids"]
+            if tour_input["restaurant_ids"]:
+                user_prefs["liked_restaurants"] = user_prefs.get("liked_restaurants", []) + tour_input["restaurant_ids"]
+            if tour_input["transport_ids"]:
+                # Convert transport IDs to transport mode names by querying database
+                transport_modes = []
+                print(f"🔄 Converting transport IDs from database: {tour_input['transport_ids']}")
+                
+                # Get database connection to lookup transport types
+                try:
+                    from recommendation import get_db_connection
+                    conn = get_db_connection()
+                    cursor = conn.cursor(dictionary=True)
+                    
+                    for transport_id in tour_input["transport_ids"]:
+                        # First check if it's already a mode name
+                        if transport_id in ["walk", "bike", "scooter", "taxi", "bus", "metro"]:
+                            transport_modes.append(transport_id)
+                            print(f"   ✅ {transport_id} (already a mode name)")
+                        elif transport_id.lower() in ["walk", "walking", "on foot", "foot"]:
+                            transport_modes.append("walk")
+                            print(f"   ✅ {transport_id} → walk (manual walking)")
+                        else:
+                            # Query database to get transport type and use actual name
+                            cursor.execute("SELECT type FROM transports WHERE transport_id = %s", (transport_id,))
+                            result = cursor.fetchone()
+                            
+                            if result and result['type']:
+                                # Use actual database transport name instead of mapping
+                                transport_name = result['type']
+                                transport_modes.append(transport_name)
+                                print(f"   ✅ {transport_id} → {transport_name} (from database)")
+                            else:
+                                # Fallback
+                                transport_modes.append("taxi")
+                                print(f"   ⚠️ {transport_id} → taxi (not found in database)")
+                    
+                    cursor.close()
+                    conn.close()
+                    
+                except Exception as e:
+                    print(f"   ❌ Database error: {e}, using fallback mapping")
+                    # Fallback to hardcoded mapping if database fails
+                    for transport_id in tour_input["transport_ids"]:
+                        if transport_id in ["walk", "bike", "scooter", "taxi", "bus", "metro"]:
+                            transport_modes.append(transport_id)
+                        else:
+                            transport_modes.append("taxi")
+                
+                print(f"🚗 Final transport modes: {transport_modes}")
+                user_prefs["liked_transport_modes"] = user_prefs.get("liked_transport_modes", []) + transport_modes
+        
+        # Process disliked transport modes từ user_preferences nếu có
+        if "disliked_transport_modes" in user_prefs and user_prefs["disliked_transport_modes"]:
+            disliked_modes = []
+            print(f"🔄 Converting disliked transport IDs from database: {user_prefs['disliked_transport_modes']}")
+            
+            # Get database connection to lookup transport types
+            try:
+                from recommendation import get_db_connection
+                conn = get_db_connection()
+                cursor = conn.cursor(dictionary=True)
+                
+                for transport_id in user_prefs["disliked_transport_modes"]:
+                    # First check if it's already a mode name
+                    if transport_id in ["walk", "bike", "scooter", "taxi", "bus", "metro"]:
+                        disliked_modes.append(transport_id)
+                        print(f"   ❌ {transport_id} (already a mode name, disliked)")
+                    elif transport_id.lower() in ["walk", "walking", "on foot", "foot"]:
+                        disliked_modes.append("walk")
+                        print(f"   ❌ {transport_id} → walk (manual walking, disliked)")
+                    else:
+                        # Query database to get transport type and use actual name
+                        cursor.execute("SELECT type FROM transports WHERE transport_id = %s", (transport_id,))
+                        result = cursor.fetchone()
+                        
+                        if result and result['type']:
+                            # Use actual database transport name instead of mapping
+                            transport_name = result['type']
+                            disliked_modes.append(transport_name)
+                            print(f"   ❌ {transport_id} → {transport_name} (from database, disliked)")
+                        else:
+                            print(f"   ⚠️ {transport_id} → not found in database (skipped)")
+                
+                cursor.close()
+                conn.close()
+                
+            except Exception as e:
+                print(f"   ❌ Database error: {e}, keeping original IDs")
+                # If database fails, assume they're already mode names
+                for transport_id in user_prefs["disliked_transport_modes"]:
+                    if transport_id in ["walk", "bike", "scooter", "taxi", "bus", "metro"]:
+                        disliked_modes.append(transport_id)
+            
+            print(f"🚫 Final disliked modes: {disliked_modes}")
+            user_prefs["disliked_transport_modes"] = disliked_modes
+        
         print(f"📋 Processed tour input: {tour_input}")
+        print(f"🚗 Transport preferences: liked={user_prefs.get('liked_transport_modes', [])}, disliked={user_prefs.get('disliked_transport_modes', [])}")
         
         # Tạo UserTourInfo object
         try:
@@ -5816,38 +5926,66 @@ def generate_tour():
                 "error": f"Error creating tour request: {str(e)}"
             }), 500
         
-        # Chạy recommendation algorithm
+        # CHỈ SỬ DỤNG GEMINI AI RECOMMENDATION
         try:
-            # Sử dụng cold-start recommendation
-            cold_df = recommend_cold_start(user_tour, K=5, top_n=1)
+            print(f"🤖 Using Gemini AI recommendation with preferences: {user_prefs}")
             
-            if cold_df.empty:
+            # Lấy tên thành phố đích
+            destination_name = "Unknown"
+            try:
+                from recommendation import get_db_connection
+                conn = get_db_connection()
+                cursor = conn.cursor(dictionary=True)
+                cursor.execute("SELECT name FROM cities WHERE city_id = %s", (user_tour.destination_city_id,))
+                city_result = cursor.fetchone()
+                if city_result:
+                    destination_name = city_result['name']
+                cursor.close()
+                conn.close()
+                print(f"✅ Found destination city: {destination_name}")
+            except Exception as e:
+                print(f"⚠️ Error getting city name: {e}")
+            
+            # Sử dụng Gemini AI recommendation (LUÔN LUÔN)
+            print(f"🔄 Calling Gemini AI for destination: {destination_name}")
+            
+            try:
+                tour_result = get_gemini_travel_recommendations(user_tour, destination_name, user_prefs)
+                print(f"✅ Gemini AI returned result type: {type(tour_result)}")
+                
+                if tour_result:
+                    print(f"✅ Tour result keys: {list(tour_result.keys()) if isinstance(tour_result, dict) else 'Not a dict'}")
+                
+            except Exception as gemini_error:
+                print(f"❌ Gemini AI error: {str(gemini_error)}")
+                print(f"❌ Error type: {type(gemini_error)}")
+                import traceback
+                print(f"❌ Traceback: {traceback.format_exc()}")
+                
                 return jsonify({
                     "success": False,
-                    "error": "No suitable tour recommendations found"
-                }), 404
-            
-            print(f"🔍 Found cold-start recommendations: {cold_df['option_id'].tolist()}")
-            
-            # Build final tour JSON
-            tour_result = build_final_tour_json(user_tour, mode='cold_start')
+                    "error": f"Gemini AI error: {str(gemini_error)}",
+                    "error_type": str(type(gemini_error))
+                }), 500
             
             if not tour_result:
+                print("❌ Gemini AI returned empty result")
                 return jsonify({
                     "success": False,
-                    "error": "Failed to build tour recommendation"
+                    "error": "Gemini AI returned empty tour recommendation"
                 }), 500
                 
-            print(f"🎉 Successfully generated tour: {tour_result.get('tour_id', 'N/A')}")
+            print(f"🎉 Successfully generated Gemini tour for destination: {destination_name}")
             
             # Return success response
             return jsonify({
                 "success": True,
                 "data": tour_result,
                 "recommendation_info": {
-                    "recommended_option_ids": cold_df['option_id'].tolist(),
-                    "algorithm_used": "cold_start",
-                    "similar_users_count": 5
+                    "algorithm_used": "gemini_ai",
+                    "preferences_used": user_prefs,
+                    "destination": destination_name,
+                    "ai_model": "gemini-1.5-flash"
                 }
             })
             
@@ -5864,15 +6002,9 @@ def generate_tour():
             "success": False,
             "error": f"Unexpected server error: {str(e)}"
         }), 500
-
 @app.route('/<path:filename>')
 def serve_files(filename):
     return send_from_directory('.', filename)
 
 if __name__ == "__main__":
-    print("🚀 Starting Smart Travel Vietnam Flask Server...")
-    print("🌐 Access URL: http://localhost:8386")
-    print("📱 Dashboard: http://localhost:8386/dashboard")
-    print("🔐 Test Account: test@example.com / test123")
-    
     app.run(debug=True, host="0.0.0.0", port=8386)
